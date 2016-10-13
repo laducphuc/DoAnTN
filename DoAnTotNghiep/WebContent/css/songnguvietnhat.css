@@ -1,0 +1,72 @@
+* {
+	margin: 0px;
+	padding: 0px
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	font-size: 1.2em;
+}
+
+h5.title{
+	height: auto;
+}
+h6.title1{
+font-weight: bold;
+}
+#tabMenu {
+	background: url(../image/menu.gif);
+}
+#tabMenu #menuItems ul li {
+	float: left;
+	width: 150px;
+	height: 29px;
+	line-height: 29px;
+	text-align: center;
+}
+
+#tabMenu #menuItems ul li:HOVER {
+	background: url(../image/menu1.gif);
+}
+
+.divMain {
+	border: 1px solid #725a65;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.danhMuc {
+	border: 2px solid #725a65;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.danhMuc ul {
+	margin-left: 5px;
+}
+
+.danhMuc ul li {
+	height: 35px;
+	line-height: 28px;
+	width: 223px;
+	
+	padding-left: 20px;
+	background: transparent url(../image/nut.png) no-repeat scroll 0px 10px;
+	
+}
+
+.danhMuc ul li a {
+	display: block;
+	height: 28px;
+	background: transparent url(../image/menu3.png) no-repeat scroll 50% 100%;
+}

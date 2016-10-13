@@ -1,0 +1,71 @@
+* {
+	margin: 0px;
+	padding: 0px
+}
+.noidung .noidunghienthi
+{
+	
+	padding: 5px;
+	
+}
+.noidung {
+	margin-top: 10px;
+	border: 1px solid #ddd;
+	background: white;
+	transform : scale(0.9,0.9);
+	-moz-transform : scale(0.9,0.9);
+	-webkit-transform : scale(0.9,0.9);
+	box-shadow : 3px 3px 5px #888888;
+}
+.noidung:hover {
+	transform : scale(1,1.);
+	-moz-transform : scale(1,1);
+	-webkit-transform : scale(1,1);
+	box-shadow : 7px 7px 5px #888888;
+}
+.noidung .noidunghienthi img {
+	border: 1px solid #DDD;
+	padding: 5px;
+	background-color: #FFF;
+	margin: 10px;
+	float: right;
+}
+
+.noidung  .hinhdoctiep {
+	background: transparent url(../images/ico-arrow.gif) no-repeat scroll
+		left center;
+	font-weight: bold;
+	padding-left: 19px;
+}
+
+.noidung .binhchonoo {
+	color: #666;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 15px;
+	background-color: #EEE;
+	padding: 5px;
+	margin-top: 10px;
+	text-align: right;
+	border-top: 1px solid #DDD;
+	clear: both;
+}
+.noidung a{
+	font-size: 0.8em;
+	color: black;
+	text-decoration: none;
+	
+}
+#myCarousel {
+	width: 100%;
+	height: 500px;
+	margin-bottom: 20px;
+}
+#myCarousel img {
+	width: 100%;
+	height: 100%;
+}
+#myCarousel .item{
+	width: 100%;
+	height: 500px;
+}

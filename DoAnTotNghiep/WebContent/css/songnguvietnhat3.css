@@ -1,0 +1,190 @@
+* {
+	margin: 0px;
+	padding: 0px
+}
+body {
+	background-image: url("../image/background.png");
+	width: 100%;
+	height: 100%;
+}
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	font-size: 1.2em;
+}
+
+a.menu1{
+color: black;
+}
+#tabMenu {
+	background-color: #009688;
+}
+#tabMenu #menuItems{
+	z-index: 3;
+}
+#tabMenu ul li a{
+	color: white;
+	text-decoration: none;
+}
+#tabMenu #menuItems ul li {
+	float: left;
+	width: 215px;
+	line-height: 40px;
+	text-align: center;
+}
+
+#tabMenu #menuItems ul li:HOVER {
+	background-color: #004D40;
+}
+#tabMenu #menuItems ul li:hover .dropdown-menu {
+	display:block;
+	padding: 0px;
+	margin-top: 0px;
+}
+#tabMenu #menuItems ul li ul li a:HOVER {
+	background-color: #004D40;
+	color: white;
+}
+#tabMenu1 {
+	background:#DDDDDD;
+}
+#tabMenu1 #menuItems1 ul li {
+	float: left;
+	width: 200px;
+	height: 29px;
+	line-height: 29px;
+	text-align: center;
+}
+
+#tabMenu1 #menuItems1 ul li:HOVER {
+	background: url(../image/menu1.gif);
+}
+#tabMenu1 #menuItems1 ul li ul li a:HOVER {
+	background: url(../image/menu1.gif);
+}
+.divMain {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	box-shadow: 2px 2px 5px #888888;
+}
+
+.danhMuc {
+	border: 1px solid #ddd;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.danhMuc ul {
+	margin-left: 5px;
+}
+
+.danhMuc ul li {
+	height: 35px;
+	line-height: 28px;
+	width: 250px;
+	padding-left: 20px;
+	background: transparent url(../image/nut.png) no-repeat scroll 0px 8px;
+}
+.danhMuc ul li a {
+	display: block;
+	height: 28px;
+}
+#tabMenu ul li a:hover {
+	text-decoration: none;
+}
+#tabMenu ul li ul li a {
+color: rebeccapurple;
+}
+
+#footer {
+	height: 100px;	
+	background-color : #009688;
+	color : white;
+}
+
+/*mySubmenu*/
+.dropdown-menu li {
+	position: relative;
+	background-color:white;
+} 
+.dropdown-menu .mySubmenu {
+	display:none;
+	position: absolute;
+	right:220px;
+	top:0px;
+	border: 0.5px solid #ddd;
+}
+.dropdown-menu li:hover .mySubmenu {
+	display: block;
+}
+.mySubmenu li a {
+	color :rebeccapurple;
+}
+/*my form translate*/
+
+#form-tratu {
+	height: 300px;
+	background-color:#e9eaed;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: fixed;
+	border: 1px solid #ddd;
+	top: 33%;
+	right:-23%;
+	z-index:5;
+	transition : right 0.75s;
+	-moz-transition : right 0.75s;
+	-webkit-transition : right 0.75s;
+	box-shadow: 5px 5px 5px #888888;
+}
+#form-tratu:hover {
+	right: 0;
+}
+#translate {
+	box-shadow : 3px 3px 3px #888888;
+}
+.thanhVienNoiBat{
+	border: 1px solid #ddd;
+	box-shadow:3px 3px 5px #888888;
+	font-size: 18px;
+	padding-top: 20px;
+	color: #6D4C41;
+	background-color: white;
+}
+.thanhVienNoiBat h6{
+	font-size: 13px;
+}
+
+.thanhVienNoiBat a:hover{
+	text-decoration: none;
+	color: blue;
+	font-size: 15px;
+}
+.thanhVienNoiBat li{
+	margin-top: 10px;
+	
+	
+}
+.thanhVienNoiBat a{
+	font-size: 13px;
+	color: #6D4C41;
+}
+#my-search{
+	font-size: 20px;
+	margin-top: 8px;
+	transform : scale(0.8,0.8);
+	-webkit-transform: scale(0.8,0.8);
+	-ms-transform: scale(0.8,0.8);
+}
+#my-search:hover {
+	transform : scale(1.2,1.2);
+	-webkit-transform: scale(1.2,1.2);
+	-ms-transform: scale(1.2,1.2);
+}
