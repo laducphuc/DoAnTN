@@ -41,24 +41,15 @@ public class TrangChuAction extends Action {
 		BaiVietBO baiVietBo = new BaiVietBO();
 		ThongKeBO thongKeBo = new ThongKeBO();
 		String avatar = baiVietBo.getAvarta();
-		if(Validations.validateNull(noiDungTimKiem)){
-			if (kiemTra.equals("0"))
-				danhSachBaiViet = baiVietBo.danhSachBaiVietTrangChu();
-			else
-				danhSachBaiViet = baiVietBo
-						.layDanhSachBaiVietTheoDanhMuc(maDanhMuc);
-		}
-		else {
-			danhSachBaiViet=baiVietBo.layDanhSachBaiVietTimKiem(noiDungTimKiem);
-		}
+		danhSachBaiViet = baiVietBo.danhSachBaiVietTrangChu();
 		int soTrang = trangChuForm.getSoTrang();
 		System.out.println("số trang"+soTrang);
-		ArrayList<BaiViet> danhSachBaiVietHienThi = baiVietBo
-				.layDanhSachBaiVietHienThi(danhSachBaiViet, soTrang);
+		System.out.println("số size"+danhSachBaiViet.size());
+		ArrayList<BaiViet> danhSachBaiVietHienThi = danhSachBaiViet;
 		List<BaiViet> bXHBaiViet = thongKeBo.bangXepHangBaiViet();
 		List<ThanhVien> bXHThanhVien = thongKeBo.bangXepHangThanhVien();
 		List<ThanhVien> bXHCongTacVien = thongKeBo.bangXepHangCongTacVien();
-		bXHBaiViet = bXHBaiViet.subList(0, 5);
+		bXHBaiViet = danhSachBaiViet.subList(0, 5);
 		bXHThanhVien = bXHThanhVien.subList(0, 3);
 		bXHCongTacVien = bXHCongTacVien.subList(0, 3);
 		System.out.println(avatar);

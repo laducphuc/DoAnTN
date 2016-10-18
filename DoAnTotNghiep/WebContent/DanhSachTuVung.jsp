@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh Sách Bài Học</title>
+<title>Danh Sách Từ Vựng</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/songnguvietnhat3.css">
@@ -31,7 +31,11 @@
 			hidePageNumbers : false,
 			perPage : 10
 		});
+		
 	});
+	function play(x) {
+        document.getElementById(x).play();
+     }
 </script>
 
 </head>
@@ -47,39 +51,53 @@
 				<div class="col-lg-9" style="height: auto; padding: 0px">
 					<div class="col-lg-12 divMain"
 						style="background: white; height: auto;">
-
-						<div class="col-lg-12">
-							<h4 style="font-size: 30px; text-align: center;">
-								<i class="fa fa-use"></i>Giáo trình Minnano Nihongo
-							</h4>
-						</div>
 						<div class="col-lg-12" style="border-bottom: 1px solid blue;">
+						<div class="col-lg-9">
 							<h4>
-								<i class="fa fa-list"></i> Danh sách bài học (
-								<bean:write name="chonBaiForm" property="soBaiHoc" />
-								)
+								<i class="fa fa-list"></i> Danh sách từ vựng
 							</h4>
-						</div>
-						<div class="col-lg-12 thumbnail" style="min-height: 500px;padding: 0px; ">
+							</div>
+                  </div>
+						<div class="col-lg-12 thumbnail"
+							style="min-height: 500px; padding: 0px;">
 							<table class="table table-striped"
 								style="width: 100%; display: block; position: absolute; white-space: nowrap; border-collapse: separate; height: 500px; overflow: auto;">
 								<thead>
 									<tr class="success">
-										<th style="width: 10%"><bean:write name="chonBaiForm"
-												property="tenCapDo" /></th>
+										<th style="width: 5%">STT</th>
+										<th style="width: 30%">Mục từ</th>
+										<th style="width: 5%">Phát âm</th>
+										<th style="width: 50%">Nghĩa</th>
+										<th style="width: 10%">Tùy chọn</th>
 									</tr>
 								</thead>
 								<tbody id="showtable">
-									<logic:notEmpty name="chonBaiForm" property="listBaiHoc">
-										<logic:iterate name="chonBaiForm" property="listBaiHoc"
-											id="baiHoc">
+									<logic:notEmpty name="tuVungForm" property="listTuVung">
+										<logic:iterate name="tuVungForm" property="listTuVung"
+											id="tuVung">
 											<tr>
-												<td><bean:define id="maBaiHoc" name="baiHoc"
-														property="maBaiHoc"></bean:define> <html:link
-														action="/chi-tiet-bai-hoc?maBaiHoc=${maBaiHoc}">
-														<bean:write property="tenBaiHoc" name="baiHoc" />
-														</span>
-													</html:link></td>
+												<bean:define id="maTuVung" name="tuVung" property="maTuVung"></bean:define>
+												<bean:define id="amThanh" name="tuVung" property="amThanh"></bean:define>
+												<td><bean:write property="stt" name="tuVung" /></td>
+												<td><bean:write property="mucTu" name="tuVung" /></td>
+												<td><a href="javascript:;" onclick="play(${maTuVung});">
+														<span class="glyphicon glyphicon-play-circle"></span>
+												</a> <audio id=${maTuVung}> <source
+														src="Sound/TuVung/${amThanh}" type="audio/ogg"></audio></td>
+												<td><bean:write property="dichNghia" name="tuVung" /></td>
+												<td>
+													<ul>
+														<li title="sửa từ vựng" style="display: inline"><html:link
+																action="/sua-tu-vung?maTuVung=${maTuVung}">
+																<span class="glyphicon glyphicon-edit"></span>
+															</html:link></li>
+														<li title="sửa từ vựng" style="display: inline"><html:link
+																action="/xoa-tu-vung?maTuVung=${maTuVung}"
+																onclick="return confirm('Bạn muốn xóa từ vựng này?');">
+																<span class="glyphicon glyphicon-trash"></span>
+															</html:link></li>
+													</ul>
+												</td>
 											</tr>
 										</logic:iterate>
 									</logic:notEmpty>
@@ -95,28 +113,7 @@
 					</div>
 				</div>
 				<!-- body right -->
-				<div class="col-lg-3" style="height: auto; padding-right: 0px;">
-					<div class="col-lg-12 thanhVienNoiBat">
-						<div class="col-lg-12" style="text-align: center;">
-							<label> Thống Kê</label>
-						</div>
-						<div class="col-lg-12">
-							<hr style="border: 1px solid #ddd; margin: 2px 0px;">
-						</div>
-
-						<ul>
-							<li><html:link action="/thong-ke.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng thành viên</html:link>
-							</li>
-							<li><html:link action="/bang-xep-hang-cong-tac-vien.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng cộng tác viên</html:link>
-							</li>
-							<li><html:link action="/bang-xep-hang-bai-viet.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng bài viết</html:link>
-							</li>
-						</ul>
-					</div>
-				</div>
+				<jsp:include page="menuCongTacVien.jsp"></jsp:include>
 			</div>
 		</div>
 

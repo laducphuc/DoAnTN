@@ -51,7 +51,7 @@
 									<i class="fa fa-users"></i> Bài viết mới
 								</h4>
 							</div>
-							<html:form action="them-bai-viet" method="post"
+							<html:form action="/tao-bai-hoc" method="post"
 								onsubmit="mysubmit()" enctype="multipart/form-data">
 								<div class="col-lg-2">
 									<h4><span class="glyphicon glyphicon-align-justify"></span> Danh Mục :</h4>
@@ -73,20 +73,20 @@
 									<h4><span class="glyphicon glyphicon-text-width"></span> Tiêu Đề</h4>
 								</div>
 								<div class="col-lg-12">
-									<html:textarea styleClass="form-control" property="tieuDeViet"
-										name="baiVietForm" style="width: 100%; resize: none" rows="2"></html:textarea>
+									<html:textarea styleClass="form-control" property="tenBaiHoc"
+										style="width: 100%; resize: none" rows="2"></html:textarea>
 								</div>
 								<div class="col-sm-12">
 									<font style="color: red;"> <html:errors
-											property="tenTieuDeError" />
+											property="tenBaiHocError" />
 									</font>
 								</div>
 								<div class="col-lg-12">
-									<h4><span class=" glyphicon glyphicon-asterisk"></span> Mô Tả</h4>
+									<h4><span class=" glyphicon glyphicon-asterisk"></span> Từ vựng</h4>
 								</div>
 								<div class="col-lg-12">
-									<html:textarea styleClass="form-control" property="moTaViet"
-										name="baiVietForm" style="width: 100%; resize: none" rows="3"></html:textarea>
+									<html:textarea styleClass="form-control" property="tenBaiHoc"
+										style="width: 100%; resize: none" rows="3"></html:textarea>
 								</div>
 								<div class="col-sm-12">
 									<font style="color: red;"> <html:errors
@@ -113,39 +113,39 @@
 
 										<div class="col-lg-12"
 											style="margin-bottom: 10px; margin-top: 10px">
-											<html:file property="file" name="baiVietForm"
+											<html:file property="sound" 
 												styleId="input-4" styleClass="file"></html:file>
 										</div>
 									</div>
 								</div>
 								
 								<div class="col-lg-12">
-									<h4>Nội Dung Bài Viết</h4>
+									<h4>Ngữ pháp</h4>
 								</div>
 								<div class="col-lg-12"
 									style="margin-top: 10px; margin-bottom: 10px;">
-									<html:textarea property="noiDungViet" styleId="editor1"
+									<html:textarea property="nguPhap" styleId="editor1"
 											styleClass="form-control"
 											style="width:100%; height:500px; padding-left:5px"></html:textarea>
 									<div class="col-sm-12">
 										<font style="color: red;"> <html:errors
-												property="noiDungError" />
+												property="nguPhapError" />
 										</font>
 									</div>
 								</div>
 								<div class="col-lg-6">
-									<bean:write name="baiVietForm" property="thongBao" />
+									<bean:write name="taoBaiHocForm" property="thongBao" />
 								</div>
 								<div class="col-lg-6"
 									style="text-align: right; margin-bottom: 30px;">
 									<!-- <html:hidden property="noiDungViet" name="baiVietForm"
 										styleId="noiDungViet" /> -->
-									<html:hidden property="submit" name="baiVietForm"
-										value="submit" />
-									<html:hidden property="maThanhVien" name="baiVietForm"
+									<%-- <html:hidden property="submit" name="taoBaiHocForm"
+										value="submit" /> --%>
+									<%-- <html:hidden property="maThanhVien" name="taoBaiHocForm"
 										value="${maThanhVien }" />
-									<html:hidden property="maDanhMuc" name="baiVietForm"
-										styleId="maDanhMuc" />
+									<html:hidden property="maDanhMuc" name="taoBaiHocForm"
+										styleId="maDanhMuc" /> --%>
 									<html:submit styleClass="btn btn-primary" value="Lưu Bài Viết"></html:submit>
 								</div>
 							</html:form>

@@ -18,20 +18,42 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		
 		<!-- 'Phuc lam mới' -->
 		<form-bean name="chonBaiForm" type="form.ChonBaiForm" />
+		<form-bean name="tuVungForm" type="form.TuVungForm"></form-bean>
+		<form-bean name="taoBaiHocForm" type="form.ThemBaiHocForm"></form-bean>
 	</form-beans>
 
 	<action-mappings>
+	
+	  <action name="taoBaiHocForm" input="/themBaiHoc.jsp" 
+         path="/tao-bai-hoc" scope="request" type="action.ThemBaiHocAction">
+         <forward name="themOK" path="/themBaiHoc.jsp"/>
+      </action>
+	
+		<action name="tuVungForm" input="/taoTuVung.jsp" 
+         path="/tao-tu-vung" scope="request" type="action.TuVungAction">
+         <forward name="themTVerror" path="/taoTuVung.jsp"/>
+         <forward name="themOK" path="/list-tu-vung.do" redirect="true"/>
+         <forward name="themTuVung" path="/taoTuVung.jsp"/>
+      </action>
+      
+		<action name="tuVungForm" input="/trangChu.jsp" 
+			path="/list-tu-vung" scope="request" type="action.DanhSachTuVungAction">
+			<forward name="danhsachtuvung" path="/DanhSachTuVung.jsp"/>
+		</action>
 		
 		<action name="chonBaiForm" input="/trangChu.jsp" 
-			path="/bai-hoc" scope="request" type="action.ChonBaiAction">
-			<forward name="chon_bai" path="/DanhSachBaiHoc.jsp"/>
-		</action>
+         path="/bai-hoc" scope="request" type="action.ChonBaiAction">
+         <forward name="chon_bai" path="/DanhSachBaiHoc.jsp"/>
+      </action>
+      
+		
 
 		<!-- phúc làm mới -->
 		<action input="/trangGioiThieu.jsp" name="trangChuForm" path="/trang-gioi-thieu"
 			scope="request" type="action.TrangGioiThieuAction">
 			<forward name="trangGioiThieu" path="/trangGioiThieu.jsp"></forward>
 		</action>
+		
 		<action input="/trangChu.jsp" name="trangChuForm" path="/trang-chu"
 			scope="request" type="action.TrangChuAction">
 			<forward name="trangChu" path="/trangChu.jsp" />

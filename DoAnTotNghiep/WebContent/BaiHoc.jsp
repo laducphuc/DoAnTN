@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh Sách Bài Học</title>
+<title>Bài Học</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/songnguvietnhat3.css">
@@ -21,7 +21,12 @@
 <script type="text/javascript" src="js/fix-menu.js"></script>
 <style type="text/css">
 </style>
-
+<style type="text/css">
+.baihoc {
+	background-position: center;
+	background-size: cover;
+}
+</style>
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -31,7 +36,13 @@
 			hidePageNumbers : false,
 			perPage : 10
 		});
+
+		$('.audio').hide();
 	});
+
+	function play(x) {
+		document.getElementById(x).play();
+	}
 </script>
 
 </head>
@@ -49,43 +60,63 @@
 						style="background: white; height: auto;">
 
 						<div class="col-lg-12">
-							<h4 style="font-size: 30px; text-align: center;">
-								<i class="fa fa-use"></i>Giáo trình Minnano Nihongo
-							</h4>
+							<h5 style="font-size: 20px; text-align: left;">
+								<i class="fa fa-use"></i>Minnano Nihongo
+							</h5>
 						</div>
-						<div class="col-lg-12" style="border-bottom: 1px solid blue;">
-							<h4>
-								<i class="fa fa-list"></i> Danh sách bài học (
-								<bean:write name="chonBaiForm" property="soBaiHoc" />
-								)
-							</h4>
+						<div class="baihoc">
+							<div class="col-sm-3" >
+								<button type="button"
+									style="width: 128px; height: 100px; background-image: url('image/Source/tuvung.png');
+									background-color: #ddefdd;"
+									class="btn-default" onclick="ly();" onfocus=""></button>
+								<h4>Từ vựng</h4>
+							</div>
+							<div class="col-sm-3">
+								<button type="button"
+									style="width: 128px; height: 100px; background-image: url('image/Source/nguphap.png');"
+									class="btn-default" onclick="ly();"></button>
+								<h4>Ngữ pháp</h4>
+							</div>
+							<div class="col-sm-3">
+								<button type="button"
+									style="width: 128px; height: 100px; background-image: url('image/Source/nghe.png');"
+									class="btn-default" onclick="ly();"></button>
+								<h4>Nghe</h4>
+							</div>
+							<div class="col-sm-3">
+								<button type="button"
+									style="width: 128px; height: 100px; background-image: url('image/Source/luyentap.png');"
+									class="btn-default" onclick="ly();"></button>
+								<h4>Luyện tập</h4>
+							</div>
 						</div>
-						<div class="col-lg-12 thumbnail" style="min-height: 500px;padding: 0px; ">
+						<div class="col-lg-12 thumbnail"
+							style="min-height: 500px; padding: 0px;">
 							<table class="table table-striped"
 								style="width: 100%; display: block; position: absolute; white-space: nowrap; border-collapse: separate; height: 500px; overflow: auto;">
 								<thead>
 									<tr class="success">
-										<th style="width: 10%"><bean:write name="chonBaiForm"
-												property="tenCapDo" /></th>
+										<th style="width: 5%">STT</th>
+										<th style="width: 30%">Mục từ</th>
+										<th style="width: 5%">Phát âm</th>
+										<th style="width: 60%">Nghĩa</th>
 									</tr>
 								</thead>
 								<tbody id="showtable">
-									<logic:notEmpty name="chonBaiForm" property="listBaiHoc">
-										<logic:iterate name="chonBaiForm" property="listBaiHoc"
-											id="baiHoc">
-											<tr>
-												<td><bean:define id="maBaiHoc" name="baiHoc"
-														property="maBaiHoc"></bean:define> <html:link
-														action="/chi-tiet-bai-hoc?maBaiHoc=${maBaiHoc}">
-														<bean:write property="tenBaiHoc" name="baiHoc" />
-														</span>
-													</html:link></td>
-											</tr>
-										</logic:iterate>
-									</logic:notEmpty>
+									<tr>
+										<td>1</td>
+										<td>111</td>
+										<td><a href="javascript:;" onclick="play(1);"> <span
+												class="glyphicon glyphicon-play-circle"></span>
+										</a> <audio id="1"> <source src="Sound/TuVung/anata.mp3"
+												type="audio/ogg"></audio></td>
+										<td>1111111</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
+
 						<!--  -->
 						<div class="col-lg-12"
 							style="text-align: center; margin-bottom: 25px">

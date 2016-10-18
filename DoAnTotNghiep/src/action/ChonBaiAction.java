@@ -35,6 +35,7 @@ public class ChonBaiAction extends Action {
 		String tenCapDo = capDoBO.getTenCDByPK(maCapDo);
 		chonBaiForm.setTenCapDo(tenCapDo);
 		chonBaiForm.setListBaiHoc(listBaiHoc);
+		chonBaiForm.setSoBaiHoc(chonBaiForm.getListBaiHoc().size()+"");
 		return mapping.findForward("chon_bai");
 	}
 }

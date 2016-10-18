@@ -74,12 +74,12 @@
 							<div class="carousel-inner">
 								<logic:iterate id="baiViet" name="trangChuForm"
 									property="danhSachBaiVietHienThi">
-									<bean:define id="anh1" property="anh" name="baiViet"></bean:define>
+									 <bean:define id="anh1" property="anh" name="baiViet"></bean:define> 
 									<bean:define id="ma" property="maBaiViet" name="baiViet"></bean:define>
 									<div class="item">
-										<html:link action="xem-bai-viet.do?maBaiViet=${ma }">
-											<html:img src="pictures/${anh1 }" />
-										</html:link>
+										 <html:link action="xem-bai-viet.do?maBaiViet=${ma }">
+											<html:img src="pictures/${anh1 }" /> 
+										</html:link> 
 										<div class="carousel-caption"></div>
 									</div>
 								</logic:iterate>
@@ -103,7 +103,7 @@
 							property="danhSachBaiVietMoiNhat">
 							<div class="col-lg-12">
 								<logic:iterate id="baiViet" name="danhSachCon">
-									<bean:define id="anh" property="anh" name="baiViet"></bean:define>
+									<bean:define id="anh" property="anh" name="baiViet"></bean:define> 
 									<bean:define id="maBaiViet" property="maBaiViet" name="baiViet"></bean:define>
 									<div class="noidung col-lg-4 divMain">
 										<div class="noidunghienthi col-lg-12" style="height: 220px;">
@@ -111,8 +111,8 @@
 												style="color: #1E90FF; font-size: 1.3em">
 												<bean:write name="baiViet" property="tieuDeViet" />
 											</html:link>
-											<img alt="Noi Dung" src="pictures/${anh }" width="100"
-												height="57"> <br>
+										 <img alt="Noi Dung" src="pictures/${anh }" width="100"
+												height="57"><br>
 
 											<p>
 												<em><bean:write name="baiViet" property="ngayVietBai" />
@@ -164,7 +164,7 @@
 				</div>
 				<!-- Kết thúc thể hiển thị nội dung chương trình -->
 				<!-- body right -->
-				<div class="col-lg-3">
+			<%-- 	<div class="col-lg-3">
 					<div class="col-lg-12 thanhVienNoiBat">
 						<div class="col-lg-12">
 							<label><span class="glyphicon glyphicon-user"></span>
@@ -226,7 +226,7 @@
 							</logic:iterate>
 						</ul>
 					</div>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 	</div>
