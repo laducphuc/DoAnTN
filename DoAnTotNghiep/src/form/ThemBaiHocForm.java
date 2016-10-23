@@ -1,8 +1,16 @@
 package form;
 
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
+
+import model.bean.CapDo;
+import model.bean.TuVung;
 
 public class ThemBaiHocForm extends ActionForm {
 
@@ -13,10 +21,83 @@ public class ThemBaiHocForm extends ActionForm {
 	private String maCapDo;
 	private String tenBaiHoc;
 	private String nguPhap;
-	private List<String> listTuVung;
+	private ArrayList<TuVung> listTuVung;
+	private String tuVung;
 	private String nghe;
-	private String sound;
+	private FormFile sound;
 	private String thongBao;
+	private int tongTuVung;
+	private ArrayList<CapDo> listCapDo;
+	private String[] chonTuVung;
+	private String submit;
+	private String maBaiHoc;
+	private String kt;
+	private String file;
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+	public String getKt() {
+		return kt;
+	}
+
+	public void setKt(String kt) {
+		this.kt = kt;
+	}
+
+	public String getMaBaiHoc() {
+		return maBaiHoc;
+	}
+
+	public void setMaBaiHoc(String maBaiHoc) {
+		this.maBaiHoc = maBaiHoc;
+	}
+
+	public String getSubmit() {
+		return submit;
+	}
+
+	public void setSubmit(String submit) {
+		this.submit = submit;
+	}
+
+	public String[] getChonTuVung() {
+		return chonTuVung;
+	}
+
+	public void setChonTuVung(String[] chonTuVung) {
+		this.chonTuVung = chonTuVung;
+	}
+
+	public int getTongTuVung() {
+		return tongTuVung;
+	}
+
+	public void setTongTuVung(int tongTuVung) {
+		this.tongTuVung = tongTuVung;
+	}
+
+	public ArrayList<CapDo> getListCapDo() {
+		return listCapDo;
+	}
+
+	public void setListCapDo(ArrayList<CapDo> listCapDo) {
+		this.listCapDo = listCapDo;
+	}
+
+	public String getTuVung() {
+		return tuVung;
+	}
+
+	public void setTuVung(String tuVung) {
+		this.tuVung = tuVung;
+	}
+
 	public String getThongBao() {
 		return thongBao;
 	}
@@ -49,11 +130,11 @@ public class ThemBaiHocForm extends ActionForm {
 		this.nguPhap = nguPhap;
 	}
 
-	public List<String> getListTuVung() {
+	public ArrayList<TuVung> getListTuVung() {
 		return listTuVung;
 	}
 
-	public void setListTuVung(List<String> listTuVung) {
+	public void setListTuVung(ArrayList<TuVung> listTuVung) {
 		this.listTuVung = listTuVung;
 	}
 
@@ -65,12 +146,20 @@ public class ThemBaiHocForm extends ActionForm {
 		this.nghe = nghe;
 	}
 
-	public String getSound() {
+	public FormFile getSound() {
 		return sound;
 	}
 
-	public void setSound(String sound) {
+	public void setSound(FormFile sound) {
 		this.sound = sound;
 	}
 
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
 }

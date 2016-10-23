@@ -5,6 +5,42 @@ public class BaiHoc {
 	private String tenBaiHoc;
 	private String maCapDo;
 	private String tenCapDo;
+	private String nguPhap;
+	private String tuVung;
+	private String sound;
+	private String nghe;
+	private String stt;
+	
+	public String getStt() {
+		return stt;
+	}
+	public void setStt(String stt) {
+		this.stt = stt;
+	}
+	public String getNguPhap() {
+		return nguPhap;
+	}
+	public void setNguPhap(String nguPhap) {
+		this.nguPhap = nguPhap;
+	}
+	public String getTuVung() {
+		return tuVung;
+	}
+	public void setTuVung(String tuVung) {
+		this.tuVung = tuVung;
+	}
+	public String getSound() {
+		return sound;
+	}
+	public void setSound(String sound) {
+		this.sound = sound;
+	}
+	public String getNghe() {
+		return nghe;
+	}
+	public void setNghe(String nghe) {
+		this.nghe = nghe;
+	}
 	public String getTenCapDo() {
 		return tenCapDo;
 	}

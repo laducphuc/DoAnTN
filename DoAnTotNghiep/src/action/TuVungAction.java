@@ -1,5 +1,7 @@
 package action;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.upload.FormFile;
 
+import common.Const;
 import common.FileManage;
 import common.StringProcess;
 import form.TuVungForm;
@@ -47,8 +50,10 @@ public class TuVungAction extends Action {
 		if ("Submit".equals(tuVungForm.getSubmit())) {
 
 			file = tuVungForm.getAmThanh();
-			String fileName = file.getFileName();
-			String filePath = servlet.getServletContext().getRealPath("/") + "Sound/TuVung";
+			Date date =new Date();
+			String fileName = date.getTime()+file.getFileName();
+			String filePath = Const.PATH + "Sound\\TuVung";
+			System.out.println(fileName);
 			if (FileManage.saveFile(file, fileName, filePath)) {
 				tuVung.setMucTu(tuVungForm.getMucTu());
 				tuVung.setDichNghia(tuVungForm.getDichNghia());

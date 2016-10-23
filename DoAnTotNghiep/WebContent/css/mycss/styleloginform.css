@@ -2,7 +2,7 @@ body {
 	width: 100%;
 	height: 100%;
 }
-#form-login{
+#form-login ,#form {
 	position: fixed;
 	top: -100%;
 	transition : top 0.75s;

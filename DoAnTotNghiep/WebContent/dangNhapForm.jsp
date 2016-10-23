@@ -32,43 +32,63 @@ input.error {
 		$("#form-login").css("top", "-100%");
 		$(".overflow").hide();
 	}
-	$(document).ready(function() {
-		console.log("runnn");
-		var overflow = $(".overflow")[0];
-		$(overflow).on("click", function() {
-			console.log("runnn");
-			tatFormDangNhap();
-		});
-		$("#my-submit").on("click", function() {
-			var taiKhoan = $("#taiKhoan").val();
-			var matKhau = $("#matKhau").val();
-			console.log("taikhoan :" + taiKhoan + "matKhau : " + matKhau);
-			$.ajax({
-				type : "POST",
-				url : "http://localhost:8080/DoAnTotNghiep/dang-nhap.do",
-				data : "tenTaiKhoan="+taiKhoan+"&matKhau="+matKhau,
-				dataType : "json",
-				success : function(response){
-					console.log("run den day");
-					var jsonObject=response[0];
-					var ketQua=jsonObject.ketQua;
-					var thongBao=jsonObject.thongBao;
-					console.log("runnn day");
-					if("dangNhapThatBai"==ketQua){
-						console.log("thatttttttt bai");
-						$("#thongBao").html(""+thongBao);
-					}
-					if("dangNhapThanhCong"==ketQua){
-						console.log("thanh cong");
-						window.location.href="http://localhost:8080/DoAnTotNghiep/trang-chu.do";
-					}
-				},
-				error : function(errormessage){
-					alert("error "+errormessage);
-				}
-			});
-		});
-	});
+	$(document)
+			.ready(
+					function() {
+						console.log("runnn");
+						var overflow = $(".overflow")[0];
+						$(overflow).on("click", function() {
+							console.log("runnn");
+							tatFormDangNhap();
+						});
+						$("#my-submit")
+								.on(
+										"click",
+										function() {
+											var taiKhoan = $("#taiKhoan").val();
+											var matKhau = $("#matKhau").val();
+											console.log("taikhoan :" + taiKhoan
+													+ "matKhau : " + matKhau);
+											$
+													.ajax({
+														type : "POST",
+														url : "http://localhost:8080/DoAnTotNghiep/dang-nhap.do",
+														data : "tenTaiKhoan="
+																+ taiKhoan
+																+ "&matKhau="
+																+ matKhau,
+														dataType : "json",
+														success : function(
+																response) {
+															console
+																	.log("run den day");
+															var jsonObject = response[0];
+															var ketQua = jsonObject.ketQua;
+															var thongBao = jsonObject.thongBao;
+															console
+																	.log("runnn day");
+															if ("dangNhapThatBai" == ketQua) {
+																console
+																		.log("thatttttttt bai");
+																$("#thongBao")
+																		.html(
+																				""
+																						+ thongBao);
+															}
+															if ("dangNhapThanhCong" == ketQua) {
+																console
+																		.log("thanh cong");
+																window.location.href = "http://localhost:8080/DoAnTotNghiep/trang-chu.do";
+															}
+														},
+														error : function(
+																errormessage) {
+															alert("error "
+																	+ errormessage);
+														}
+													});
+										});
+					});
 </script>
 </head>
 <body>
@@ -114,7 +134,7 @@ input.error {
 	</div>
 
 	<div id="tabMenu" class="col-lg-12 tabMenu" style="padding: 0px;">
-		<%-- <logic:empty name="dangNhapForm" property="taiKhoan" scope="session"> --%>
+		<logic:empty name="dangNhapForm" property="taiKhoan" scope="session">
 			<div id="menuItems" class="col-lg-12">
 				<ul>
 					<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
@@ -123,36 +143,134 @@ input.error {
 						data-toggle="dropdown" href="#">Học theo giáo trình <span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" style="text-align: left">
-							<li><html:link action="/bai-hoc.do?maCapDo=GT001"
+							<li><html:link action="/bai-hoc.do?maCapDo=CD001"
 									style="text-align: left">Giáo trình N5</html:link></li>
-							<li><html:link action="/bai-hoc.do?maCapDo=GT002"
+							<li><html:link action="/bai-hoc.do?maCapDo=CD002"
 									style="text-align: left">Giáo trình N4</html:link></li>
-							<li><html:link action="/bai-hoc.do?maCapDo=GT003"
+							<li><html:link action="/bai-hoc.do?maCapDo=CD003"
 									style="text-align: left">Giáo trình N3</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+									style="text-align: left">Giáo trình N2</html:link></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Luyện thi online <span
-							class="caret"></span></a>
+						data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
 						<ul class="dropdown-menu" style="text-align: left">
-							<li><html:link action="/test.do?maCapDo=GT001"
+							<li><html:link action="/test.do?maCapDo=CD001"
 									style="text-align: left">Đề luyện thi N5</html:link></li>
-							<li><html:link
-									action="/test.do?maDanhMuc=DM00000002&kiemTra=1"
+							<li><html:link action="/test.do?maCapDo=CD002"
 									style="text-align: left">Đề luyện thi N4</html:link></li>
-							<li><html:link
-									action="/test.do?maDanhMuc=DM00000003&kiemTra=1"
+							<li><html:link action="/test.do?maCapDo=CD003"
 									style="text-align: left">Đề luyện thi N3</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD004"
+									style="text-align: left">Đề luyện thi N2</html:link></li>
 						</ul></li>
 					<li><html:link action="/dang-ky-thanh-vien.do">Đăng ký thành viên</html:link></li>
 					<li class="pull-right"><html:link href="#x"
 							onclick="hienThiFormDangNhap()">Đăng Nhập</html:link></li>
 				</ul>
 			</div>
-		<%-- </logic:empty> --%>
-		<%-- <logic:notEmpty name="dangNhapForm" property="taiKhoan"
+		</logic:empty>
+		<logic:notEmpty name="dangNhapForm" property="taiKhoan"
 			scope="session">
 			<bean:define id="taiKhoan" name="dangNhapForm" property="taiKhoan"
 				scope="session"></bean:define>
+			<logic:equal value="3" name="taiKhoan" property="chucVu">
+				<div id="menuItems" class="col-lg-12">
+					<ul>
+						<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
+						<li><html:link action="/trang-chu.do">Trang chủ</html:link></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Học theo giáo trình <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu" style="text-align: left">
+								<li><html:link action="/bai-hoc.do?maCapDo=CD001"
+										style="text-align: left">Giáo trình N5</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD002"
+										style="text-align: left">Giáo trình N4</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD003"
+										style="text-align: left">Giáo trình N3</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+										style="text-align: left">Giáo trình N2</html:link></li>
+							</ul></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
+							<ul class="dropdown-menu" style="text-align: left">
+								<li><html:link action="/test.do?maCapDo=CD001"
+										style="text-align: left">Đề luyện thi N5</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD002"
+										style="text-align: left">Đề luyện thi N4</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD003"
+										style="text-align: left">Đề luyện thi N3</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD004"
+										style="text-align: left">Đề luyện thi N2</html:link></li>
+							</ul></li>
+						<li class="dropdown pull-right"><a class="dropdown-toggle"
+							dropdown-toggle="dropdown" href="#"> <bean:define id="anh"
+									name="taiKhoan" property="anh"></bean:define> <html:img
+									src="avata/${anh }" styleClass="img-circle"
+									style="width: 40px; height:40px" /> <bean:write
+									name="taiKhoan" property="tenThanhVien" /> <span class="caret"></span></a>
+
+							<ul class="dropdown-menu">
+								<li><html:link action="/list-tu-vung.do">Quản trị</html:link></li>
+								<li><html:link action="/thong-tin-admin.do">Thông tin cá nhân</html:link></li>
+								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
+							</ul></li>
+					</ul>
+				</div>
+			</logic:equal>
+			<logic:equal value="1" name="taiKhoan" property="chucVu">
+				<div id="menuItems" class="col-lg-12">
+					<ul>
+						<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
+						<li><html:link style="width: 60px;" action="/trang-chu.do">Trang chủ</html:link></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Học theo giáo trình <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu" style="text-align: left">
+								<li><html:link action="/bai-hoc.do?maCapDo=CD001"
+										style="text-align: left">Giáo trình N5</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD002"
+										style="text-align: left">Giáo trình N4</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD003"
+										style="text-align: left">Giáo trình N3</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+										style="text-align: left">Giáo trình N2</html:link></li>
+							</ul></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
+							<ul class="dropdown-menu" style="text-align: left">
+								<li><html:link action="/test.do?maCapDo=CD001"
+										style="text-align: left">Đề luyện thi N5</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD002"
+										style="text-align: left">Đề luyện thi N4</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD003"
+										style="text-align: left">Đề luyện thi N3</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD004"
+										style="text-align: left">Đề luyện thi N2</html:link></li>
+							</ul></li>
+						<li class="dropdown pull-right"><a class="dropdown-toggle"
+							href="#"> <bean:define id="anh" name="taiKhoan"
+									property="anh"></bean:define> <html:img src="avata/${anh }"
+									styleClass="img-circle" style="width: 40px; height:40px" /> <bean:write
+									name="taiKhoan" property="tenThanhVien" /> <span class="caret"></span>
+						</a>
+
+							<ul class="dropdown-menu">
+								<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông tin cá nhân</html:link></li>
+								<li><html:link action="/them-bai-viet.do">Viết bài mới</html:link></li>
+
+								<li><a href="#">Quản Lý bài Dịch <span class="caret"></span>
+								</a>
+									<ul class="mySubmenu">
+										<li><html:link action="/bai-viet-chua-duyet.do">Bài mới được phân công</html:link></li>
+										<li><html:link action="/bai-viet-nhan-dich.do">Bài Viết Đã Nhận Dịch</html:link></li>
+									</ul></li>
+								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
+							</ul></li>
+					</ul>
+				</div>
+			</logic:equal>
 			<logic:equal value="0" name="taiKhoan" property="chucVu">
 				<div class="col-lg-12" id="menuItems">
 					<ul>
@@ -162,23 +280,26 @@ input.error {
 							data-toggle="dropdown" href="#">Học theo giáo trình <span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" style="text-align: left">
-								<li><html:link action="/bai-hoc.do?maCapDo=GT001"
+								<li><html:link action="/bai-hoc.do?maCapDo=CD001"
 										style="text-align: left">Giáo trình N5</html:link></li>
-								<li><html:link action="/bai-hoc.do?maCapDo=GT002"
+								<li><html:link action="/bai-hoc.do?maCapDo=CD002"
 										style="text-align: left">Giáo trình N4</html:link></li>
-								<li><html:link action="/bai-hoc.do?maCapDo=GT003"
+								<li><html:link action="/bai-hoc.do?maCapDo=CD003"
 										style="text-align: left">Giáo trình N3</html:link></li>
+								<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+										style="text-align: left">Giáo trình N2</html:link></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Luyện thi online <span
-								class="caret"></span></a>
+							data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
 							<ul class="dropdown-menu" style="text-align: left">
-								<li><html:link action="/test.do?maCapDo=GT001"
+								<li><html:link action="/test.do?maCapDo=CD001"
 										style="text-align: left">Đề luyện thi N5</html:link></li>
-								<li><html:link action="/test.do?maCapDo=GT002"
+								<li><html:link action="/test.do?maCapDo=CD002"
 										style="text-align: left">Đề luyện thi N4</html:link></li>
-								<li><html:link action="/test.do?maCapDo=GT003"
+								<li><html:link action="/test.do?maCapDo=CD003"
 										style="text-align: left">Đề luyện thi N3</html:link></li>
+								<li><html:link action="/test.do?maCapDo=CD004"
+										style="text-align: left">Đề luyện thi N2</html:link></li>
 							</ul></li>
 						<li class="dropdown pull-right"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#"> <bean:define id="anh"
@@ -195,7 +316,7 @@ input.error {
 					</ul>
 				</div>
 			</logic:equal>
-		</logic:notEmpty> --%>
+		</logic:notEmpty>
 	</div>
 </body>
 </html>

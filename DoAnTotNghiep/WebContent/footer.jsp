@@ -15,7 +15,7 @@
 			</div>
 			<div class="col-lg-10" style="margin-left: -50px;margin-top:10px;">
 				<h4>GIỚI THIỆU</h4>
-				<h5>Website Dịch Thuật Việt - Nhật Của Nguyệt</h5>
+				<h5>Website học và luyện thi tiếng Nhật</h5>
 			</div>
 		</div>
 	</div>

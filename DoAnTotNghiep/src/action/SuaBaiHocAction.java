@@ -25,41 +25,43 @@ import model.bo.BaiHocBO;
 import model.bo.CapDoBO;
 import model.bo.TuVungBO;
 
-public class ThemBaiHocAction extends Action {
+public class SuaBaiHocAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		ThemBaiHocForm themBaiHocForm = (ThemBaiHocForm) form;
+		ThemBaiHocForm baiHocForm = (ThemBaiHocForm) form;
 		CapDoBO capDoBO = new CapDoBO();
 		TuVungBO tuVungBO = new TuVungBO();
 		BaiHocBO baiHocBO=new BaiHocBO();
-		themBaiHocForm.setListCapDo(capDoBO.listCapDo());
-		themBaiHocForm.setTongTuVung(tuVungBO.getAll().size());
+		String maBaiHoc=baiHocForm.getMaBaiHoc();
+		BaiHoc baihoc=baiHocBO.getBaiHoc(maBaiHoc);
+		baiHocForm.setTongTuVung(tuVungBO.getAll().size());
 		HttpSession session = request.getSession();
+		baiHocForm.setListCapDo(capDoBO.listCapDo());
 		ArrayList<TuVung> listTuVung = new ArrayList<TuVung>();
 		listTuVung = (ArrayList<TuVung>) session.getAttribute("sessionTuVung");
-		themBaiHocForm.setListTuVung(listTuVung);
 		FormFile file;
-		if ("Submit".equals(themBaiHocForm.getSubmit())) {
+		if ("Submit".equals(baiHocForm.getSubmit())) {
+			baiHocForm.setListTuVung(listTuVung);
 			ActionErrors actionErrors = new ActionErrors();
-			if (StringProcess.notVaild(themBaiHocForm.getMaCapDo())) {
+			if (StringProcess.notVaild(baiHocForm.getMaCapDo())) {
 				actionErrors.add("capDoError", new ActionMessage("error.tv.muctutrong"));
 			}
-			if (StringProcess.notVaild(themBaiHocForm.getTenBaiHoc())) {
+			if (StringProcess.notVaild(baiHocForm.getTenBaiHoc())) {
 				actionErrors.add("tenBaiHocError", new ActionMessage("error.tv.tentrong"));
 			}
 			if (listTuVung == null) {
 				actionErrors.add("tuVungError", new ActionMessage("error.tv.tuvungtrong"));
 			}
-			if (StringProcess.notVaild(themBaiHocForm.getNguPhap())) {
+			if (StringProcess.notVaild(baiHocForm.getNguPhap())) {
 				actionErrors.add("nguPhapError", new ActionMessage("error.tv.nguphaptrong"));
 			}
-			if (StringProcess.notVaild(themBaiHocForm.getSound().toString())) {
+			if (StringProcess.notVaild(baiHocForm.getSound().toString())) {
 				actionErrors.add("amthanhError", new ActionMessage("error.tv.amthanhtrong"));
 			}
-			if (StringProcess.notVaild(themBaiHocForm.getNghe())) {
+			if (StringProcess.notVaild(baiHocForm.getNghe())) {
 				actionErrors.add("ngheError", new ActionMessage("error.tv.nghetrong"));
 			}
 			saveErrors(request, actionErrors);
@@ -67,8 +69,9 @@ public class ThemBaiHocAction extends Action {
 				return mapping.findForward("themError");
 			}
 		}
-		if ("Submit".equals(themBaiHocForm.getSubmit())) {
-			file = themBaiHocForm.getSound();
+		if ("Submit".equals(baiHocForm.getSubmit())) {
+			baiHocForm.setListTuVung(listTuVung);
+			file = baiHocForm.getSound();
 			Date date =new Date();
 			String fileName = date.getTime()+file.getFileName();
 			String filePath = Const.PATH + "Sound\\NguPhap";
@@ -78,19 +81,29 @@ public class ThemBaiHocAction extends Action {
 				tuVung+=listTuVung.get(i).getMaTuVung()+"@";
 			}
 			if (FileManage.saveFile(file, fileName, filePath)) {
-				baiHoc.setMaCapDo(themBaiHocForm.getMaCapDo());
-				baiHoc.setNghe(themBaiHocForm.getNghe());
-				System.out.println("Ngu phap:"+themBaiHocForm.getNguPhap());
-				baiHoc.setNguPhap(themBaiHocForm.getNguPhap());
+				baiHoc.setMaCapDo(baiHocForm.getMaCapDo());
+				baiHoc.setNghe(baiHocForm.getNghe());
+				baiHoc.setNguPhap(baiHocForm.getNguPhap());
 				baiHoc.setSound(fileName);
-				baiHoc.setTenBaiHoc(themBaiHocForm.getTenBaiHoc());
+				baiHoc.setTenBaiHoc(baiHocForm.getTenBaiHoc());
 				baiHoc.setTuVung(tuVung);
-				baiHocBO.themBaiHoc(baiHoc);
+				baiHoc.setMaBaiHoc(baihoc.getMaBaiHoc());
+				baiHocBO.updateBaiHoc(baiHoc);
 				return mapping.findForward("themOK");
 			} else {
 				return mapping.findForward("themError");
 			}
 		}else{
+			baiHocForm.setTenBaiHoc(baihoc.getTenBaiHoc());
+			baiHocForm.setMaCapDo(baihoc.getMaCapDo());
+			baiHocForm.setNghe(baihoc.getNghe());
+			baiHocForm.setNguPhap(baihoc.getNguPhap());
+			String [] tuVung=baihoc.getTuVung().split("@");
+			ArrayList<TuVung> list =new ArrayList<TuVung>();
+			for(int i=0;i<tuVung.length;i++){
+				list.add(tuVungBO.getByPK(tuVung[i]));
+			}
+			baiHocForm.setListTuVung(list);
 			return mapping.findForward("themBaiHoc");
 		}
 		

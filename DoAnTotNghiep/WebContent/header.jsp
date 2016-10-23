@@ -20,13 +20,11 @@
 		<div class="col-lg-10">
 			<div class="row">
 				<h1 class="col-lg-offset-1 col-lg-9"
-					style="font-family: Playfair Display; font-weight: bold; color: #FF0000">Dịch
-					Thuật Việt - Nhật</h1>
+					style="font-family: Playfair Display; font-weight: bold; color: #FF0000">Học-Thi tiếng Nhật</h1>
 			</div>
 			<div class="row">
 				<h3 class="col-lg-offset-2"
-					style="font-family: Playfair Display; color: #8B4513; font-size: 12;">Cộng
-					đồng chia sẻ tin tức, hỗ trợ dịch thuật Việt-Nhật</h3>
+					style="font-family: Playfair Display; color: #8B4513; font-size: 12;">Hỗ trợ học và luyện thi tiếng Nhật trực tuyến</h3>
 			</div>
 			<div class="row">
 				<html:form action="/trang-chu">

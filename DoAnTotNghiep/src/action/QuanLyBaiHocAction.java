@@ -15,7 +15,7 @@ import model.bean.BaiHoc;
 import model.bo.BaiHocBO;
 import model.bo.CapDoBO;
 
-public class ChonBaiAction extends Action {
+public class QuanLyBaiHocAction extends Action {
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -25,19 +25,24 @@ public class ChonBaiAction extends Action {
 		ChonBaiForm chonBaiForm = (ChonBaiForm) form;
 		BaiHocBO baiHocBO = new BaiHocBO();
 		CapDoBO capDoBO = new CapDoBO();
+		chonBaiForm.setListCapDo(capDoBO.listCapDo());
 		String maCapDo = chonBaiForm.getMaCapDo();
+		String timKiem = chonBaiForm.getTimKiem();
+		System.out.println("key:"+ timKiem);
 		if (maCapDo == null || "".equals(maCapDo)) {
-			listBaiHoc = baiHocBO.listBaiHoc();
+			if (timKiem == null || "".equals(timKiem)) {
+				listBaiHoc = baiHocBO.listBaiHoc();
+			} else {
+				listBaiHoc = baiHocBO.listBaiHocByName(timKiem);
+			}
 		} else {
-			listBaiHoc = baiHocBO.listBaiHocByCapDo(maCapDo);
-			System.out.println("ma cap do:" + maCapDo);
+			if (timKiem == null || "".equals(timKiem)) {
+				listBaiHoc = baiHocBO.listBaiHocByCapDo(maCapDo);
+			} else {
+				listBaiHoc = baiHocBO.listBaiHocByNamePK(timKiem, maCapDo);
+			}
 		}
-		String tenCapDo = capDoBO.getTenCDByPK(maCapDo);
-		chonBaiForm.setTenCapDo(tenCapDo);
 		chonBaiForm.setListBaiHoc(listBaiHoc);
-		if (chonBaiForm.getListBaiHoc() != null) {
-			chonBaiForm.setSoBaiHoc(chonBaiForm.getListBaiHoc().size() + "");
-		}
-		return mapping.findForward("chon_bai");
+		return mapping.findForward("ds_baihoc");
 	}
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Tạo bài học mới</title>
+<title>Sửa bài học</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -30,7 +30,7 @@
 <script type="text/javascript">
 function clicking()
 {
- window.location.href='/DoAnTotNghiep/chon-tu-vung.do?kt=0';
+ window.location.href='/DoAnTotNghiep/chon-tu-vung.do?kt=1';
 }
 	function hienThiForm() {
 		$("#form").css("top", "10%");
@@ -85,10 +85,10 @@ function clicking()
 						<div class="col-lg-12">
 							<div class="col-lg-12">
 								<h4 style="font-size: 30px; text-align: center;">
-									<i class="fa fa-users"></i> Tạo Bài Học Mới
+									<i class="fa fa-users"></i> Sửa bài học
 								</h4>
 							</div>
-							<html:form action="/tao-bai-hoc" method="post"
+							<html:form action="/sua-bai-hoc" method="post"
 								onsubmit="mysubmit()" enctype="multipart/form-data">
 								<div class="col-lg-12">
 									<h4>
@@ -187,7 +187,7 @@ function clicking()
 								</div>
 								<div class="col-lg-12"
 									style="margin-top: 10px; margin-bottom: 10px;">
-									<html:textarea property="nguPhap" styleId="editor1"
+									<html:textarea property="nguPhap" styleId="editor1" name="taoBaiHocForm"
 										styleClass="form-control"
 										style="width:100%; height:500px; padding-left:5px"></html:textarea>
 									<div class="col-sm-12">
@@ -205,7 +205,7 @@ function clicking()
 								<div class="col-lg-12"
 									style="margin-top: 10px; margin-bottom: 10px;">
 									<html:textarea property="nghe" styleId="editor"
-										styleClass="form-control"
+										styleClass="form-control" name="taoBaiHocForm"
 										style="width:100%; height:200px; padding-left:5px"></html:textarea>
 									<div class="col-sm-12">
 										<font style="color: red;"> <html:errors
@@ -219,7 +219,7 @@ function clicking()
 									</h5>
 								</div>
 								<div class="col-lg-10">
-									<html:file styleId="input-1" property="sound" styleClass="file"
+									<html:file styleId="input-1" property="sound" styleClass="file" name="taoBaiHocForm"
 										accept="audio/*"></html:file>
 								</div>
 								<div class="col-lg-2">

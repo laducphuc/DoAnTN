@@ -11,28 +11,38 @@
 <title>Danh Sách Từ Vựng</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/songnguvietnhat3.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/songnguvietnhat3.css">
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bootstrap-formhelpers.css">
+<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css">
+<link rel="stylesheet"
+	href="font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/datepicker.css">
+<link rel="stylesheet" href="css/fileinput.css">
 <script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/fileinput.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/PaginationJS.js"></script>
+<script src="js/bootstrap-formhelpers.js"></script>
+<script src="js/bootstrap-formhelpers.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
-<style type="text/css">
-</style>
-
 <script type="text/javascript">
-	$(document).ready(function() {
-
-		$('#showtable').pageMe({
-			pagerSelector : '#myPager',
-			showPrevNext : true,
-			hidePageNumbers : false,
-			perPage : 10
-		});
-		
-	});
+$(document).ready(function() {
+    $('#showtable').pageMe({
+       pagerSelector : '#myPager',
+       showPrevNext : true,
+       hidePageNumbers : false,
+       perPage : 3
+    });
+    $('#showtablelk').pageMe({
+       pagerSelector : '#myPagerlk',
+       showPrevNext : true,
+       hidePageNumbers : false,
+       perPage : 3
+    });
+ });
 	function play(x) {
         document.getElementById(x).play();
      }
@@ -42,22 +52,23 @@
 <body>
 	<!-- header -->
 	<div class="include" data-include="header"></div>
-	<%-- <jsp:include page="menu.jsp"></jsp:include> --%>
+	<!-- menu -->
+	<jsp:include page="dangNhapForm.jsp"></jsp:include>
 	<!-- boby -->
 	<div class="col-lg-12">
 		<div class="col-lg-12" style="margin-top: 20px; padding: 0px;">
 			<div class="col-lg-12" style="height: auto; padding: 0px">
 				<!-- body main -->
-				<div class="col-lg-9" style="height: auto; padding: 0px">
+				<div  class="col-lg-9" style="height: auto; padding: 0px">
 					<div class="col-lg-12 divMain"
 						style="background: white; height: auto;">
 						<div class="col-lg-12" style="border-bottom: 1px solid blue;">
-						<div class="col-lg-9">
-							<h4>
-								<i class="fa fa-list"></i> Danh sách từ vựng
-							</h4>
+							<div class="col-lg-9">
+								<h4>
+									<i class="fa fa-list"></i> Danh sách từ vựng
+								</h4>
 							</div>
-                  </div>
+						</div>
 						<div class="col-lg-12 thumbnail"
 							style="min-height: 500px; padding: 0px;">
 							<table class="table table-striped"
@@ -104,12 +115,14 @@
 								</tbody>
 							</table>
 						</div>
-						<!--  -->
-						<div class="col-lg-12"
-							style="text-align: center; margin-bottom: 25px">
-							<ul style="margin: 0px" class="pagination pagination-lg pager"
-								id="myPager"></ul>
+						<div class="row" style="text-align: center;">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-4">
+								<ul style="margin: 0px" class="pagination pagination-lg pager"
+									id="myPager"></ul>
+							</div>
 						</div>
+						<!--  -->
 					</div>
 				</div>
 				<!-- body right -->
