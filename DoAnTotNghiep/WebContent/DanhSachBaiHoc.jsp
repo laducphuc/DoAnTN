@@ -38,7 +38,7 @@
 <body>
 	<!-- header -->
 	<div class="include" data-include="header"></div>
-	<%-- <jsp:include page="menu.jsp"></jsp:include> --%>
+	 <jsp:include page="dangNhapForm.jsp"></jsp:include>
 	<!-- boby -->
 	<div class="col-lg-12">
 		<div class="col-lg-12" style="margin-top: 20px; padding: 0px;">

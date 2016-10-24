@@ -169,7 +169,7 @@
 							</div> --%>
 							<div class="col-lg-12"
 								style="margin-top: 10px; margin-bottom: 10px; height: 490px;">
-								<html:textarea property="nguPhap" styleId="editor1" readonly="readonly"
+								<html:textarea property="nguPhap" styleId="editor1" readonly="true"
 									name="taoBaiHocForm" styleClass="form-control"
 									style="width:100%; height:400px; padding-left:5px" cols="20"></html:textarea>
 							</div>
@@ -206,7 +206,7 @@
 							</div>
 							<div id="chitiet" class="col-lg-12 thumbnail"
 								style="min-height: 500px; padding: 0px;">
-								<html:textarea property="nghe" onchange="false"
+								<html:textarea property="nghe" readonly="true"
 									style="width:100%; height: 490px;" name="taoBaiHocForm"
 									cols="10"></html:textarea>
 							</div>
