@@ -36,7 +36,7 @@ public class CapNhatThanhVienAction extends Action {
 			String capQuyen = dangNhapForm.getChucVu();
 			System.out.println("Capquyen = " + capQuyen);
 			String maThanhVien = thanhVienForm.getMaThanhVien();
-			boolean chucVu = thanhVienForm.isChucVu();
+			String chucVu = thanhVienForm.isChucVu();
 
 			ThanhVienBO thanhVienBO = new ThanhVienBO();
 
@@ -114,7 +114,7 @@ public class CapNhatThanhVienAction extends Action {
 
 					if (actionErrors.size() > 0) {
 						if ("3".equals(capQuyen)) {
-							if (chucVu == false) {
+							if ("0".equals(chucVu)){
 								thanhVienForm.setThanhVien(thanhVienBO
 										.chonThanhVien(maThanhVien));
 								return mapping
@@ -155,7 +155,7 @@ public class CapNhatThanhVienAction extends Action {
 							thanhVienBO.capNhatAnhDaiDien(maThanhVien, anhDaiDien);
 						}
 						if ("3".equals(capQuyen)) {
-							if (chucVu == false) {
+							if ("0".equals(chucVu)){
 								return mapping
 										.findForward("capNhatThanhVienAdminThanhCong");
 							} else {
@@ -172,7 +172,7 @@ public class CapNhatThanhVienAction extends Action {
 
 					} else {
 						if ("3".equals(capQuyen)) {
-							if (chucVu == false) {
+							if ("0".equals(chucVu)){
 								thanhVienForm.setThanhVien(thanhVienBO
 										.chonThanhVien(maThanhVien));
 								return mapping
@@ -196,7 +196,7 @@ public class CapNhatThanhVienAction extends Action {
 					}
 				} else {
 					if ("3".equals(capQuyen)) {
-						if (chucVu == false) {
+						if ("0".equals(chucVu)){
 							thanhVienForm.setThanhVien(thanhVienBO
 									.chonThanhVien(maThanhVien));
 							return mapping.findForward("capNhatThanhVienAdmin");
@@ -218,7 +218,7 @@ public class CapNhatThanhVienAction extends Action {
 				}
 			} else {
 				if ("3".equals(capQuyen)) {
-					if (chucVu == false) {
+					if ("0".equals(chucVu)){
 						thanhVienForm.setThanhVien(thanhVienBO
 								.chonThanhVien(maThanhVien));
 						return mapping.findForward("capNhatThanhVienAdmin");

@@ -12,7 +12,7 @@ public class ThanhVien {
 	private String ngonNgu;
 	private String maCapDo;
 	private String tenCapDo;
-	private Boolean chucVu;
+	private String chucVu;
 	private String maTrinhDo;
 	private String tenTrinhDo;
 	private int soSao;
@@ -184,11 +184,11 @@ public class ThanhVien {
 		this.maCapDo = maCapDo;
 	}
 
-	public Boolean getChucVu() {
+	public String getChucVu() {
 		return chucVu;
 	}
 
-	public void setChucVu(Boolean chucVu) {
+	public void setChucVu(String chucVu) {
 		this.chucVu = chucVu;
 	}
 

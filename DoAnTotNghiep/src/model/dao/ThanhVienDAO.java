@@ -81,72 +81,29 @@ public class ThanhVienDAO extends ConnectDAO {
 	public ArrayList<ThanhVien> chonDanhSach() {
 		try {
 			ArrayList<ThanhVien> dsThanhVien = new ArrayList<ThanhVien>();
-			final String SQL = "SELECT thanhVien.MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, QuocTich,"
-					+ " NgonNgu, thanhVien.MaCapDo, ChucVu, thanhVien.MaTrinhDo, SoSao, TK.MaTaiKhoan, TenTaiKhoan, TenCapDo,"
-					+ " TenTrinhDo, SBV.SoBaiDongGop,  SBD.SoBaiDaDich, SBL.SoBinhLuan"
-					+ " FROM THANHVIEN thanhVien"
-					+ " LEFT JOIN TAIKHOAN TK ON thanhVien.MaThanhVien = TK.MaThanhVien"
-					+ " LEFT JOIN CAPDO CD ON thanhVien.MaCapDo = CD.MaCapDo"
-					+ " LEFT JOIN TRINHDO TD ON thanhVien.MaTrinhDo = TD.MaTrinhDo"
-					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(BV.MaThanhVien) AS SoBaiDongGop"
-					+ " FROM THANHVIEN TV LEFT JOIN BAIVIET BV ON TV.MaThanhVien = BV.MaThanhVien"
-					+ " GROUP BY TV.MaThanhVien) AS SBV ON thanhVien.MaThanhVien = SBV.MaThanhVien"
-					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(PC.MaThanhVien) AS SoBaiDaDich"
-					+ " FROM THANHVIEN TV LEFT JOIN PHANCONGDICHBAI PC ON TV.MaThanhVien = PC.MaThanhVien"
-					+ " WHERE PC.TrangThai = N'Dich xong'"
-					+ " GROUP BY TV.MaThanhVien) AS SBD ON thanhVien.MaThanhVien = SBD.MaThanhVien"
-					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(BL.MaThanhVien) AS SoBinhLuan"
-					+ " FROM THANHVIEN TV LEFT JOIN BINHLUAN BL ON TV.MaThanhVien = BL.MaThanhVien"
-					+ " GROUP BY TV.MaThanhVien) AS SBL ON  thanhVien.MaThanhVien = SBL.MaThanhVien"
-					+ " GROUP BY thanhVien.MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email,"
-					+ " QuocTich, NgonNgu, thanhVien.MaCapDo, ChucVu, thanhVien.MaTrinhDo, SoSao, TK.MaTaiKhoan,"
-					+ " TenTaiKhoan, TenCapDo, TenTrinhDo, SBV.SoBaiDongGop,  SBD.SoBaiDaDich, SBL.SoBinhLuan";
+			final String SQL = "SELECT * FROM TAIKHOAN INNER JOIN THANHVIEN"
+					+ " ON TAIKHOAN.MaThanhVien=THANHVIEN.MaThanhVien ";
 			openConnection();
 			ResultSet rs = getStatement().executeQuery(SQL);
-
+			ThanhVien thanhVien;
 			while (rs.next()) {
-				ThanhVien thanhVien = new ThanhVien();
-				thanhVien.setMaThanhVien(rs.getString(1));
-				thanhVien.setTenThanhVien(rs.getString(2));
-				if ("1".equals(rs.getString(3))) {
+				thanhVien = new ThanhVien();
+				thanhVien.setMaThanhVien(rs.getString("MaThanhVien"));
+				thanhVien.setTenThanhVien(rs.getString("TenThanhVien"));
+				if ("1".equals(rs.getString("GioiTinh"))) {
 					thanhVien.setGioiTinh("Nam");
 				} else {
 					thanhVien.setGioiTinh("Nữ");
 				}
-				thanhVien.setNgaySinh(rs.getString(4));
-				thanhVien.setDiaChi(rs.getString(5));
-				thanhVien.setSoDienThoai(rs.getString(6));
-				thanhVien.setEmail(rs.getString(7));
-				thanhVien.setQuocTich(rs.getString(8));
-				thanhVien.setNgonNgu(rs.getString(9));
-				thanhVien.setMaCapDo(rs.getString(10));
-				thanhVien.setMaTrinhDo(rs.getString(12));
-				if (rs.getString(13) != null) {
-					thanhVien.setSoSao(Integer.parseInt(rs.getString(13)));
-				} else {
-					thanhVien.setSoSao(0);
-				}
-
-				thanhVien.setMaTaiKhoan(rs.getString(14));
-				thanhVien.setTenTaiKhoan(rs.getString(15));
-				thanhVien.setTenCapDo(rs.getString(16));
-				thanhVien.setTenTrinhDo(rs.getString(17));
-				thanhVien.setSoBaiDongGop(Integer.parseInt(rs.getString(18)));
-				if (rs.getString(19) != null) {
-					thanhVien
-							.setSoBaiDaDich(Integer.parseInt(rs.getString(19)));
-				} else {
-					thanhVien.setSoBaiDaDich(0);
-				}
-				if (rs.getString(11) != null) {
-					if ("1".equals(rs.getString(11))) {
-						thanhVien.setChucVu(true);
-					} else {
-						thanhVien.setChucVu(false);
-					}
-					thanhVien.setSoBinhLuan(Integer.parseInt(rs.getString(20)));
-					dsThanhVien.add(thanhVien);
-				}
+				thanhVien.setNgaySinh(rs.getString("NgaySinh"));
+				thanhVien.setDiaChi(rs.getString("DiaChi"));
+				thanhVien.setSoDienThoai(rs.getString("SoDienThoai"));
+				thanhVien.setEmail(rs.getString("Email"));
+				thanhVien.setMaCapDo(rs.getString("ChucVu"));
+				thanhVien.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
+				thanhVien.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
+				thanhVien.setChucVu(rs.getString("ChucVu"));
+				dsThanhVien.add(thanhVien);
 			}
 			return dsThanhVien;
 		} catch (SQLException e) {
@@ -165,66 +122,26 @@ public class ThanhVienDAO extends ConnectDAO {
 	 */
 	public ThanhVien chonThanhVien(String maThanhVien) {
 		try {
-			final String SQL = "SELECT thanhVien.MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, QuocTich,"
-					+ " NgonNgu, thanhVien.MaCapDo, ChucVu, thanhVien.MaTrinhDo, SoSao, TK.MaTaiKhoan, TenTaiKhoan, TenCapDo,"
-					+ " TenTrinhDo, SBV.SoBaiDongGop,  SBD.SoBaiDaDich, SBL.SoBinhLuan"
-					+ " FROM THANHVIEN thanhVien"
-					+ " LEFT JOIN TAIKHOAN TK ON thanhVien.MaThanhVien = TK.MaThanhVien"
-					+ " LEFT JOIN CAPDO CD ON thanhVien.MaCapDo = CD.MaCapDo"
-					+ " LEFT JOIN TRINHDO TD ON thanhVien.MaTrinhDo = TD.MaTrinhDo"
-					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(BV.MaThanhVien) AS SoBaiDongGop"
-					+ " FROM THANHVIEN TV LEFT JOIN BAIVIET BV ON TV.MaThanhVien = BV.MaThanhVien"
-					+ " GROUP BY TV.MaThanhVien) AS SBV ON thanhVien.MaThanhVien = SBV.MaThanhVien"
-					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(PC.MaThanhVien) AS SoBaiDaDich"
-					+ " FROM THANHVIEN TV LEFT JOIN PHANCONGDICHBAI PC ON TV.MaThanhVien = PC.MaThanhVien"
-					+ " WHERE PC.TrangThai = N'Dich xong'"
-					+ " GROUP BY TV.MaThanhVien) AS SBD ON thanhVien.MaThanhVien = SBD.MaThanhVien"
-					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(BL.MaThanhVien) AS SoBinhLuan"
-					+ " FROM THANHVIEN TV LEFT JOIN BINHLUAN BL ON TV.MaThanhVien = BL.MaThanhVien"
-					+ " GROUP BY TV.MaThanhVien) AS SBL ON  thanhVien.MaThanhVien = SBL.MaThanhVien"
-					+ " WHERE thanhVien.MaThanhVien = '"
-					+ maThanhVien
-					+ "'"
-					+ " GROUP BY thanhVien.MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email,"
-					+ " QuocTich, NgonNgu, thanhVien.MaCapDo, ChucVu, thanhVien.MaTrinhDo, SoSao, TK.MaTaiKhoan,"
-					+ " TenTaiKhoan, TenCapDo, TenTrinhDo, SBV.SoBaiDongGop,  SBD.SoBaiDaDich, SBL.SoBinhLuan";
+			final String SQL = "SELECT * FROM TAIKHOAN INNER JOIN THANHVIEN"
+					+ " ON TAIKHOAN.MaThanhVien=THANHVIEN.MaThanhVien WHERE THANHVIEN.MaThanhVien='"+maThanhVien+"'";
 			openConnection();
 			ResultSet rs = getStatement().executeQuery(SQL);
 			ThanhVien thanhVien = new ThanhVien();
 			while (rs.next()) {
-				thanhVien.setMaThanhVien(rs.getString(1));
-				thanhVien.setTenThanhVien(rs.getString(2));
-				if ("1".equals(rs.getString(3))) {
+				thanhVien.setMaThanhVien(rs.getString("MaThanhVien"));
+				thanhVien.setTenThanhVien(rs.getString("TenThanhVien"));
+				if ("1".equals(rs.getString("GioiTinh"))) {
 					thanhVien.setGioiTinh("Nam");
 				} else {
 					thanhVien.setGioiTinh("Nữ");
 				}
-				thanhVien.setNgaySinh(rs.getString(4));
-				thanhVien.setDiaChi(rs.getString(5));
-				thanhVien.setSoDienThoai(rs.getString(6));
-				thanhVien.setEmail(rs.getString(7));
-				thanhVien.setQuocTich(rs.getString(8));
-				thanhVien.setNgonNgu(rs.getString(9));
-				thanhVien.setMaCapDo(rs.getString(10));
-				if ("1".equals(rs.getString(11))) {
-					thanhVien.setChucVu(true);
-				} else {
-					thanhVien.setChucVu(false);
-				}
-				thanhVien.setMaTrinhDo(rs.getString(12));
-				thanhVien.setSoSao(Integer.parseInt(rs.getString(13)));
-				thanhVien.setMaTaiKhoan(rs.getString(14));
-				thanhVien.setTenTaiKhoan(rs.getString(15));
-				thanhVien.setTenCapDo(rs.getString(16));
-				thanhVien.setTenTrinhDo(rs.getString(17));
-				thanhVien.setSoBaiDongGop(Integer.parseInt(rs.getString(18)));
-				if (rs.getString(19) != null) {
-					thanhVien
-							.setSoBaiDaDich(Integer.parseInt(rs.getString(19)));
-				} else {
-					thanhVien.setSoBaiDaDich(0);
-				}
-				thanhVien.setSoBinhLuan(Integer.parseInt(rs.getString(20)));
+				thanhVien.setNgaySinh(rs.getString("NgaySinh"));
+				thanhVien.setDiaChi(rs.getString("DiaChi"));
+				thanhVien.setSoDienThoai(rs.getString("SoDienThoai"));
+				thanhVien.setEmail(rs.getString("Email"));
+				thanhVien.setMaCapDo(rs.getString("ChucVu"));
+				thanhVien.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
+				thanhVien.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
 			}
 			return thanhVien;
 		} catch (SQLException e) {
@@ -247,10 +164,8 @@ public class ThanhVienDAO extends ConnectDAO {
 		try {
 			ArrayList<ThanhVien> danhSachThanhVien = new ArrayList<ThanhVien>();
 
-			String sql = "SELECT thanhVien.MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, QuocTich, NgonNgu, thanhVien.MaCapDo, ChucVu, thanhVien.MaTrinhDo, SoSao, TK.MaTaiKhoan, TenTaiKhoan, TenCapDo, TenTrinhDo"
-					+ " FROM (THANHVIEN thanhVien LEFT OUTER JOIN TAIKHOAN TK ON thanhVien.MaThanhVien = TK.MaThanhVien)"
-					+ " LEFT OUTER JOIN CAPDO CD ON thanhVien.MaCapDo = CD.MaCapDo"
-					+ " LEFT OUTER JOIN TRINHDO TD ON thanhVien.MaTrinhDo = TD.MaTrinhDo";
+			String sql = "SELECT * FROM TAIKHOAN INNER JOIN THANHVIEN"
+					+ " ON TAIKHOAN.MaThanhVien=THANHVIEN.MaThanhVien ";
 
 			if ("TenTaiKhoan".equals(tuKhoaTimKiem)) {
 				sql = sql.concat(" WHERE TK." + tuKhoaTimKiem + " = N'"
@@ -264,38 +179,20 @@ public class ThanhVienDAO extends ConnectDAO {
 			ResultSet rs = getStatement().executeQuery(sql);
 			while (rs.next()) {
 				ThanhVien thanhVien = new ThanhVien();
-				thanhVien.setMaThanhVien(rs.getString(1));
-				thanhVien.setTenThanhVien(rs.getString(2));
-				if ("1".equals(rs.getString(3))) {
+				thanhVien.setMaThanhVien(rs.getString("MaThanhVien"));
+				thanhVien.setTenThanhVien(rs.getString("TenThanhVien"));
+				if ("1".equals(rs.getString("GioiTinh"))) {
 					thanhVien.setGioiTinh("Nam");
 				} else {
 					thanhVien.setGioiTinh("Nữ");
 				}
-				thanhVien.setNgaySinh(rs.getString(4));
-				thanhVien.setDiaChi(rs.getString(5));
-				thanhVien.setSoDienThoai(rs.getString(6));
-				thanhVien.setEmail(rs.getString(7));
-				thanhVien.setQuocTich(rs.getString(8));
-				thanhVien.setNgonNgu(rs.getString(9));
-				thanhVien.setMaCapDo(rs.getString(10));
-				thanhVien.setMaTrinhDo(rs.getString(12));
-				try {
-					thanhVien.setSoSao(Integer.parseInt(rs.getString(13)));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				thanhVien.setMaTaiKhoan(rs.getString(14));
-				thanhVien.setTenTaiKhoan(rs.getString(15));
-				thanhVien.setTenCapDo(rs.getString(16));
-				thanhVien.setTenTrinhDo(rs.getString(17));
-				if (rs.getString(11) != null) {
-					if ("1".equals(rs.getString(11))) {
-						thanhVien.setChucVu(true);
-					} else {
-						thanhVien.setChucVu(false);
-					}
-					danhSachThanhVien.add(thanhVien);
-				}
+				thanhVien.setNgaySinh(rs.getString("NgaySinh"));
+				thanhVien.setDiaChi(rs.getString("DiaChi"));
+				thanhVien.setSoDienThoai(rs.getString("SoDienThoai"));
+				thanhVien.setEmail(rs.getString("Email"));
+				thanhVien.setMaCapDo(rs.getString("ChucVu"));
+				thanhVien.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
+				thanhVien.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
 			}
 			return danhSachThanhVien;
 		} catch (SQLException e) {

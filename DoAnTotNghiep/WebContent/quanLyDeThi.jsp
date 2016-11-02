@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh Sách Bài Học</title>
+<title>Danh Sách Đề Thi</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -25,20 +25,20 @@
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	 $(document).ready(function() {
 		$('#showtable').pageMe({
 			pagerSelector : '#myPager',
 			showPrevNext : true,
 			hidePageNumbers : false,
-			perPage : 3
+			perPage : 10
 		});
 		$('#showtablelk').pageMe({
 			pagerSelector : '#myPagerlk',
 			showPrevNext : true,
 			hidePageNumbers : false,
-			perPage : 3
+			perPage : 10
 		});
-	});
+	}); 
 	function submit() {
 		$('#id').click();
 	}
@@ -61,27 +61,26 @@
 						<div class="col-lg-12">
 							<div class="col-lg-9">
 								<h4>
-									<i class="fa fa-list"></i> Danh sách bài học
+									<i class="fa fa-list"></i> Danh sách đề thi
 								</h4>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="col-lg-9">
-								<html:form action="/danh-sach-bai-hoc" method="post">
+								<html:form action="/danh-sach-de-thi" method="post">
 									<div class="row form-group">
 										<div class="col-sm-3">
 											<div class="input-group">
-												<html:text property="timKiem"
-													styleClass="form-control"></html:text>
+												<html:text property="timKiem" styleClass="form-control"></html:text>
 											</div>
-											<!-- /input-group -->
 										</div>
 										<label class="col-lg-3">Liệt kê theo:</label>
 										<div class="col-lg-4">
-											<html:select property="maCapDo" styleClass="form-control" onchange="submit();">
+											<html:select property="maCapDo" styleClass="form-control"
+												onchange="submit();">
 												<option value="">-- Chọn cấp độ --</option>
-												<html:optionsCollection name="chonBaiForm"
-													property="listCapDo" label="tenCapDo" value="maCapDo" />
+												<html:optionsCollection name="thiForm" property="listCapDo"
+													label="tenCapDo" value="maCapDo" />
 											</html:select>
 										</div>
 										<div class="col-lg-2">
@@ -97,30 +96,29 @@
 									<thead>
 										<tr class="success">
 											<th style="width: 20%">STT</th>
-											<th style="width: 40%">Tên bài học</th>
+											<th style="width: 40%">Tên đề thi</th>
 											<th style="width: 40%">Cấp độ</th>
-											<th style="width: 10%">Tùy chọn</th>
+											<th style="width: 20%">Tùy chọn</th>
 										</tr>
 									</thead>
 									<tbody id="showtable">
-										<logic:notEmpty name="chonBaiForm" property="listBaiHoc">
-											<logic:iterate name="chonBaiForm" property="listBaiHoc"
+										<logic:notEmpty name="thiForm" property="listBaiThi">
+											<logic:iterate name="thiForm" property="listBaiThi"
 												id="baiHoc">
 												<tr>
-													<bean:define id="maBaiHoc" name="baiHoc"
-														property="maBaiHoc"></bean:define>
+													<bean:define id="maDe" name="baiHoc" property="maDe"></bean:define>
 													<td><bean:write property="stt" name="baiHoc" /></td>
-													<td><bean:write property="tenBaiHoc" name="baiHoc" /></td>
+													<td><bean:write property="tenDe" name="baiHoc" /></td>
 													<td><bean:write property="tenCapDo" name="baiHoc" /></td>
 													<td>
 														<ul>
-															<li title="sửa bài học" style="display: inline"><html:link
-																	action="/sua-bai-hoc?maBaiHoc=${maBaiHoc}">
+															<li title="sửa đề thi" style="display: inline"><html:link
+																	action="/sua-de-thi?maDeThi=${ma}">
 																	<span class="glyphicon glyphicon-edit"></span>
 																</html:link></li>
 															<li title="sửa từ vựng" style="display: inline"><html:link
-																	action="/xoa-bai-hoc?maBaiHoc=${maBaiHoc}"
-																	onclick="return confirm('Bạn muốn xóa bài học này?');">
+																	action="/xoa-de-thi?maDeThi=${maDe}"
+																	onclick="return confirm('Bạn muốn xóa đề thi này?');">
 																	<span class="glyphicon glyphicon-trash"></span>
 																</html:link></li>
 														</ul>

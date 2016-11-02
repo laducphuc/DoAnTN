@@ -37,37 +37,36 @@
 				<ul>
 					<li><html:link action="/trang-chu.do">Trang chủ</html:link></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Danh Mục Bài Viết <span
+						data-toggle="dropdown" href="#">Học theo giáo trình <span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" style="text-align: left">
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000001&kiemTra=1"
-									style="text-align: left">Xã Hội</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000002&kiemTra=1"
-									style="text-align: left">Thế Giới</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000003&kiemTra=1"
-									style="text-align: left">Giáo Dục</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000004&kiemTra=1"
-									style="text-align: left">Công Nghệ</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000005&kiemTra=1"
-									style="text-align: left">Thể Thao</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000006&kiemTra=1"
-									style="text-align: left">Giải Trí</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000007&kiemTra=1"
-									style="text-align: left">Sức Khỏe</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD001"
+									style="text-align: left">Giáo trình N5</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD002"
+									style="text-align: left">Giáo trình N4</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD003"
+									style="text-align: left">Giáo trình N3</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+									style="text-align: left">Giáo trình N2</html:link></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
+						<ul class="dropdown-menu" style="text-align: left">
+							<li><html:link action="/test.do?maCapDo=CD001"
+									style="text-align: left">Đề luyện thi N5</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD002"
+									style="text-align: left">Đề luyện thi N4</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD003"
+									style="text-align: left">Đề luyện thi N3</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD004"
+									style="text-align: left">Đề luyện thi N2</html:link></li>
 						</ul></li>
 					<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông tin cá nhân</html:link></li>
 					<li><html:link action="/them-bai-viet.do">Viết bài mới</html:link></li>
 					<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 				</ul>
 			</logic:equal>
-			<logic:equal name="chucVuSession" value="3">
+			<logic:equal name="chucVuSession" value="1">
 				<ul>
 					<li style="color: blue; width: 180px;"><html:link
 							action="trang-chu.do">Trang chủ</html:link></li>
@@ -94,7 +93,7 @@
 									name="taikhoan" property="tenThanhVien" /> <span class="caret"></span></a>
 
 							<ul class="dropdown-menu">
-							<li><html:link action="/thong-tin-admin.do">Thông tin cá nhân</html:link></li>
+								<li><html:link action="/thong-tin-admin.do">Thông tin cá nhân</html:link></li>
 								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 							</ul></li>
 					</logic:notEmpty>
@@ -116,7 +115,8 @@
 						<div class="col-lg-2"></div>
 						<div class="col-lg-8">
 							<div class="col-lg-12">
-								<h4 style="font-size: 30px; margin-top: 30px;text-align: center;">
+								<h4
+									style="font-size: 30px; margin-top: 30px; text-align: center;">
 									<i class="fa fa-users"></i> Thông tin thành viên
 								</h4>
 							</div>
@@ -166,25 +166,6 @@
 								</div>
 								<div class="row form-group">
 									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-globe"></i>
-										Quốc tịch:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="quocTich"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-language"></i>
-										Ngôn ngữ:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="ngonNgu"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
 										style="text-align: left;"><i class="fa fa-phone"></i>
 										Số điện thoại:</label>
 									<div class="col-sm-12">
@@ -211,35 +192,6 @@
 											styleClass="form-control" disabled="true"></html:text>
 									</div>
 								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i
-										class="fa fa-balance-scale"></i> Cấp độ:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="tenCapDo"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"> <i class="fa fa-star-o"></i>
-										Số sao:
-									</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="soSao"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-file-text-o"></i>
-										Số bài đóng góp:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="soBaiDongGop"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-
 							</div>
 							<div class="col-lg-12"
 								style="margin-bottom: 20px; margin-top: 10px; float: right; margin-right: 12px;">
@@ -247,7 +199,7 @@
 									<bean:define id="maThanhVien" name="thanhVienForm"
 										property="maThanhVien"></bean:define>
 									<bean:define id="chucVu" name="thanhVienForm" property="chucVu"></bean:define>
-									<div class="clo-sm-6" style="text-align: center ;">
+									<div class="clo-sm-6" style="text-align: center;">
 										<html:link styleClass="btn btn-info"
 											action="/cap-nhat-thanh-vien?maThanhVien=${maThanhVien}&chucVu=${chucVu}">
 											<i class="fa fa-pencil-square-o"></i>

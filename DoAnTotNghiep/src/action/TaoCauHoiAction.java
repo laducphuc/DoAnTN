@@ -199,7 +199,6 @@ public class TaoCauHoiAction extends Action {
 					phuongAn.setTrangThai("0");
 				}
 				if (phuongAn.getHinhAnh() == null) {
-					System.out.println("set hinh anh1");
 					phuongAn.setHinhAnh("");
 				}
 				listPhuongAn.add(phuongAn);
@@ -226,11 +225,9 @@ public class TaoCauHoiAction extends Action {
 					}
 				}
 				if (phuongAn.getTrangThai() == null) {
-					System.out.println("set trang thai2");
 					phuongAn.setTrangThai("0");
 				}
 				if (phuongAn.getHinhAnh() == null) {
-					System.out.println("set hinh anh2");
 					phuongAn.setHinhAnh("");
 				}
 				listPhuongAn.add(phuongAn);
@@ -337,7 +334,7 @@ public class TaoCauHoiAction extends Action {
 			PhuongAnBO phuongAnBO=new PhuongAnBO();
 			phuongAnBO.addListPhuongAn(listPhuongAn);
 			System.out.println("them thanh cong");
-			return mapping.findForward("thanhcong");
+			return mapping.findForward("themOK");
 		} else {
 			return mapping.findForward("tao_cau_hoi_nd");
 		}

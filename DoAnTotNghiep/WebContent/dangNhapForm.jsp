@@ -174,7 +174,7 @@ input.error {
 			scope="session">
 			<bean:define id="taiKhoan" name="dangNhapForm" property="taiKhoan"
 				scope="session"></bean:define>
-			<logic:equal value="3" name="taiKhoan" property="chucVu">
+			<logic:equal value="1" name="taiKhoan" property="chucVu">
 				<div id="menuItems" class="col-lg-12">
 					<ul>
 						<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
@@ -212,14 +212,14 @@ input.error {
 									name="taiKhoan" property="tenThanhVien" /> <span class="caret"></span></a>
 
 							<ul class="dropdown-menu">
-								<li><html:link action="/list-tu-vung.do">Quản trị</html:link></li>
+								<li><html:link action="/danh-sach-thanh-vien.do">Quản trị</html:link></li>
 								<li><html:link action="/thong-tin-admin.do">Thông tin cá nhân</html:link></li>
 								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 							</ul></li>
 					</ul>
 				</div>
 			</logic:equal>
-			<logic:equal value="1" name="taiKhoan" property="chucVu">
+			<logic:equal value="2" name="taiKhoan" property="chucVu">
 				<div id="menuItems" class="col-lg-12">
 					<ul>
 						<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
@@ -258,14 +258,9 @@ input.error {
 
 							<ul class="dropdown-menu">
 								<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông tin cá nhân</html:link></li>
-								<li><html:link action="/them-bai-viet.do">Viết bài mới</html:link></li>
-
-								<li><a href="#">Quản Lý bài Dịch <span class="caret"></span>
-								</a>
-									<ul class="mySubmenu">
-										<li><html:link action="/bai-viet-chua-duyet.do">Bài mới được phân công</html:link></li>
-										<li><html:link action="/bai-viet-nhan-dich.do">Bài Viết Đã Nhận Dịch</html:link></li>
-									</ul></li>
+								<li><html:link action="/danh-sach-bai-hoc.do">Quản lý tài liệu</html:link></li>
+								<li><html:link action="/danh-sach-de-thi.do">Quản lý đề thi</html:link></li>
+								<li><html:link action="/list-tu-vung.do">Quản lý từ vựng</html:link></li>
 								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 							</ul></li>
 					</ul>
@@ -310,7 +305,6 @@ input.error {
 						</a>
 							<ul class="dropdown-menu">
 								<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông tin cá nhân</html:link></li>
-								<li><html:link action="/them-bai-viet.do">Viết bài mới</html:link></li>
 								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 							</ul></li>
 					</ul>

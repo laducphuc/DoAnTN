@@ -19,13 +19,10 @@ public class ThongKeDAO extends ConnectDAO {
 			ArrayList<ThanhVien> dsThanhVien = new ArrayList<ThanhVien>();
 			final String SQL = "SELECT TV.MaThanhVien, TV.TenThanhVien,TK.TenTaiKhoan, CD.TenCapDo, SoSao, SBDG.SoBaiDongGop"
 					+ " FROM THANHVIEN TV JOIN TAIKHOAN TK ON TK.MaThanhVien = TV.MaThanhVien"
-					+ " JOIN CAPDO CD ON CD.MaCapDo = TV.MaCapDo"
-					+ " LEFT JOIN"
-					+ " (SELECT MaThanhVien, COUNT(MaThanhVien) AS SoBaiDongGop"
-					+ " FROM BAIVIET"
+					+ " JOIN CAPDO CD ON CD.MaCapDo = TV.MaCapDo" + " LEFT JOIN"
+					+ " (SELECT MaThanhVien, COUNT(MaThanhVien) AS SoBaiDongGop" + " FROM BAIVIET"
 					+ " GROUP BY MaThanhVien) AS SBDG ON TV.MaThanhVien = SBDG.MaThanhVien"
-					+ " WHERE TV.ChucVu = 'False'"
-					+ " ORDER BY TV.MaCapDo DESC,SoSao DESC";
+					+ " WHERE TV.ChucVu = 'False'" + " ORDER BY TV.MaCapDo DESC,SoSao DESC";
 			openConnection();
 			ResultSet rs = getStatement().executeQuery(SQL);
 
@@ -37,8 +34,7 @@ public class ThongKeDAO extends ConnectDAO {
 				thanhVien.setTenCapDo(rs.getString(4));
 				thanhVien.setSoSao(Integer.parseInt(rs.getString(5)));
 				if (rs.getString(6) != null) {
-					thanhVien
-							.setSoBaiDongGop(Integer.parseInt(rs.getString(6)));
+					thanhVien.setSoBaiDongGop(Integer.parseInt(rs.getString(6)));
 				} else {
 					thanhVien.setSoBaiDongGop(0);
 				}
@@ -63,8 +59,7 @@ public class ThongKeDAO extends ConnectDAO {
 		try {
 			ArrayList<ThanhVien> dsThanhVien = new ArrayList<ThanhVien>();
 			final String SQL = "SELECT thanhVien.MaThanhVien, TenThanhVien,SoSao,TenTaiKhoan,TenTrinhDo,SBV.SoBaiDongGop, SBD.SoBaiDaDich"
-					+ " FROM THANHVIEN thanhVien"
-					+ " LEFT JOIN TAIKHOAN TK ON thanhVien.MaThanhVien = TK.MaThanhVien"
+					+ " FROM THANHVIEN thanhVien" + " LEFT JOIN TAIKHOAN TK ON thanhVien.MaThanhVien = TK.MaThanhVien"
 					+ " LEFT JOIN TRINHDO TD ON thanhVien.MaTrinhDo = TD.MaTrinhDo"
 					+ " LEFT JOIN (SELECT TV.MaThanhVien, COUNT(BV.MaThanhVien) AS SoBaiDongGop"
 					+ " FROM THANHVIEN TV LEFT JOIN BAIVIET BV ON TV.MaThanhVien = BV.MaThanhVien"
@@ -86,10 +81,9 @@ public class ThongKeDAO extends ConnectDAO {
 				thanhVien.setSoSao(Integer.parseInt(rs.getString(3)));
 				thanhVien.setTenTaiKhoan(rs.getString(4));
 				thanhVien.setTenTrinhDo(rs.getString(5));
-				
+
 				if (rs.getString(6) != null) {
-					thanhVien
-							.setSoBaiDongGop(Integer.parseInt(rs.getString(6)));
+					thanhVien.setSoBaiDongGop(Integer.parseInt(rs.getString(6)));
 				} else {
 					thanhVien.setSoBaiDongGop(0);
 				}
@@ -119,8 +113,7 @@ public class ThongKeDAO extends ConnectDAO {
 		try {
 			final String SQL = " SELECT  BV.MaBaiViet, BV.TieuDeViet,DM.TenDanhMucViet, TV.TenThanhVien,BV.NgayVietBai,BV.LuotXem"
 					+ " FROM BAIVIET BV JOIN DANHMUC DM ON DM.MaDanhMuc=BV.MaDanhMuc"
-					+ " JOIN THANHVIEN TV ON TV.MaThanhVien=BV.MaThanhVien"
-					+ " WHERE BV.TrangThai='Da dang'"
+					+ " JOIN THANHVIEN TV ON TV.MaThanhVien=BV.MaThanhVien" + " WHERE BV.TrangThai='Da dang'"
 					+ " ORDER BY BV.LuotXem DESC";
 			openConnection();
 			ResultSet rs = getStatement().executeQuery(SQL);
@@ -142,9 +135,25 @@ public class ThongKeDAO extends ConnectDAO {
 			closeConnection();
 		}
 	}
-	
+
+	public ThanhVien thanhVienNew() {
+		String SQL = "select * from THANHVIEN order by MaThanhVien desc";
+		openConnection();
+		ThanhVien thanhVien = new ThanhVien();
+		try {
+			ResultSet rs = getStatement().executeQuery(SQL);
+			thanhVien.setMaThanhVien(rs.getString("MaThanhVien"));
+			thanhVien.setTenThanhVien(rs.getString("TenThanhVien"));
+			return thanhVien;
+		} catch (SQLException e) {
+			return null;
+		} finally {
+			closeConnection();
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println(new ThongKeDAO().bangXepHangBaiViet().get(0).getMaBaiViet());
 	}
-	
+
 }

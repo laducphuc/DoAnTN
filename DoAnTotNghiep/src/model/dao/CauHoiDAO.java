@@ -47,7 +47,7 @@ public class CauHoiDAO extends ConnectDAO {
 	public ArrayList<CauHoi> listCauHoi(String maCapDo) {
 		openConnection();
 		ArrayList<CauHoi> listCauHoi = new ArrayList<CauHoi>();
-		final String SQL = "SELECT * FROM CAUHOI INNER JOIN CAPDO ON CAUHOI.MaCapDo=CAPDO.MaCapDo WHERE MaCapDo='"
+		final String SQL = "SELECT * FROM CAUHOI INNER JOIN CAPDO ON CAUHOI.MaCapDo=CAPDO.MaCapDo WHERE CAUHOI.MaCapDo='"
 				+ maCapDo + "'";
 		try {
 			ResultSet rs = getStatement().executeQuery(SQL);

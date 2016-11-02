@@ -34,4 +34,8 @@ public class ThongKeBO {
 	public ArrayList<BaiViet> bangXepHangBaiViet() {
 		return new ThongKeDAO().bangXepHangBaiViet();
 	}
+
+	public ThanhVien thanhVienNew() {
+		return new ThongKeDAO().thanhVienNew();
+	}
 }

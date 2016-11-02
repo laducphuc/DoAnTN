@@ -2,7 +2,15 @@ package model.bean;
 
 public class CauHoi {
 
-	private String maCauHoi, noiDung, maCapDo, tenCapDo,stt,hinhAnh;
+	private String maCauHoi, noiDung, maCapDo, tenCapDo,stt,hinhAnh,dapAn;
+
+	public String getDapAn() {
+		return dapAn;
+	}
+
+	public void setDapAn(String dapAn) {
+		this.dapAn = dapAn;
+	}
 
 	public String getMaCauHoi() {
 		return maCauHoi;

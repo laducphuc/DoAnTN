@@ -20,7 +20,7 @@ public class ThanhVienForm extends ActionForm {
 	private String tenCapDo;
 	private String maTrinhDo;
 	private String tenTrinhDo;
-	private boolean chucVu;
+	private String chucVu;
 	private int soSao;
 	private int soBaiDongGop;
 	private int soBaiDaDich;
@@ -133,11 +133,11 @@ public class ThanhVienForm extends ActionForm {
 		this.tenTrinhDo = tenTrinhDo;
 	}
 
-	public boolean isChucVu() {
+	public String isChucVu() {
 		return chucVu;
 	}
 
-	public void setChucVu(boolean chucVu) {
+	public void setChucVu(String chucVu) {
 		this.chucVu = chucVu;
 	}
 

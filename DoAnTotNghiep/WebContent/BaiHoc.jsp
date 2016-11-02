@@ -242,7 +242,7 @@
 
 	</div>
 	<!-- footer -->
-	<div class="include" data-include="footer"></div>
+	<!-- <div class="include" data-include="footer"></div> -->
 	<script type="text/javascript">
       var baiViet = new Array();
       var x = 0;

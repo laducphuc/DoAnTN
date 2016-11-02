@@ -6,27 +6,23 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.BaiViet;
-import model.bean.ThanhVien;
-import model.bo.BaiVietBO;
-import model.bo.ThongKeBO;
-
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
-import common.Validations;
 import form.DangNhapForm;
 import form.TrangChuForm;
+import model.bean.BaiViet;
+import model.bo.BaiVietBO;
+import model.bo.ThongKeBO;
 
 public class TrangChuAction extends Action {
 
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		TrangChuForm trangChuForm = (TrangChuForm) form;
@@ -35,28 +31,31 @@ public class TrangChuAction extends Action {
 		String kiemTra = trangChuForm.getKiemTra();
 		System.out.println(kiemTra);
 		String maDanhMuc = trangChuForm.getMaDanhMuc();
-		String noiDungTimKiem=StringProcess.toUTF8(trangChuForm.getNoiDungTimKiem());
-		System.out.println("noiDungTimKiem"+noiDungTimKiem);
+		String noiDungTimKiem = StringProcess.toUTF8(trangChuForm.getNoiDungTimKiem());
+		System.out.println("noiDungTimKiem" + noiDungTimKiem);
 		System.out.println(maDanhMuc);
 		BaiVietBO baiVietBo = new BaiVietBO();
 		ThongKeBO thongKeBo = new ThongKeBO();
 		String avatar = baiVietBo.getAvarta();
 		danhSachBaiViet = baiVietBo.danhSachBaiVietTrangChu();
 		int soTrang = trangChuForm.getSoTrang();
-		System.out.println("số trang"+soTrang);
-		System.out.println("số size"+danhSachBaiViet.size());
+		System.out.println("số trang" + soTrang);
+		System.out.println("số size" + danhSachBaiViet.size());
 		ArrayList<BaiViet> danhSachBaiVietHienThi = danhSachBaiViet;
 		List<BaiViet> bXHBaiViet = thongKeBo.bangXepHangBaiViet();
-		List<ThanhVien> bXHThanhVien = thongKeBo.bangXepHangThanhVien();
-		List<ThanhVien> bXHCongTacVien = thongKeBo.bangXepHangCongTacVien();
-		bXHBaiViet = danhSachBaiViet.subList(0, 5);
-		bXHThanhVien = bXHThanhVien.subList(0, 3);
-		bXHCongTacVien = bXHCongTacVien.subList(0, 3);
-		System.out.println(avatar);
+		/*
+		 * List<ThanhVien> bXHThanhVien = thongKeBo.bangXepHangThanhVien();
+		 * List<ThanhVien> bXHCongTacVien = thongKeBo.bangXepHangCongTacVien();
+		 * bXHBaiViet = danhSachBaiViet.subList(0, 5); bXHThanhVien =
+		 * bXHThanhVien.subList(0, 3); bXHCongTacVien =
+		 * bXHCongTacVien.subList(0, 3); System.out.println(avatar);
+		 */
 		trangChuForm.setAvatar(avatar);
 		trangChuForm.setbXHBaiViet(bXHBaiViet);
-		trangChuForm.setbXHThanhVien(bXHThanhVien);
-		trangChuForm.setbXHCongTacVien(bXHCongTacVien);
+		/*
+		 * trangChuForm.setbXHThanhVien(bXHThanhVien);
+		 * trangChuForm.setbXHCongTacVien(bXHCongTacVien);
+		 */
 		trangChuForm.setDanhSachBaiVietHienThi(danhSachBaiVietHienThi);
 		trangChuForm.setDanhSachBaiVietMoiNhat(baiVietBo.chiaDanhSachCon(danhSachBaiVietHienThi, 3));
 		int tam = (danhSachBaiViet.size() / 10) + 1;

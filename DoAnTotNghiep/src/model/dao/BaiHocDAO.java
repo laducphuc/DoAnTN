@@ -89,7 +89,7 @@ public class BaiHocDAO extends ConnectDAO {
 	public BaiHoc getBaiHoc(String maBaiHoc) {
 		openConnection();
 		final String SQL = "SELECT * FROM BAIHOC " + "INNER JOIN CAPDO " + "ON BAIHOC.MaCapDo=CAPDO.MaCapDo "
-				+ "WHERE MaBaiHoc =" + maBaiHoc;
+				+ "WHERE MaBaiHoc ='" + maBaiHoc+"'";
 		try {
 			ResultSet rs = getStatement().executeQuery(SQL);
 			BaiHoc baihoc = new BaiHoc();
@@ -120,8 +120,8 @@ public class BaiHocDAO extends ConnectDAO {
 	public ArrayList<BaiHoc> listBaiHocByNamePK(String search, String maCapDo) {
 		openConnection();
 		ArrayList<BaiHoc> listBaiHoc = new ArrayList<BaiHoc>();
-		final String SQL = "SELECT * FROM BAIHOC INNER JOIN CAPDO ON BAIHOC.MaCapDo=CAPDO.MaCapDo " + "WHERE MaCapDo="
-				+ maCapDo + "TenBaiHoc COLLATE SQL_Latin1_General_Cp1_CI_AI like '%" + search
+		final String SQL = "SELECT * FROM BAIHOC INNER JOIN CAPDO ON BAIHOC.MaCapDo=CAPDO.MaCapDo " + "WHERE BAIHOC.MaCapDo='"
+				+ maCapDo + "' AND TenBaiHoc COLLATE SQL_Latin1_General_Cp1_CI_AI like '%" + search
 				+ "%' COLLATE SQL_Latin1_General_Cp1_CI_AI";
 		System.out.println(SQL);
 		try {

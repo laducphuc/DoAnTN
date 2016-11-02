@@ -25,13 +25,14 @@ public class ThongTinThanhVienAction extends Action{
 		try {
 			DangNhapForm dangNhapForm = (DangNhapForm) request.getSession().getAttribute("dangNhapForm");
 			String capQuyen = dangNhapForm.getChucVu();
+			System.out.println("cap quyen"+capQuyen);
 			ThanhVienBO thanhVienBO = new ThanhVienBO();
-			if ("3".equals(capQuyen)){
+			if ("1".equals(capQuyen)){
 				String maThanhVien = thanhVienForm.getMaThanhVien();
-				boolean chucVu = thanhVienForm.isChucVu();
+				String chucVu = thanhVienForm.isChucVu();
 				System.out.println("maThanhVien"+maThanhVien);
 				System.out.println("chucVu"+chucVu);
-				if (chucVu == false){
+				if ("0".equals(chucVu)){
 					ThanhVien thanhVien = thanhVienBO.chonThanhVien(maThanhVien);
 					thanhVienForm.setThanhVien(thanhVien);
 					if (thanhVien != null){
@@ -48,7 +49,7 @@ public class ThongTinThanhVienAction extends Action{
 						return mapping.findForward("loiHienThiThongTinCongTacVien");
 					}
 				}
-			} else if ("1".equals(capQuyen)){
+			} else if ("2".equals(capQuyen)){
 				String maThanhVien = dangNhapForm.getMaThanhVien();
 				ThanhVien thanhVien = thanhVienBO.chonThanhVien(maThanhVien);
 				thanhVienForm.setThanhVien(thanhVien);
@@ -62,9 +63,5 @@ public class ThongTinThanhVienAction extends Action{
 		} catch (Exception e) {
 			return mapping.findForward("dangNhap");
 		}
-		
-		
-		
-		
 	}
 }

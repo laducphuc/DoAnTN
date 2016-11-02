@@ -22,17 +22,17 @@ public class XoaThanhVienAction extends Action{
 		ThanhVienForm thanhVienForm = (ThanhVienForm) form;
 
 		String maThanhVien = thanhVienForm.getMaThanhVien();
-		boolean chucVu = thanhVienForm.isChucVu();
+		String chucVu = thanhVienForm.isChucVu();
 		
 		ThanhVienBO thanhVienBO = new ThanhVienBO();
 		if (thanhVienBO.xoaThanhVien(maThanhVien)){
-			if (chucVu == false){
+			if ("0".equals(chucVu)){
 				return mapping.findForward("xoaThanhVienThanhCong");
 			} else {
 				return mapping.findForward("xoaCongTacVienThanhCong");
 			}
 		} else {
-			if (chucVu == false){
+			if ("0".equals(chucVu)){
 				thanhVienForm.setThanhVien(thanhVienBO.chonThanhVien(maThanhVien));
 				return mapping.findForward("xoaThanhVienThatBai");
 			} else {

@@ -50,7 +50,7 @@ public class DangNhapAction extends Action {
 				JSONArray jsonArray= new JSONArray();
 				JSONObject jsonObject= new JSONObject();
 				PrintWriter write=response.getWriter();
-				if ("3".equals(taiKhoan.getChucVu())) {
+				if ("1".equals(taiKhoan.getChucVu())) {
 					dangNhapForm.setTaiKhoan(taiKhoan);
 					jsonObject.put("ketQua", "dangNhapThanhCong");
 					jsonArray.add(jsonObject);
@@ -67,7 +67,7 @@ public class DangNhapAction extends Action {
 					write.flush();
 					write.close();
 					return null;
-				} else if ("1".equals(taiKhoan.getChucVu())) {
+				} else if ("0".equals(taiKhoan.getChucVu())) {
 					dangNhapForm.setTaiKhoan(taiKhoan);
 					jsonObject.put("ketQua", "dangNhapThanhCong");
 					jsonArray.add(jsonObject);

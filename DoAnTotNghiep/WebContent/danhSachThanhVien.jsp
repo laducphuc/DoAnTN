@@ -150,7 +150,6 @@
 										<th>Tên thành viên</th>
 										<th>Tên đăng nhập</th>
 										<th>Giới tính</th>
-										<th>Loại thành viên</th>
 										<th>Xem</th>
 
 									</tr>
@@ -165,8 +164,6 @@
 											<td><bean:write name="thanhVien" property="tenTaiKhoan" />
 											</td>
 											<td><bean:write name="thanhVien" property="gioiTinh" />
-											</td>
-											<td><bean:write name="thanhVien" property="tenCapDo" />
 											</td>
 											<td><bean:define id="maThanhVien" name="thanhVien"
 													property="maThanhVien"></bean:define> <bean:define

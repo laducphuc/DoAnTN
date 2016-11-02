@@ -2,20 +2,6 @@ package common;
 
 import java.io.UnsupportedEncodingException;
 
-/**
- * StringProcess.java
- *
- * Version 1.0
- *
- * Date: Jan 20, 2015
- *
- * Copyright 
- *
- * Modification Logs:
- * DATE                 AUTHOR          DESCRIPTION
- * -----------------------------------------------------------------------
- * Jan 20, 2015        	DaiLV2          Create
- */
 
 public class StringProcess {
 	
