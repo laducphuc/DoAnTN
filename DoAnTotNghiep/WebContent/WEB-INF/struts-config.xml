@@ -23,9 +23,37 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="taoCauHoiForm" type="form.TaoCauHoiForm"></form-bean>
 		<form-bean name="taoDeThiForm" type="form.TaoDeThiForm"></form-bean>
 		<form-bean name="thiForm" type="form.ThiForm"></form-bean>
+		<form-bean name="cauHoiForm" type="form.CauHoiForm"></form-bean>
 	</form-beans>
 
 	<action-mappings>
+
+		<action name="thiForm" input="/userThi.jsp" path="/ketquathi"
+			scope="request" type="action.KetQuaThiAction">
+			<forward name="ket_qua_thi" path="/userKetQuaThi.jsp" />
+			<forward name="ve_trang_chu" path="/trang-chu.do" />
+		</action>
+		<action name="thiForm" input="/DanhSachBaiThi.jsp" path="/thi"
+			scope="request" type="action.ThiAction">
+			<forward name="thi_online" path="/userThi.jsp" />
+			<forward name="loi" path="/test.do" redirect="true" />
+		</action>
+
+		<action name="cauHoiForm" input="/quanLyCauHoi.jsp" path="/danh_sach_cau_hoi"
+			scope="request" type="action.QuanLyCauHoiAction">
+			<forward name="ds_cauhoi" path="/quanLyCauHoi.jsp" />
+		</action>
+
+		<action name="cauHoiForm" input="/quanLyCauHoi.jsp" path="/xoa-cau-hoi"
+			scope="request" type="action.XoaCauHoiAction">
+			<forward name="ds_cauhoi" path="/danh_sach_cau_hoi.do"
+				redirect="true" />
+		</action>
+		<action name="thiForm" input="/quanLyDeThi.jsp" path="/xoa-de-thi"
+         scope="request" type="action.XoaDeThiAction">
+         <forward name="ds_cauhoi" path="/danh-sach-de-thi.do"
+            redirect="true" />
+      </action>
 
 		<action name="taoDeThiForm" input="/taoDeThi.jsp" path="/tao-de-thi"
 			scope="request" type="action.TaoDeThiAction">
@@ -33,15 +61,23 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="themError" path="/taoDeThi.jsp" />
 			<forward name="themOK" path="/danh-sach-de-thi.do" redirect="true" />
 		</action>
-		
+
 		<action name="thiForm" input="/quanLyDeThi.jsp" path="/danh-sach-de-thi"
 			scope="request" type="action.QuanLyDeThiAction">
 			<forward name="ds_dethi" path="/quanLyDeThi.jsp" />
 		</action>
-
-		<action name="taoCauHoiForm" input="/taoCauHoi.jsp" path="/tao-cau-hoi"
+		<action path="/chon"
+			scope="request" type="action.ChonAction">
+			<forward name="tao_cau_hoi" path="/taoCauHoi.jsp" />
+		</action>
+		<action name="taoCauHoiForm" input="/taoCauHoiTay.jsp" path="/tao-cau-hoi"
 			scope="request" type="action.TaoCauHoiAction">
-			<forward name="tao_cau_hoi_nd" path="/taoCauHoi.jsp" />
+			<forward name="tao_cau_hoi_nd" path="/taoCauHoiTay.jsp" />
+			<forward name="themOK" path="/danh_sach_cau_hoi.do" redirect="true"></forward>
+		</action>
+		<action name="taoCauHoiForm" input="/taoCauHoiFile.jsp" path="/tao-cau-hoi-file"
+			scope="request" type="action.TaoCauHoiFileAction">
+			<forward name="tao_cau_hoi_nd" path="/taoCauHoiFile.jsp" />
 			<forward name="themOK" path="/danh_sach_cau_hoi.do" redirect="true"></forward>
 		</action>
 

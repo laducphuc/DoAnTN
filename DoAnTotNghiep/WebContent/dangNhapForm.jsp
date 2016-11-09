@@ -24,6 +24,21 @@ input.error {
 }
 </style>
 <script type="text/javascript">
+	$(document).keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode == '13') {
+			$('#my-submit').click();
+		}
+		if (keycode == '27') {
+			$('#cancel').click();
+		}
+		if (keycode >= '65' && keycode <= 90) {
+			$("#thongBao").html("CAPS LOCK ON");
+		}
+		else{
+			$("#thongBao").html("");
+		}
+	});
 	function hienThiFormDangNhap() {
 		$("#form-login").css("top", "20%");
 		$(".overflow").show();
@@ -124,7 +139,7 @@ input.error {
 				<div class="col-lg-12">
 					<html:button styleId="my-submit" styleClass="btn btn-info"
 						property="submit">Đăng Nhập</html:button>
-					<button class="btn btn-info" type="reset"
+					<button class="btn btn-info" type="reset" id="cancel"
 						onclick="tatFormDangNhap()">
 						<i class="fa fa-times"></i> Hủy bỏ
 					</button>
@@ -261,6 +276,7 @@ input.error {
 								<li><html:link action="/danh-sach-bai-hoc.do">Quản lý tài liệu</html:link></li>
 								<li><html:link action="/danh-sach-de-thi.do">Quản lý đề thi</html:link></li>
 								<li><html:link action="/list-tu-vung.do">Quản lý từ vựng</html:link></li>
+								<li><html:link action="/danh-sach-cau-hoi.do">Quản lý câu hỏi</html:link></li>
 								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 							</ul></li>
 					</ul>

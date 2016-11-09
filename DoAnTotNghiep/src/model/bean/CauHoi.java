@@ -1,8 +1,20 @@
 package model.bean;
 
+import java.util.ArrayList;
+
 public class CauHoi {
 
-	private String maCauHoi, noiDung, maCapDo, tenCapDo,stt,hinhAnh,dapAn;
+	private String maCauHoi, noiDung, maCapDo, tenCapDo,stt,hinhAnh,dapAn,soThuTu;
+	private boolean laCheckBox;
+	private ArrayList<PhuongAn> listPhuongAn;
+	
+	public ArrayList<PhuongAn> getListPhuongAn() {
+		return listPhuongAn;
+	}
+
+	public void setListPhuongAn(ArrayList<PhuongAn> listPhuongAn) {
+		this.listPhuongAn = listPhuongAn;
+	}
 
 	public String getDapAn() {
 		return dapAn;
@@ -18,6 +30,22 @@ public class CauHoi {
 
 	public String getHinhAnh() {
 		return hinhAnh;
+	}
+
+	public String getSoThuTu() {
+		return soThuTu;
+	}
+
+	public void setSoThuTu(String soThuTu) {
+		this.soThuTu = soThuTu;
+	}
+
+	public boolean getLaCheckBox() {
+		return laCheckBox;
+	}
+
+	public void setLaCheckBox(boolean laCheckBox) {
+		this.laCheckBox = laCheckBox;
 	}
 
 	public void setHinhAnh(String hinhAnh) {

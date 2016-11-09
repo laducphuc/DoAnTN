@@ -1,8 +1,12 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 import model.bean.CapDo;
 import model.bean.CauHoi;
@@ -13,10 +17,11 @@ public class TaoDeThiForm extends ActionForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String tenDeThi, maCapDo, cauHoi,maCauHoi,kt,submit,tongCauHoi;
+	private String tenDeThi, maCapDo, cauHoi, maCauHoi, kt, submit, tongCauHoi;
 	private ArrayList<CapDo> listCapDo;
 	private ArrayList<CauHoi> listCauHoi;
 	String[] chonCauHoi;
+
 	public String getKt() {
 		return kt;
 	}
@@ -97,4 +102,12 @@ public class TaoDeThiForm extends ActionForm {
 		this.listCapDo = listCapDo;
 	}
 
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
 }

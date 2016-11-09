@@ -14,9 +14,11 @@ import org.apache.struts.action.ActionMessage;
 
 import common.StringProcess;
 import form.TaoDeThiForm;
+import model.bean.BaiThi;
 import model.bean.CauHoi;
 import model.bo.CapDoBO;
 import model.bo.CauHoiBO;
+import model.bo.DeThiBO;
 
 public class TaoDeThiAction extends Action {
 	@Override
@@ -51,7 +53,20 @@ public class TaoDeThiAction extends Action {
 			}
 		}
 		if ("submit".equals(taoDeThiForm.getSubmit())) {
-			return mapping.findForward("tao-de-thi");
+			String[] chonCauHoi = taoDeThiForm.getChonCauHoi();
+			String cauHoi="";
+			if (chonCauHoi != null) {
+				for (int i = 0; i < chonCauHoi.length; i++) {
+					cauHoi+=chonCauHoi[i]+"@@";
+				}
+			}
+			BaiThi baiThi=new BaiThi();
+			baiThi.setCauHoi(cauHoi);
+			baiThi.setTenDe(taoDeThiForm.getTenDeThi());
+			baiThi.setMaCapDo(taoDeThiForm.getMaCapDo());
+			DeThiBO deThiBO=new DeThiBO();
+			deThiBO.themDeThi(baiThi);
+			return mapping.findForward("themOK");
 		}
 		return mapping.findForward("tao-de-thi");
 	}

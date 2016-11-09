@@ -37,6 +37,15 @@ public class TaoCauHoiForm extends ActionForm {
 	private FormFile hinhanhPA4;
 	private FormFile hinhanhPA5;
 	private String btnSubmit;
+	private FormFile fileInput;
+	
+	public FormFile getFileInput() {
+		return fileInput;
+	}
+
+	public void setFileInput(FormFile fileInput) {
+		this.fileInput = fileInput;
+	}
 
 	public String getSoPAChon() {
 		return soPAChon;

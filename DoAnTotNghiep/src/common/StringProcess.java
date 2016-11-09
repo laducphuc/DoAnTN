@@ -1,6 +1,12 @@
 package common; 
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
+import model.bean.CauHoi;
+import model.bean.PhuongAn;
 
 
 public class StringProcess {

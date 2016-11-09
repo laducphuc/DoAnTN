@@ -34,6 +34,9 @@
 			<li><html:link action="/tao-de-thi.do">
 					<span class="glyphicon glyphicon-minus"></span>  Tạo mới đề thi</html:link>
 			</li>
+			<li><html:link action="/chon.do">
+               <span class="glyphicon glyphicon-minus"></span>  Tạo mới câu hỏi</html:link>
+         </li>
 		</ul>
 	</div>
 </div>

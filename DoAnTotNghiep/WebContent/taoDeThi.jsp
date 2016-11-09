@@ -48,9 +48,10 @@
 		for (var i = 0; i < tong; i++) {
 			if (document.taoDeThiForm["chonCauHoi"][i].checked) {
 				flag++;
-				document.getElementById("soCauHoi").innerHTML = flag;
+
 			}
 		}
+		document.getElementById("soCauHoi").innerHTML = flag;
 	}
 </script>
 <script type="text/javascript">
@@ -69,8 +70,7 @@
 		<div class="col-lg-12" style="margin-top: 20px; padding: 0px;">
 			<div class="col-lg-12" style="height: auto; padding: 0px">
 				<!-- body main -->
-				<div class="col-lg-1"></div>
-				<div class="col-lg-10" style="height: auto; padding: 0px">
+				<div class="col-lg-9" style="height: auto; padding: 0px">
 					<div class="col-lg-12 divMain"
 						style="height: auto; background-color: white;">
 						<div class="col-lg-12">
@@ -120,11 +120,13 @@
 										<span class="glyphicon glyphicon-text-width"></span> Số câu
 										hỏi đã chọn:
 									</h4>
-									
+
 								</div>
-								<div class="col-lg-8"><h4>
-                              <div id="soCauHoi" style="color: red;"></div></h4>
-                        </div>
+								<div class="col-lg-8">
+									<h4>
+										<div id="soCauHoi" style="color: red;"></div>
+									</h4>
+								</div>
 								<div class="col-lg-12">
 									<table class="table table-striped"
 										style="width: 100%; display: block; white-space: nowrap; border-collapse: separate; height: 400px; overflow: auto;">
@@ -147,7 +149,25 @@
 														<td><bean:write property="stt" name="cauHoi" /></td>
 														<td><bean:write property="maCauHoi" name="cauHoi" /></td>
 														<td><bean:write property="noiDung" name="cauHoi" /></td>
-														<td><bean:write property="dapAn" name="cauHoi" /></td>
+														<logic:notEmpty name="cauHoi" property="listPhuongAn">
+														<td><logic:iterate id="pa" name="cauHoi"
+																property="listPhuongAn">
+																<logic:equal value="1" name="pa" property="trangThai">
+																<logic:notEmpty name="pa" property="noiDungPA">
+																	<bean:write name="pa" property="noiDungPA" />
+																	<p></p>
+																</logic:notEmpty>
+																<!-- kiem tra cau hoi co hinh anh k -->
+																<logic:notEmpty name="pa" property="hinhAnh">
+																	<bean:define id="image" name="pa" property="hinhAnh"></bean:define>
+																	<div class="hoverimage">
+																		<p></p>
+																		<html:img src="${image}" />
+																	</div>
+																</logic:notEmpty>
+																</logic:equal>
+															</logic:iterate></td>
+															</logic:notEmpty>
 														<td><html:checkbox property="chonCauHoi"
 																value="${maCauHoi}" onchange="checkTheBox();"></html:checkbox></td>
 													</tr>
@@ -167,6 +187,8 @@
 								<div class="col-lg-12">
 									<html:submit styleClass="btn btn-primary" property="submit"
 										value="submit" styleId="id">Lưu</html:submit>
+									<button type="submit" class="btn btn-primary"
+										onclick="history.go(-1);">Quay lại</button>
 								</div>
 								<div class="col-lg-12">
 									<p>
@@ -177,8 +199,9 @@
 						</div>
 					</div>
 				</div>
-
+				<jsp:include page="menuCongTacVien.jsp"></jsp:include>
 				<!-- body right -->
+
 				<div class="col-lg-1"></div>
 			</div>
 		</div>

@@ -22,16 +22,8 @@
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
-<script type="text/javascript">
-	function clicking() {
-		window.location.href = '/DoAnTotNghiep/tao-cau-hoi.do';
-	}
-	function clicking2() {
-	      window.location.href = '/DoAnTotNghiep/tao-cau-hoi-file.do';
-	   }
-</script>
 </head>
-<body onload="onload();">
+<body>
 	<!-- header -->
 	<div class="include" data-include="header"></div>
 	<jsp:include page="dangNhapForm.jsp"></jsp:include>
@@ -45,13 +37,31 @@
 						<br></br>
 						<div class="panel panel-info">
 							<div class="panel-heading">Tạo câu hỏi</div>
-							<div class="container" id="select">
-								<br> <br>
-								<button type="submit" class="btn btn-primary"
-									onclick="clicking2();">Input bằng File</button>
-								<button type="submit" class="btn btn-primary"
-									onclick="clicking();">Input bằng tay</button>
-								<br> <br>
+							<div class="container" id="inputFile">
+								<html:form styleClass="form-horizontal"
+									action="/tao-cau-hoi-file" method="post"
+									enctype="multipart/form-data">
+									<div class="form-group">
+										<br> <br> <label class="control-label col-sm-2"
+											for="pwd">Chọn file .xls</label>
+										<div class="col-sm-6">
+											<html:file property="fileInput" styleClass="file" accept="/*"
+												styleId="input-1"></html:file>
+										</div>
+										<div class="col-sm-6">
+										<font color="red"><html:errors property="saiFile" /></font></div>
+									</div>
+									<div class="form-group">
+										<br>
+										<div class="col-sm-6">
+											<html:submit styleClass="btn btn-primary"
+												property="btnSubmit" value="Submit"></html:submit>
+											<button type="submit" class="btn btn-primary"
+												onclick="history.go(-1);">Quay lại</button>
+										</div>
+										<br></br>
+									</div>
+								</html:form>
 							</div>
 						</div>
 					</div>

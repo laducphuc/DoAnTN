@@ -159,6 +159,7 @@ public class TaoCauHoiAction extends Action {
 			CauHoi cauHoi = new CauHoi();
 			cauHoi.setNoiDung(taoCauHoiForm.getNoiDung());
 			cauHoi.setHinhAnh(taoCauHoiForm.getHinhanhND().toString());
+			cauHoi.setMaCapDo(taoCauHoiForm.getMaCapDo());
 			if (listHinhAnh.size() >= 1) {
 				String[] hACH = listHinhAnh.get(0).split("\\.");
 				if (hACH[hACH.length - 1].equals("0")) {

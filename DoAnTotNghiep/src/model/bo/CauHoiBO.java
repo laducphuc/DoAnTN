@@ -7,6 +7,7 @@ import model.dao.CauHoiDAO;
 
 public class CauHoiBO {
 	CauHoiDAO cauHoiDAO = new CauHoiDAO();
+	PhuongAnBO phuongAnBo = new PhuongAnBO();
 
 	/**
 	 * lay toan bo danh sach cau hoi
@@ -14,7 +15,13 @@ public class CauHoiBO {
 	 * @return
 	 */
 	public ArrayList<CauHoi> listCauHoi() {
-		return cauHoiDAO.listCauHoi();
+		ArrayList<CauHoi> listCauHoi = cauHoiDAO.listCauHoi();
+
+		for (int i = 0; i < listCauHoi.size(); i++) {
+			String maCauHoi = listCauHoi.get(i).getMaCauHoi();
+			listCauHoi.get(i).setListPhuongAn(phuongAnBo.getPhuongAn(maCauHoi));
+		}
+		return listCauHoi;
 	}
 
 	/**
@@ -24,6 +31,11 @@ public class CauHoiBO {
 	 * @return
 	 */
 	public ArrayList<CauHoi> listCauHoi(String maCapDo) {
+		ArrayList<CauHoi> listCauHoi = cauHoiDAO.listCauHoi(maCapDo);
+		for (int i = 0; i < listCauHoi.size(); i++) {
+			String maCauHoi = listCauHoi.get(i).getMaCauHoi();
+			listCauHoi.get(i).setListPhuongAn(phuongAnBo.getPhuongAn(maCauHoi));
+		}
 		return cauHoiDAO.listCauHoi(maCapDo);
 	}
 
@@ -34,7 +46,9 @@ public class CauHoiBO {
 	 * @return
 	 */
 	public CauHoi getCauHoi(String maCauHoi) {
-		return cauHoiDAO.getCauHoi(maCauHoi);
+		CauHoi cauHoi = cauHoiDAO.getCauHoi(maCauHoi);
+		cauHoi.setListPhuongAn(phuongAnBo.getPhuongAn(maCauHoi));
+		return cauHoi;
 	}
 
 	/**
@@ -54,5 +68,16 @@ public class CauHoiBO {
 	 */
 	public String getKey() {
 		return cauHoiDAO.getKey();
+	}
+
+	/**
+	 * xoa cau hoi
+	 */
+	public boolean xoaCauHoi(String maCauHoi) {
+		if (cauHoiDAO.xoaPhuongAn(maCauHoi)) {
+			return cauHoiDAO.xoaCauHoi(maCauHoi);
+		} else {
+			return false;
+		}
 	}
 }

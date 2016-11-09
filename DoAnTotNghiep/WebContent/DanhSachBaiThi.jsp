@@ -73,11 +73,10 @@
 										<logic:iterate name="thiForm" property="listBaiThi"
 											id="baiThi">
 											<tr>
-												<td><bean:define id="maBaiThi" name="baiThi"
-														property="maBaiThi"></bean:define> <html:link
-														action="/thi?maBaiThi=${maBaiThi}">
-														<bean:write property="tenBaiThi" name="baiThi" />
-														</span>
+												<td><bean:define id="maDe" name="baiThi"
+														property="maDe"></bean:define> <html:link
+														action="/thi?maDeThi=${maDe}">
+														<bean:write property="tenDe" name="baiThi" />
 													</html:link></td>
 											</tr>
 										</logic:iterate>

@@ -123,7 +123,7 @@
 									</div>
 									<div class="row form-group">
 										<div class="col-sm-12" style="text-align: center;">
-											<html:submit styleClass="btn btn-info" property="submit"
+											<html:submit styleClass="btn btn-primary" property="submit"
 												value="Submit"></html:submit>
 										</div>
 									</div>

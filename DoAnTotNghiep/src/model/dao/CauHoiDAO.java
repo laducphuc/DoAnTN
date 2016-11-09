@@ -3,7 +3,6 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import model.bean.CauHoi;
 
 public class CauHoiDAO extends ConnectDAO {
@@ -75,13 +74,13 @@ public class CauHoiDAO extends ConnectDAO {
 		openConnection();
 		String SQL = "SELECT * FROM CAUHOI WHERE MaCauHoi='" + maCauHoi + "'";
 		CauHoi cauHoi = new CauHoi();
+		System.out.println(SQL);
 		try {
 			ResultSet rs = getStatement().executeQuery(SQL);
 			while (rs.next()) {
 				cauHoi.setMaCauHoi(rs.getString("MaCauHoi"));
 				cauHoi.setMaCapDo(rs.getString("MaCapDo"));
 				cauHoi.setNoiDung(rs.getString("NoiDung"));
-				cauHoi.setTenCapDo(rs.getString("TenCapDo"));
 			}
 			return cauHoi;
 		} catch (SQLException e) {
@@ -129,6 +128,36 @@ public class CauHoiDAO extends ConnectDAO {
 		} catch (SQLException e) {
 			return null;
 		} finally {
+			closeConnection();
+		}
+	}
+
+	
+	
+	public boolean xoaCauHoi(String maCauHoi){
+		openConnection();
+		String SQL="delete from cauhoi where MaCauHoi='"+maCauHoi+"'";
+		try {
+			getStatement().executeUpdate(SQL);
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+		finally{
+			closeConnection();
+		}
+	}
+	
+	public boolean xoaPhuongAn(String maCauHoi){
+		openConnection();
+		String SQL="delete from phuongan where MaCauHoi='"+maCauHoi+"'";
+		try {
+			getStatement().executeUpdate(SQL);
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+		finally{
 			closeConnection();
 		}
 	}
