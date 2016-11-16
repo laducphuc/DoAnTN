@@ -21,8 +21,9 @@ public class ThanhVienDAO extends ConnectDAO {
 	 */
 	public boolean chenThanhVien(ThanhVien thanhVien) {
 		try {
-			String sql1 = "INSERT INTO THANHVIEN (MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, QuocTich, NgonNgu, MaCapDo, ChucVu, MaTrinhDo, SoSao, Anh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql1 = "INSERT INTO THANHVIEN (MaThanhVien, TenThanhVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, Email, ChucVu, Anh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst;
+			System.out.println(sql1);
 			openConnection();
 			pst = getConnect().prepareStatement(sql1);
 			pst.setString(1, thanhVien.getMaThanhVien());
@@ -32,13 +33,8 @@ public class ThanhVienDAO extends ConnectDAO {
 			pst.setString(5, thanhVien.getDiaChi());
 			pst.setString(6, thanhVien.getSoDienThoai());
 			pst.setString(7, thanhVien.getEmail());
-			pst.setString(8, thanhVien.getQuocTich());
-			pst.setString(9, thanhVien.getNgonNgu());
-			pst.setString(10, thanhVien.getMaCapDo());
-			pst.setString(11, thanhVien.getChucVu().toString());
-			pst.setString(12, thanhVien.getMaTrinhDo());
-			pst.setString(13, thanhVien.getSoSao() + "");
-			pst.setString(14, thanhVien.getAnh());
+			pst.setString(8, thanhVien.getChucVu().toString());
+			pst.setString(9, thanhVien.getAnh());
 			return !pst.execute();
 		} catch (SQLException e) {
 			return false;
@@ -58,6 +54,7 @@ public class ThanhVienDAO extends ConnectDAO {
 			String sql1 = "INSERT INTO TAIKHOAN (MaTaiKhoan, TenTaiKhoan, MatKhau, MaThanhVien, TrangThai)"
 					+ " VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement pst;
+			System.out.println(sql1);
 			openConnection();
 			pst = getConnect().prepareStatement(sql1);
 			pst.setString(1, taiKhoan.getMaTaiKhoan());
@@ -139,7 +136,7 @@ public class ThanhVienDAO extends ConnectDAO {
 				thanhVien.setDiaChi(rs.getString("DiaChi"));
 				thanhVien.setSoDienThoai(rs.getString("SoDienThoai"));
 				thanhVien.setEmail(rs.getString("Email"));
-				thanhVien.setMaCapDo(rs.getString("ChucVu"));
+				thanhVien.setChucVu(rs.getString("ChucVu"));
 				thanhVien.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
 				thanhVien.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
 			}
@@ -190,7 +187,7 @@ public class ThanhVienDAO extends ConnectDAO {
 				thanhVien.setDiaChi(rs.getString("DiaChi"));
 				thanhVien.setSoDienThoai(rs.getString("SoDienThoai"));
 				thanhVien.setEmail(rs.getString("Email"));
-				thanhVien.setMaCapDo(rs.getString("ChucVu"));
+				thanhVien.setChucVu(rs.getString("ChucVu"));
 				thanhVien.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
 				thanhVien.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
 			}
@@ -211,12 +208,11 @@ public class ThanhVienDAO extends ConnectDAO {
 	public boolean capNhatThanhVien(ThanhVien thanhVien) {
 		try {
 			final String sql = String
-					.format("UPDATE THANHVIEN SET TenThanhVien = N'%s', GioiTinh = '%s', NgaySinh = '%s', DiaChi = N'%s', SoDienThoai = '%s',Email = N'%s',QuocTich = N'%s',NgonNgu = N'%s' WHERE MaThanhVien = '%s'",
+					.format("UPDATE THANHVIEN SET TenThanhVien = N'%s', GioiTinh = '%s', NgaySinh = '%s', DiaChi = N'%s', SoDienThoai = '%s',Email = N'%s' WHERE MaThanhVien = '%s'",
 							thanhVien.getTenThanhVien(),
 							thanhVien.getGioiTinh(), thanhVien.getNgaySinh(),
 							thanhVien.getDiaChi(), thanhVien.getSoDienThoai(),
-							thanhVien.getEmail(), thanhVien.getQuocTich(),
-							thanhVien.getNgonNgu(), thanhVien.getMaThanhVien());
+							thanhVien.getEmail(), thanhVien.getMaThanhVien());
 			openConnection();
 			getStatement().executeUpdate(sql);
 			return true;

@@ -22,6 +22,12 @@
 <style type="text/css">
 </style>
 <script type="text/javascript">
+function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+//To disable f5
+ /* jQuery < 1.7 */
+$(document).bind("keydown", disableF5);
+
+
 	var ss = 1800;
 	function countdown() {
 		ss = ss - 1;
@@ -48,7 +54,7 @@
 	}
 </script>
 </head>
-<body onload="countdown()">
+<body onload="countdown()" id="body">
    <nav class="navbar navbar-default navbar-fixed-top">
    <div class="container-fluid">
       <div class="navbar-header">

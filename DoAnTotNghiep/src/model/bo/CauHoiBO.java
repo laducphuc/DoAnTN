@@ -36,7 +36,7 @@ public class CauHoiBO {
 			String maCauHoi = listCauHoi.get(i).getMaCauHoi();
 			listCauHoi.get(i).setListPhuongAn(phuongAnBo.getPhuongAn(maCauHoi));
 		}
-		return cauHoiDAO.listCauHoi(maCapDo);
+		return listCauHoi;
 	}
 
 	/**

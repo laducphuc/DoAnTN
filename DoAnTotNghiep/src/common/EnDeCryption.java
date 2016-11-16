@@ -16,8 +16,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
-import org.apache.bsf.Main;
-
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -25,20 +23,15 @@ import sun.misc.BASE64Encoder;
 *
 * @author LTV
 */
-public class test {
+public class EnDeCryption {
 
     DESKeySpec keySpec;
     SecretKeyFactory keyFac;
     SecretKey key;
     BASE64Encoder base64En;
     BASE64Decoder base64De;
-public static void main(String[] args) {
-	test x=new test(Const.PATH);
-	System.out.println(x.encoding("1234"));
-	System.out.println(x.decoding("KNVOVRpIMVo="));
-}
-    public test(String pwd) {
-   
+
+    public EnDeCryption(String pwd) {
         try {
             keySpec = new DESKeySpec(pwd.getBytes("UTF8"));
             keyFac = SecretKeyFactory.getInstance("DES");

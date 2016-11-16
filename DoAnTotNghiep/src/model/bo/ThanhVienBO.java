@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import common.Const;
+import common.EnDeCryption;
 import model.bean.TaiKhoan;
 import model.bean.ThanhVien;
 import model.dao.ThanhVienDAO;
@@ -31,7 +33,9 @@ public class ThanhVienBO {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		taiKhoan.setMaTaiKhoan(thanhVienDAO.tangMaTaiKhoan());
 		taiKhoan.setTenTaiKhoan(thanhVien.getTenTaiKhoan());
-		taiKhoan.setMatKhau(thanhVien.getMaKhau());
+		EnDeCryption enDeCryption = new EnDeCryption(Const.PATH);
+		String matKhau = enDeCryption.encoding(thanhVien.getMaKhau());
+		taiKhoan.setMatKhau(matKhau);
 		taiKhoan.setMaThanhVien(thanhVien.getMaThanhVien());
 		taiKhoan.setTrangThai(false);
 
@@ -57,9 +61,11 @@ public class ThanhVienBO {
 		}
 
 		TaiKhoan taiKhoan = new TaiKhoan();
+		EnDeCryption enDeCryption = new EnDeCryption(Const.PATH);
+		String matKhau = enDeCryption.encoding(thanhVien.getMaKhau());
 		taiKhoan.setMaTaiKhoan(thanhVienDAO.tangMaTaiKhoan());
 		taiKhoan.setTenTaiKhoan(thanhVien.getTenTaiKhoan());
-		taiKhoan.setMatKhau(thanhVien.getMaKhau());
+		taiKhoan.setMatKhau(matKhau);
 		taiKhoan.setMaThanhVien(thanhVien.getMaThanhVien());
 		taiKhoan.setTrangThai(false);
 
@@ -74,7 +80,7 @@ public class ThanhVienBO {
 	public ArrayList<ThanhVien> chonDanhSachThanhVien() {
 		ArrayList<ThanhVien> danhSachThanhVien = new ArrayList<ThanhVien>();
 		ArrayList<ThanhVien> danhSach = new ThanhVienDAO().chonDanhSach();
-		System.out.println("size:"+danhSach.size());
+		System.out.println("size:" + danhSach.size());
 		for (int i = 0; i < danhSach.size(); i++) {
 			if ("0".equals(danhSach.get(i).getChucVu())) {
 				danhSachThanhVien.add(danhSach.get(i));
@@ -135,14 +141,14 @@ public class ThanhVienBO {
 	 * @return ArrayList<ThanhVien>
 	 */
 	public ArrayList<ThanhVien> timKiemThanhVien(String tuKhoaTimKiem, String noiDungTimKiem) {
-		ArrayList<ThanhVien> danhSachCongTacVien = new ArrayList<ThanhVien>();
+		ArrayList<ThanhVien> danhSachThanhVien = new ArrayList<ThanhVien>();
 		ArrayList<ThanhVien> danhSach = new ThanhVienDAO().timKiem(tuKhoaTimKiem, noiDungTimKiem);
 		for (int i = 0; i < danhSach.size(); i++) {
 			if ("0".equals(danhSach.get(i).getChucVu())) {
-				danhSachCongTacVien.add(danhSach.get(i));
+				danhSachThanhVien.add(danhSach.get(i));
 			}
 		}
-		return danhSachCongTacVien;
+		return danhSachThanhVien;
 	}
 
 	/**
@@ -280,7 +286,9 @@ public class ThanhVienBO {
 	}
 
 	public void capNhatMatKhauAdmin(String maThanhVien, String matKhauMoi) {
-		new ThanhVienDAO().capNhatMatKhauAdmin(maThanhVien, matKhauMoi);
+		EnDeCryption enDeCryption = new EnDeCryption(Const.PATH);
+		String matKhau = enDeCryption.encoding(matKhauMoi);
+		new ThanhVienDAO().capNhatMatKhauAdmin(maThanhVien, matKhau);
 	}
 
 	public void capNhatTenThanhVien(String maThanhVien, String tenThanhVien) {

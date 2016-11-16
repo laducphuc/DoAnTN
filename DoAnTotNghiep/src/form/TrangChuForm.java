@@ -146,7 +146,22 @@ public class TrangChuForm extends ActionForm {
 	List<BaiViet> bXHBaiViet;
 	private ArrayList<Integer> tongSoTrang=new ArrayList<Integer>();
 	private int soTrang=1,trangCuoi=0;
+	private String soThanhVien;
+	public String getSoThanhVien() {
+		return soThanhVien;
+	}
+
+	public void setSoThanhVien(String soThanhVien) {
+		this.soThanhVien = soThanhVien;
+	}
+
 	String maDanhMuc,kiemTra="0",avatar="1";
-	private String noiDungTimKiem;
-	private String submit;
+	private String noiDungTimKiem,thanhVienMoi;
+	public String getThanhVienMoi() {
+		return thanhVienMoi;
+	}
+	public void setThanhVienMoi(String thanhVienMoi) {
+		this.thanhVienMoi = thanhVienMoi;
+	}
+	
 }

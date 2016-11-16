@@ -29,7 +29,7 @@ public class ThongTinThanhVienAction extends Action{
 			ThanhVienBO thanhVienBO = new ThanhVienBO();
 			if ("1".equals(capQuyen)){
 				String maThanhVien = thanhVienForm.getMaThanhVien();
-				String chucVu = thanhVienForm.isChucVu();
+				String chucVu = thanhVienForm.getChucVu();
 				System.out.println("maThanhVien"+maThanhVien);
 				System.out.println("chucVu"+chucVu);
 				if ("0".equals(chucVu)){

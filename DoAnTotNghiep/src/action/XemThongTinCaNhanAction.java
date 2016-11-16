@@ -14,6 +14,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+import common.Const;
+import common.EnDeCryption;
 import common.StringProcess;
 import common.Validations;
 
@@ -31,6 +33,7 @@ public class XemThongTinCaNhanAction extends Action {
 			String maThanhVien = dangNhapForm.getMaThanhVien();
 			ThanhVienBO thanhVienBO = new ThanhVienBO();
 			ThanhVien thanhVien = thanhVienBO.chonThanhVien(maThanhVien);
+			thanhVienForm.setChucVu(thanhVien.getChucVu());
 			if (thanhVienForm.getSubmit() != null) {
 				if ("Đổi mật khẩu".equals(StringProcess.toUTF8(thanhVienForm.getSubmit()))) {
 
@@ -38,8 +41,10 @@ public class XemThongTinCaNhanAction extends Action {
 					String matKhauCu = dangNhapForm.getTaiKhoan().getMatKhau();
 					System.out.println("mkCu = " + matKhauCu);
 
-					String nhapMatKhauCu = thanhVienForm.getMatKhauCu();
+					
 					String nhapMatKhauMoi = thanhVienForm.getMatKhauMoi();
+					EnDeCryption enDeCryption = new EnDeCryption(Const.PATH);
+					String nhapMatKhauCu = enDeCryption.encoding(thanhVienForm.getMatKhauCu());
 					String nhapLaiMatKhau = thanhVienForm.getNhapLaiMatKhau();
 					System.out.println("nmkCu = " + nhapMatKhauCu);
 					ActionErrors actionErrors = new ActionErrors();

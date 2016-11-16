@@ -11,34 +11,29 @@
 <title>Danh Sách Đề Thi</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/songnguvietnhat3.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/bootstrap-formhelpers.css">
-<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css">
-<link rel="stylesheet"
-	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-formhelpers.js"></script>
-<script src="js/bootstrap-formhelpers.min.js"></script>
+<script src="js/PaginationJS.js"></script>
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
+<style type="text/css">
+</style>
+
 <script type="text/javascript">
-	 $(document).ready(function() {
+	$(document).ready(function() {
+
 		$('#showtable').pageMe({
 			pagerSelector : '#myPager',
 			showPrevNext : true,
 			hidePageNumbers : false,
 			perPage : 10
 		});
-		$('#showtablelk').pageMe({
-			pagerSelector : '#myPagerlk',
-			showPrevNext : true,
-			hidePageNumbers : false,
-			perPage : 10
-		});
-	}); 
+	});
+</script>
+<script type="text/javascript">
 	function submit() {
 		$('#id').click();
 	}
@@ -116,7 +111,7 @@
 																	action="/sua-de-thi?maDeThi=${ma}">
 																	<span class="glyphicon glyphicon-edit"></span>
 																</html:link></li>
-															<li title="sửa từ vựng" style="display: inline"><html:link
+															<li style="display: inline"><html:link
 																	action="/xoa-de-thi?maDeThi=${maDe}"
 																	onclick="return confirm('Bạn muốn xóa đề thi này?');">
 																	<span class="glyphicon glyphicon-trash"></span>
@@ -129,12 +124,10 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="row" style="text-align: center;">
-								<div class="col-lg-4"></div>
-								<div class="col-lg-4">
-									<ul style="margin: 0px" class="pagination pagination-lg pager"
-										id="myPager"></ul>
-								</div>
+							<div class="col-lg-12"
+								style="text-align: center; margin-bottom: 25px">
+								<ul style="margin: 0px" class="pagination pagination-lg pager"
+									id="myPager"></ul>
 							</div>
 							<!--  -->
 						</div>

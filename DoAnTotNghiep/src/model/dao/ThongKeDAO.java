@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import model.bean.BaiViet;
 import model.bean.ThanhVien;
 
@@ -142,6 +144,7 @@ public class ThongKeDAO extends ConnectDAO {
 		ThanhVien thanhVien = new ThanhVien();
 		try {
 			ResultSet rs = getStatement().executeQuery(SQL);
+			rs.next();
 			thanhVien.setMaThanhVien(rs.getString("MaThanhVien"));
 			thanhVien.setTenThanhVien(rs.getString("TenThanhVien"));
 			return thanhVien;
@@ -151,7 +154,21 @@ public class ThongKeDAO extends ConnectDAO {
 			closeConnection();
 		}
 	}
-
+	public String soThanhVien() {
+		String SQL="Select count(MaThanhVien) as Tong from THANHVIEN";
+		openConnection();
+		try {
+			ResultSet rs=getStatement().executeQuery(SQL);
+			rs.next();
+			String resurt=rs.getString("Tong");
+			return resurt;
+		} catch (SQLException e) {
+			return "";
+		}
+		finally{
+			closeConnection();
+		}
+	}
 	public static void main(String[] args) {
 		System.out.println(new ThongKeDAO().bangXepHangBaiViet().get(0).getMaBaiViet());
 	}

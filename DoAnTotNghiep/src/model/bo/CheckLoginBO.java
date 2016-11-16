@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import common.Const;
+import common.EnDeCryption;
 import model.bean.TaiKhoan;
 import model.dao.CheckLoginDAO;
 
@@ -16,7 +18,9 @@ public class CheckLoginBO {
 	 * @return Thông tin của tài khoản
 	 */
 	public TaiKhoan checkLogin(String tenTaiKhoan, String matKhau){
-		TaiKhoan taiKhoan = new CheckLoginDAO().checkLogin(tenTaiKhoan, matKhau);
+		EnDeCryption enDeCryption = new EnDeCryption(Const.PATH);
+		String maHoa = enDeCryption.encoding(matKhau);
+		TaiKhoan taiKhoan = new CheckLoginDAO().checkLogin(tenTaiKhoan, maHoa);
 		if (taiKhoan != null && taiKhoan.getMaTaiKhoan() != null){
 			if (taiKhoan.getTrangThai() == true){
 				taiKhoan.setSoNgayConLai(soNgayConLai(taiKhoan.getSoNgayKhoa(), taiKhoan.getNgayBatDauKhoa()));

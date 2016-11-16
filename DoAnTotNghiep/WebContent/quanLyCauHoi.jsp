@@ -11,34 +11,28 @@
 <title>Danh Sách Câu Hỏi</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/songnguvietnhat3.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/bootstrap-formhelpers.css">
-<link rel="stylesheet" href="css/bootstrap-formhelpers.min.css">
-<link rel="stylesheet"
-	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-formhelpers.js"></script>
-<script src="js/bootstrap-formhelpers.min.js"></script>
+<script src="js/PaginationJS.js"></script>
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
+<style type="text/css">
+</style>
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#showtable').pageMe({
+		$('#showtabl').pageMe({
 			pagerSelector : '#myPager',
 			showPrevNext : true,
 			hidePageNumbers : false,
 			perPage : 10
 		});
-		$('#showtablelk').pageMe({
-			pagerSelector : '#myPagerlk',
-			showPrevNext : true,
-			hidePageNumbers : false,
-			perPage : 10
-		});
 	});
+</script>
+ <script type="text/javascript">
 	function submit() {
 		$('#id').click();
 	}
@@ -67,7 +61,7 @@
 						</div>
 						<div class="col-lg-12">
 							<div class="col-lg-9">
-								<html:form action="/danh_sach_cau_hoi" method="post">
+								<html:form action="/danh-sach-cau-hoi" method="post">
 									<div class="row form-group">
 										<label class="col-lg-3">Liệt kê theo:</label>
 										<div class="col-lg-4">
@@ -96,7 +90,7 @@
 											<th style="width: 10%">Tùy chọn</th>
 										</tr>
 									</thead>
-									<tbody id="showtable">
+									<tbody id="showtabl">
 										<logic:notEmpty name="cauHoiForm" property="listCauHoi">
 											<logic:iterate name="cauHoiForm" property="listCauHoi"
 												id="baiHoc">
@@ -105,26 +99,25 @@
 														property="maCauHoi"></bean:define>
 													<td><bean:write property="maCauHoi" name="baiHoc" /></td>
 													<td><bean:write property="noiDung" name="baiHoc" /></td>
-													<logic:notEmpty name="baiHoc"
-															property="listPhuongAn">
-															<td><logic:iterate id="pa" name="baiHoc"
-																	property="listPhuongAn">
-																	<logic:equal value="1" name="pa" property="trangThai">
-																		<logic:notEmpty name="pa" property="noiDungPA">
-																			<bean:write name="pa" property="noiDungPA" />
+													<logic:notEmpty name="baiHoc" property="listPhuongAn">
+														<td><logic:iterate id="pa" name="baiHoc"
+																property="listPhuongAn">
+																<logic:equal value="1" name="pa" property="trangThai">
+																	<logic:notEmpty name="pa" property="noiDungPA">
+																		<bean:write name="pa" property="noiDungPA" />
+																		<p></p>
+																	</logic:notEmpty>
+																	<!-- kiem tra cau hoi co hinh anh k -->
+																	<logic:notEmpty name="pa" property="hinhAnh">
+																		<bean:define id="image" name="pa" property="hinhAnh"></bean:define>
+																		<div class="hoverimage">
 																			<p></p>
-																		</logic:notEmpty>
-																		<!-- kiem tra cau hoi co hinh anh k -->
-																		<logic:notEmpty name="pa" property="hinhAnh">
-																			<bean:define id="image" name="pa" property="hinhAnh"></bean:define>
-																			<div class="hoverimage">
-																				<p></p>
-																				<html:img src="${image}" />
-																			</div>
-																		</logic:notEmpty>
-																	</logic:equal>
-																</logic:iterate></td>
-														</logic:notEmpty>
+																			<html:img src="${image}" />
+																		</div>
+																	</logic:notEmpty>
+																</logic:equal>
+															</logic:iterate></td>
+													</logic:notEmpty>
 													<td>
 														<ul>
 															<li title="sửa câu hỏi" style="display: inline"><html:link
@@ -144,17 +137,14 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="row" style="text-align: center;">
-								<div class="col-lg-4"></div>
-								<div class="col-lg-4">
-									<ul style="margin: 0px" class="pagination pagination-lg pager"
-										id="myPager"></ul>
-								</div>
+							<div class="col-lg-12"
+								style="text-align: center; margin-bottom: 25px">
+								<ul style="margin: 0px" class="pagination pagination-lg pager"
+									id="myPager"></ul>
 							</div>
 							<!--  -->
 						</div>
 					</div>
-
 				</div>
 				<!-- body right -->
 				<jsp:include page="menuCongTacVien.jsp"></jsp:include>

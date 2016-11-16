@@ -24,104 +24,6 @@
 <script src="js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
-<script type="text/javascript">
-	var tenTrinhDo;
-	var soSao;
-	$(document).ready(function() {
-
-		$('#haha').datepicker({
-			format : "yyyy-mm-dd"
-		});
-	});
-
-	function tangSao() {
-		var soSao1 = parseInt(document.getElementById("soSao").value, 10)
-		document.getElementById("soSao").value = soSao1 + 1;
-		//alert("Tên khách hàng không được để trống !1");
-		if (soSao1 > 4)
-			tangTrinhDo(soSao1);
-	}
-	function giamSao() {
-		var soSao1 = parseInt(document.getElementById("soSao").value, 10)
-		document.getElementById("soSao").value = soSao1 - 1;
-		//alert("Tên khách hàng không được để trống !1");
-		if (soSao1 < 1)
-			giamTrinhDo(soSao1);
-	}
-	function tangTrinhDo(x) {
-		laySao();
-		x = x + soSao;
-		if (x < 5)
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên mới";
-		else if (x < 10) {
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên thường";
-			document.getElementById("soSao").value = "0";
-		} else if (x < 15) {
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên tích cực";
-			document.getElementById("soSao").value = "0";
-		} else if (x < 20) {
-			document.getElementById("tenTrinhDo").value = "Dịch giả";
-			document.getElementById("soSao").value = "0";
-		} else {
-			alert("bạn đã đạt trình độ cao nhất ^-^");
-			document.getElementById("soSao").value = "5";
-		}
-	}
-	function giamTrinhDo(x) {
-		laySao();
-		x = soSao - 1;
-		if (x > 15) {
-			document.getElementById("tenTrinhDo").value = "Dịch giả";
-		} else if (x > 10) {
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên tích cực";
-			document.getElementById("soSao").value = "5";
-		} else if (x > 5) {
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên thường";
-			document.getElementById("soSao").value = "5";
-		} else if (x > 0) {
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên mới";
-			document.getElementById("soSao").value = "5";
-		} else {
-			alert("không thể giảm thêm");
-			document.getElementById("soSao").value = "0";
-		}
-
-	}
-	function laySao() {
-		tenTrinhDo = document.getElementById("tenTrinhDo").value;
-		switch (tenTrinhDo) {
-		case "Cộng tác viên mới":
-			soSao = 0;
-			break;
-		case "Cộng tác viên thường":
-			soSao = 5;
-			break;
-		case "Cộng tác viên tích cực":
-			soSao = 10;
-			break;
-		case "Dịch giả":
-			soSao = 15;
-			break;
-
-		}
-	}
-	function datTrinhDo(x) {
-		laySao();
-		soSao = soSao + x;
-		if (soSao < 0)
-			alert("không thể giảm thêm");
-		else if (soSao === 0)
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên mới";
-		else if (soSao === 5)
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên thường";
-		else if (soSao === 10)
-			document.getElementById("tenTrinhDo").value = "Cộng tác viên tích cực";
-		else if (soSao === 15)
-			document.getElementById("tenTrinhDo").value = "Dịch giả";
-		else
-			alert("Không thể tăng thêm");
-	}
-</script>
 <style type="text/css">
 </style>
 </head>
@@ -140,8 +42,7 @@
 				<li style="width: 180px;"><html:link
 						action="/danh-sach-cong-tac-vien.do">Quản lý cộng tác viên</html:link>
 				</li>
-				<li style="width: 180px;"><html:link
-						action="/quan-ly-phan-cong-dich-bai.do?trangThai=Tatca">Phân công dịch bài</html:link></li>
+				
 				<li style="width: 180px;"><html:link
 						action="/quan-ly-bai-viet.do?trangThai=Tatca">Quản lý bài viết</html:link></li>
 				<logic:notEmpty name="dangNhapForm" property="taiKhoan"

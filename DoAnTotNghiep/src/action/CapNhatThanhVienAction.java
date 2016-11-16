@@ -36,7 +36,7 @@ public class CapNhatThanhVienAction extends Action {
 			String capQuyen = dangNhapForm.getChucVu();
 			System.out.println("Capquyen = " + capQuyen);
 			String maThanhVien = thanhVienForm.getMaThanhVien();
-			String chucVu = thanhVienForm.isChucVu();
+			String chucVu = thanhVienForm.getChucVu();
 
 			ThanhVienBO thanhVienBO = new ThanhVienBO();
 
@@ -56,9 +56,6 @@ public class CapNhatThanhVienAction extends Action {
 				}
 
 				String diaChi = StringProcess.toUTF8(thanhVienForm.getDiaChi());
-				String quocTich = thanhVienForm.getQuocTich();
-				String ngonNgu = StringProcess.toUTF8(thanhVienForm
-						.getNgonNgu());
 				String soDienThoai = thanhVienForm.getSoDienThoai();
 				String email = thanhVienForm.getEmail();
 				FormFile file=thanhVienForm.getFile();
@@ -143,8 +140,6 @@ public class CapNhatThanhVienAction extends Action {
 					thanhVien.setNgaySinh(ngaySinh);
 					thanhVien.setGioiTinh(gioiTinh);
 					thanhVien.setDiaChi(diaChi);
-					thanhVien.setQuocTich(quocTich);
-					thanhVien.setNgonNgu(ngonNgu);
 					thanhVien.setSoDienThoai(soDienThoai);
 					thanhVien.setEmail(email);
 

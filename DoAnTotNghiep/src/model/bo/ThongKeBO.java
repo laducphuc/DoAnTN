@@ -38,4 +38,7 @@ public class ThongKeBO {
 	public ThanhVien thanhVienNew() {
 		return new ThongKeDAO().thanhVienNew();
 	}
+	public String soThanhVien() {
+		return new ThongKeDAO().soThanhVien();
+	}
 }

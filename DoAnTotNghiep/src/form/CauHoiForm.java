@@ -14,9 +14,50 @@ public class CauHoiForm extends ActionForm {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String noiDung, maCapDo, maCauHoi, dapAn, timKiem;
+	private String noiDung, maCapDo,tenCapDo, maCauHoi, dapAn, timKiem;
 	private ArrayList<CapDo> listCapDo;
 	private ArrayList<CauHoi> listCauHoi;
+	private String dapAn1, dapAn2, dapAn3, dapAn4;
+
+	public String getTenCapDo() {
+		return tenCapDo;
+	}
+
+	public void setTenCapDo(String tenCapDo) {
+		this.tenCapDo = tenCapDo;
+	}
+
+	public String getDapAn1() {
+		return dapAn1;
+	}
+
+	public void setDapAn1(String dapAn1) {
+		this.dapAn1 = dapAn1;
+	}
+
+	public String getDapAn2() {
+		return dapAn2;
+	}
+
+	public void setDapAn2(String dapAn2) {
+		this.dapAn2 = dapAn2;
+	}
+
+	public String getDapAn3() {
+		return dapAn3;
+	}
+
+	public void setDapAn3(String dapAn3) {
+		this.dapAn3 = dapAn3;
+	}
+
+	public String getDapAn4() {
+		return dapAn4;
+	}
+
+	public void setDapAn4(String dapAn4) {
+		this.dapAn4 = dapAn4;
+	}
 
 	public String getNoiDung() {
 		return noiDung;

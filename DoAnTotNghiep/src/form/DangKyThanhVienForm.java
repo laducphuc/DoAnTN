@@ -1,34 +1,26 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 
 @SuppressWarnings("serial")
 public class DangKyThanhVienForm extends ActionForm {
-	
+
 	private String tenThanhVien;
 	private int gioiTinh;
 	private String ngaySinh;
 	private String diaChi;
 	private String soDienThoai;
 	private String email;
-	private String quocTich;
-	private String ngonNgu;
-	private String[] arrNgonNgu = { "Tiếng Nhật", "Tiếng Việt" };
 	private String submit;
 	private String tenTaiKhoan;
 	private String matKhau;
 	private String nhapLaiMatKhau;
-	private String[] arrQuocTich = {
-
-	"Brazil", "Brunei", "Canada", "Chile", "China", "Colombia", "Congo",
-			"Cuba", "France", "Germany", "Ghana", "Hong Kong", "Hungary",
-			"India", "Indonesia", "Iran", "Iraq", "Italy", "Japan", "Laos",
-			"Malaysia", "Mexico", "Nepal", "New Zealand", "Pakistan",
-			"Paraguay", "Peru", "Philippines", "Qatar", "Russia", "Singapore",
-			" Korea", "Taiwan", "Thailand", "Vietnam",
-
-	};
 	private FormFile file;
 
 	public FormFile getFile() {
@@ -38,6 +30,7 @@ public class DangKyThanhVienForm extends ActionForm {
 	public void setFile(FormFile file) {
 		this.file = file;
 	}
+
 	public String getTenThanhVien() {
 		return tenThanhVien;
 	}
@@ -86,30 +79,6 @@ public class DangKyThanhVienForm extends ActionForm {
 		this.email = email;
 	}
 
-	public String getQuocTich() {
-		return quocTich;
-	}
-
-	public void setQuocTich(String quocTich) {
-		this.quocTich = quocTich;
-	}
-
-	public String getNgonNgu() {
-		return ngonNgu;
-	}
-
-	public void setNgonNgu(String ngonNgu) {
-		this.ngonNgu = ngonNgu;
-	}
-
-	public String[] getArrNgonNgu() {
-		return arrNgonNgu;
-	}
-
-	public void setArrNgonNgu(String[] arrNgonNgu) {
-		this.arrNgonNgu = arrNgonNgu;
-	}
-
 	public String getSubmit() {
 		return submit;
 	}
@@ -141,13 +110,12 @@ public class DangKyThanhVienForm extends ActionForm {
 	public void setNhapLaiMatKhau(String nhapLaiMatKhau) {
 		this.nhapLaiMatKhau = nhapLaiMatKhau;
 	}
-
-	public String[] getArrQuocTich() {
-		return arrQuocTich;
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
-
-	public void setArrQuocTich(String[] arrQuocTich) {
-		this.arrQuocTich = arrQuocTich;
-	}
-
 }

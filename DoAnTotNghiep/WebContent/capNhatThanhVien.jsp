@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Trang Admin- Cập nhật thông tin thành viên</title>
+<title>Cập nhật thông tin thành viên</title>
 <link rel="stylesheet"
 	href="font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -33,8 +33,6 @@
 		});
 	});
 </script>
-<style type="text/css">
-</style>
 </head>
 <body>
 	<!-- header -->
@@ -46,59 +44,90 @@
 				property="taiKhoan" scope="session"></bean:define>
 			<bean:define id="chucVuSession" name="taiKhoanSession"
 				property="chucVu"></bean:define>
-			<logic:equal name="chucVuSession" value="1">
+			<logic:equal name="chucVuSession" value="2">
 				<ul>
-					<li style="color: blue; width: 180px;"><html:link
-							action="trang-chu.do">Trang chủ</html:link></li>
-					<li><html:link action="/them-bai-viet.do">Viết bài mới</html:link></li>
+					<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
+					<li><html:link style="width: 60px;" action="/trang-chu.do">Trang chủ</html:link></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Quản Lý bài Dịch <span
+						data-toggle="dropdown" href="#">Học theo giáo trình <span
 							class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><html:link
-									action="/bai-viet-chua-duyet.do?maThanhVien=${maThanhVien}">Bài Viết Chưa Duyệt</html:link></li>
-							<li><html:link
-									action="/bai-viet-nhan-dich.do?maThanhVien=${maThanhVien}">Bài Viết Đã Nhận</html:link></li>
+						<ul class="dropdown-menu" style="text-align: left">
+							<li><html:link action="/bai-hoc.do?maCapDo=CD001"
+									style="text-align: left">Giáo trình N5</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD002"
+									style="text-align: left">Giáo trình N4</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD003"
+									style="text-align: left">Giáo trình N3</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+									style="text-align: left">Giáo trình N2</html:link></li>
 						</ul></li>
-					<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông Tin Cá Nhân</html:link></li>
-					<li><html:link action="/dang-xuat">Đăng xuất</html:link></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
+						<ul class="dropdown-menu" style="text-align: left">
+							<li><html:link action="/test.do?maCapDo=CD001"
+									style="text-align: left">Đề luyện thi N5</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD002"
+									style="text-align: left">Đề luyện thi N4</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD003"
+									style="text-align: left">Đề luyện thi N3</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD004"
+									style="text-align: left">Đề luyện thi N2</html:link></li>
+						</ul></li>
+					<logic:notEmpty name="dangNhapForm" property="taiKhoan"
+						scope="session">
+						<bean:define id="taikhoan" property="taiKhoan" name="dangNhapForm"
+							scope="session"></bean:define>
+						<li class="dropdown pull-right"><a class="dropdown-toggle"
+							href="#"> <bean:define id="anh" name="taikhoan"
+									property="anh"></bean:define> <html:img src="avata/${anh }"
+									styleClass="img-circle" style="width: 40px; height:40px" /> <bean:write
+									name="taikhoan" property="tenThanhVien" /> <span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông tin cá nhân</html:link></li>
+								<li><html:link action="/danh-sach-bai-hoc.do">Quản lý tài liệu</html:link></li>
+								<li><html:link action="/danh-sach-de-thi.do">Quản lý đề thi</html:link></li>
+								<li><html:link action="/list-tu-vung.do">Quản lý từ vựng</html:link></li>
+								<li><html:link action="/danh-sach-cau-hoi.do">Quản lý câu hỏi</html:link></li>
+								<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
+							</ul></li>
+					</logic:notEmpty>
 				</ul>
 			</logic:equal>
 			<logic:equal name="chucVuSession" value="0">
 				<ul>
-					<li><html:link action="/trang-chu.do">Trang chủ</html:link></li>
+					<li><a href="trang-gioi-thieu.do">Giới thiệu</a></li>
+					<li><html:link style="width: 60px;" action="/trang-chu.do">Trang chủ</html:link></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Danh Mục Bài Viết <span
+						data-toggle="dropdown" href="#">Học theo giáo trình <span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" style="text-align: left">
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000001&kiemTra=1"
-									style="text-align: left">Xã Hội</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000002&kiemTra=1"
-									style="text-align: left">Thế Giới</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000003&kiemTra=1"
-									style="text-align: left">Giáo Dục</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000004&kiemTra=1"
-									style="text-align: left">Công Nghệ</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000005&kiemTra=1"
-									style="text-align: left">Thể Thao</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000006&kiemTra=1"
-									style="text-align: left">Giải Trí</html:link></li>
-							<li><html:link
-									action="/trang-chu.do?maDanhMuc=DM00000007&kiemTra=1"
-									style="text-align: left">Sức Khỏe</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD001"
+									style="text-align: left">Giáo trình N5</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD002"
+									style="text-align: left">Giáo trình N4</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD003"
+									style="text-align: left">Giáo trình N3</html:link></li>
+							<li><html:link action="/bai-hoc.do?maCapDo=CD004"
+									style="text-align: left">Giáo trình N2</html:link></li>
 						</ul></li>
-					<li><html:link action="/thong-tin-thanh-vien.do">Thông tin cá nhân</html:link></li>
-					<li><html:link action="/them-bai-viet.do">Viết bài mới</html:link></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Luyện thi <span class="caret"></span></a>
+						<ul class="dropdown-menu" style="text-align: left">
+							<li><html:link action="/test.do?maCapDo=CD001"
+									style="text-align: left">Đề luyện thi N5</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD002"
+									style="text-align: left">Đề luyện thi N4</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD003"
+									style="text-align: left">Đề luyện thi N3</html:link></li>
+							<li><html:link action="/test.do?maCapDo=CD004"
+									style="text-align: left">Đề luyện thi N2</html:link></li>
+						</ul></li>
+					<li><html:link action="/xem-thong-tin-ca-nhan.do">Thông tin cá nhân</html:link></li>
 					<li><html:link action="/dang-xuat.do">Đăng xuất</html:link></li>
 				</ul>
 			</logic:equal>
-			<logic:equal name="chucVuSession" value="3">
+			<logic:equal name="chucVuSession" value="1">
 				<ul>
 					<li style="color: blue; width: 180px;"><html:link
 							action="trang-chu.do">Trang chủ</html:link></li>
@@ -108,13 +137,6 @@
 					<li style="width: 180px;"><html:link
 							action="/danh-sach-cong-tac-vien.do">Quản lý cộng tác viên</html:link>
 					</li>
-
-					</li>
-					<li style="width: 180px;"><html:link
-							action="/quan-ly-phan-cong-dich-bai.do?trangThai=Tatca">Phân công dịch bài</html:link></li>
-					<li style="width: 180px;"><html:link
-							action="/quan-ly-bai-viet.do?trangThai=Tatca">Quản lý bài viết</html:link></li>
-
 					<logic:notEmpty name="dangNhapForm" property="taiKhoan"
 						scope="session">
 						<bean:define id="taikhoan" name="dangNhapForm" property="taiKhoan"
@@ -155,9 +177,9 @@
 							action="/cap-nhat-thanh-vien?maThanhVien=${maThanhVien}&chucVu=${chucVu}"
 							method="post" enctype="multipart/form-data">
 							<div class="col-lg-8">
-								<div class="col-lg-12" style=" text-align: center;">
+								<div class="col-lg-12" style="text-align: center;">
 									<h4 style="font-size: 30px; margin-top: 30px;">
-										<i class="fa fa-users"></i> Cập nhật thông tin thành viên
+										<i class="fa fa-users"></i> Cập nhật thông tin cá nhân
 									</h4>
 								</div>
 
@@ -218,28 +240,6 @@
 									</div>
 									<div class="row form-group">
 										<label class="control-label col-sm-12"
-											style="text-align: left;"><i class="fa fa-globe"></i>
-											Quốc tịch:</label>
-										<div class="col-sm-12">
-											<html:select property="quocTich" name="thanhVienForm"
-												styleClass="form-control">
-												<html:options name="thanhVienForm" property="arrQuocTich" />
-											</html:select>
-										</div>
-									</div>
-									<div class="row form-group">
-										<label class="control-label col-sm-12"
-											style="text-align: left;"><i class="fa fa-language"></i>
-											Ngôn ngữ:</label>
-										<div class="col-sm-12">
-											<html:select property="ngonNgu" name="thanhVienForm"
-												styleClass="form-control">
-												<html:options name="thanhVienForm" property="arrNgonNgu" />
-											</html:select>
-										</div>
-									</div>
-									<div class="row form-group">
-										<label class="control-label col-sm-12"
 											style="text-align: left;"><i class="fa fa-phone"></i>
 											Số điện thoại:</label>
 										<div class="col-sm-12">
@@ -275,33 +275,6 @@
 												styleClass="form-control" disabled="true"></html:text>
 										</div>
 									</div>
-									<div class="row form-group">
-										<label class="control-label col-sm-12"
-											style="text-align: left;"><i
-											class="fa fa-balance-scale"></i> Cấp độ:</label>
-										<div class="col-sm-12">
-											<html:text name="thanhVienForm" property="tenCapDo"
-												styleClass="form-control" disabled="true"></html:text>
-										</div>
-									</div>
-									<div class="row form-group">
-										<label class="control-label col-sm-12"
-											style="text-align: left;"><i class="fa fa-star-o"></i>
-											Số sao:</label>
-										<div class="col-sm-12">
-											<html:text name="thanhVienForm" property="soSao"
-												styleClass="form-control" disabled="true"></html:text>
-										</div>
-									</div>
-									<div class="row form-group">
-										<label class="control-label col-sm-12"
-											style="text-align: left;"><i
-											class="fa fa-file-text-o"></i> Số bài đóng góp:</label>
-										<div class="col-sm-12">
-											<html:text name="thanhVienForm" property="soBaiDongGop"
-												styleClass="form-control" disabled="true"></html:text>
-										</div>
-									</div>
 								</div>
 								<div class="col-lg-12"
 									style="text-align: right; margin-bottom: 30px; margin-top: 10px; text-align: center;">
@@ -312,7 +285,7 @@
 								</div>
 
 							</div>
-							<div class="col-lg-3" style="margin-top:97px">
+							<div class="col-lg-3" style="margin-top: 97px">
 								<div class="col-lg-12">
 									<label><i class="fa fa-file-image-o"></i> Ảnh đại diện</label>
 								</div>
@@ -324,30 +297,9 @@
 						</html:form>
 					</div>
 				</div>
-				<logic:equal name="chucVuSession" value="3">
+				<logic:equal name="chucVuSession" value="1">
 					<!-- body right -->
-					<div class="col-lg-3" style="height: auto; padding-right: 0px;">
-						<div class="col-lg-12 thanhVienNoiBat">
-						<div class="col-lg-12" style="text-align: center;">
-							<label> Thống Kê</label>
-						</div>
-						<div class="col-lg-12">
-							<hr style="border: 1px solid #ddd; margin: 2px 0px;">
-						</div>
-
-						<ul>
-							<li><html:link action="/thong-ke.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng thành viên</html:link>
-							</li>
-							<li><html:link action="/bang-xep-hang-cong-tac-vien.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng cộng tác viên</html:link>
-							</li>
-							<li><html:link action="/bang-xep-hang-bai-viet.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng bài viết</html:link>
-							</li>
-						</ul>
-					</div>
-					</div>
+					<jsp:include page="thongke.jsp"></jsp:include>
 				</logic:equal>
 
 			</div>
@@ -355,13 +307,13 @@
 	</div>
 	<!-- footer -->
 	<div class="include" data-include="footer"></div>
-	
+
 	<script type="text/javascript">
 		$("#input-1").fileinput({
-			showUpload: false,
-			showRemove: false,
-			browseLabel: "Duyệt ảnh đại diện",
-			PreviewFileType: "image",
+			showUpload : false,
+			showRemove : false,
+			browseLabel : "Duyệt ảnh đại diện",
+			PreviewFileType : "image",
 		});
 	</script>
 </body>

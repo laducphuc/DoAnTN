@@ -26,31 +26,6 @@
 <script src="js/jchart.js"></script>
 <script type="text/javascript" src="js/my-include.js"></script>
 <script type="text/javascript" src="js/fix-menu.js"></script>
-<style type="text/css">
-</style>
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#population_chart")
-								.jChart(
-										{
-											name : "Đánh Giá Chi Tiết (Đơn vị : %)",
-											headers : [ "5 sao", "4 sao",
-													"3 sao", "2 sao", "1 sao" ],
-											values : [ $("#sao5").val(),
-													$("#sao4").val(),
-													$("#sao3").val(),
-													$("#sao2").val(),
-													$("#sao1").val() ],
-											footers : [ 10, 20, 30, 40, 50, 60,
-													70, 80, 90, 100 ],
-											colors : [ "#AAAAAA", "#555555",
-													"#AAAAAA", "#555555",
-													"#AAAAAA" ]
-										});
-					});
-</script>
 <script type="text/javascript">
 	function hienThiFormDangNhap() {
 		$("#form-login").css("top", "20%");

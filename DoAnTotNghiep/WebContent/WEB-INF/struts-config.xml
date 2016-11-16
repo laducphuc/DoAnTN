@@ -28,18 +28,23 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 
 	<action-mappings>
 
-		<action name="thiForm" input="/userThi.jsp" path="/ketquathi"
-			scope="request" type="action.KetQuaThiAction">
-			<forward name="ket_qua_thi" path="/userKetQuaThi.jsp" />
-			<forward name="ve_trang_chu" path="/trang-chu.do" />
-		</action>
+		<action name="cauHoiForm" input="/quanLyCauHoi.jsp" path="/sua-cau-hoi"
+         scope="request" type="action.SuaCauHoiAction">
+         <forward name="dscauhoi" path="/capNhatCauHoi.jsp" />
+         <forward name="ve_trang_chu" path="/trang-chu.do" redirect="true"/>
+      </action>
+      <action name="thiForm" input="/userThi.jsp" path="/ketquathi"
+         scope="request" type="action.KetQuaThiAction">
+         <forward name="ket_qua_thi" path="/userKetQuaThi.jsp" />
+         <forward name="ve_trang_chu" path="/trang-chu.do" redirect="true"/>
+      </action>
 		<action name="thiForm" input="/DanhSachBaiThi.jsp" path="/thi"
 			scope="request" type="action.ThiAction">
 			<forward name="thi_online" path="/userThi.jsp" />
 			<forward name="loi" path="/test.do" redirect="true" />
 		</action>
 
-		<action name="cauHoiForm" input="/quanLyCauHoi.jsp" path="/danh_sach_cau_hoi"
+		<action name="cauHoiForm" input="/quanLyCauHoi.jsp" path="/danh-sach-cau-hoi"
 			scope="request" type="action.QuanLyCauHoiAction">
 			<forward name="ds_cauhoi" path="/quanLyCauHoi.jsp" />
 		</action>
@@ -205,7 +210,6 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 				redirect="true" />
 			<forward name="capNhatCongTacVienAdmin" path="/capNhatCongTacVien.jsp" />
 			<forward name="dangNhap" path="/dang-xuat.do" />
-
 			<forward name="capNhatThanhVienThanhCong" path="/xem-thong-tin-ca-nhan.do"
 				redirect="true" />
 			<forward name="capNhatThanhVien" path="/capNhatThanhVien.jsp" />
@@ -224,7 +228,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		</action>
 		<action input="/dangKyThanhVien.jsp" name="dangKyThanhVienForm"
 			path="/dang-ky-thanh-vien" scope="request" type="action.DangKyThanhVienAction">
-			<forward name="dangKyThanhVienThanhCong" path="dangNhap.jsp"
+			<forward name="dangKyThanhVienThanhCong" path="trang-chu.do"
 				redirect="true" />
 			<forward name="dangKyThanhVien" path="/dangKyThanhVien.jsp" />
 			<forward name="dangKyThanhVienThanhCongAdmin" path="/danh-sach-thanh-vien.do"

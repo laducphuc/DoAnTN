@@ -250,14 +250,6 @@
 																	name="thanhVien" property="ngaySinh" /></i>
 														</h6>
 														<h6>
-															<i class="fa fa-globe"> <bean:write name="thanhVien"
-																	property="quocTich" /></i>
-														</h6>
-														<h6>
-															<i class="fa fa-language"> <bean:write
-																	name="thanhVien" property="ngonNgu" /></i>
-														</h6>
-														<h6>
 															<i class="fa fa-balance-scale"> <bean:write
 																	name="thanhVien" property="tenTrinhDo" /></i>
 														</h6>
@@ -289,14 +281,6 @@
 														<h6>
 															<i class="fa fa-birthday-cake"> <bean:write
 																	name="thanhVien" property="ngaySinh" /></i>
-														</h6>
-														<h6>
-															<i class="fa fa-globe"> <bean:write name="thanhVien"
-																	property="quocTich" /></i>
-														</h6>
-														<h6>
-															<i class="fa fa-language"> <bean:write
-																	name="thanhVien" property="ngonNgu" /></i>
 														</h6>
 														<h6>
 															<i class="fa fa-balance-scale"> <bean:write
@@ -368,14 +352,6 @@
 																	name="thanhVien" property="ngaySinh" /></i>
 														</h6>
 														<h6>
-															<i class="fa fa-globe"> <bean:write name="thanhVien"
-																	property="quocTich" /></i>
-														</h6>
-														<h6>
-															<i class="fa fa-language"> <bean:write
-																	name="thanhVien" property="ngonNgu" /></i>
-														</h6>
-														<h6>
 															<i class="fa fa-balance-scale"> <bean:write
 																	name="thanhVien" property="tenCapDo" /></i>
 														</h6>
@@ -407,14 +383,6 @@
 														<h6>
 															<i class="fa fa-birthday-cake"> <bean:write
 																	name="thanhVien" property="ngaySinh" /></i>
-														</h6>
-														<h6>
-															<i class="fa fa-globe"> <bean:write name="thanhVien"
-																	property="quocTich" /></i>
-														</h6>
-														<h6>
-															<i class="fa fa-language"> <bean:write
-																	name="thanhVien" property="ngonNgu" /></i>
 														</h6>
 														<h6>
 															<i class="fa fa-balance-scale"> <bean:write

@@ -128,30 +128,8 @@
 										</font>
 									</div>
 								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-globe"></i>
-										Quốc tịch:</label>
-									<div class="col-sm-12">
-										<html:select property="quocTich" name="dangKyThanhVienForm"
-											styleClass="form-control">
-											<html:options name="dangKyThanhVienForm"
-												property="arrQuocTich" />
-										</html:select>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-language"></i>
-										Ngôn ngữ:</label>
-									<div class="col-sm-12">
-										<html:select property="ngonNgu" name="dangKyThanhVienForm"
-											styleClass="form-control">
-											<html:options name="dangKyThanhVienForm"
-												property="arrNgonNgu" />
-										</html:select>
-									</div>
-								</div>
+								
+								
 								<div class="row form-group">
 									<label class="control-label col-sm-12"
 										style="text-align: left;"><i class="fa fa-phone"></i>

@@ -14,23 +14,15 @@ public class ThanhVienForm extends ActionForm {
 	private String diaChi;
 	private String soDienThoai;
 	private String email;
-	private String quocTich;
-	private String ngonNgu;
 	private String maCapDo;
 	private String tenCapDo;
 	private String maTrinhDo;
 	private String tenTrinhDo;
 	private String chucVu;
-	private int soSao;
-	private int soBaiDongGop;
-	private int soBaiDaDich;
-	private int soBinhLuan;
 	private String tenTaiKhoan;
 	private ThanhVien thanhVien;
-	private String[] arrNgonNgu = { "Tiếng Nhật", "Tiếng Việt" };
 	private String submit;
 	private String soNgayKhoa;
-	
 	private String matKhauCu;
 	private String matKhauMoi;
 	private String nhapLaiMatKhau;
@@ -104,19 +96,6 @@ public class ThanhVienForm extends ActionForm {
 		this.nhapLaiMatKhau = nhapLaiMatKhau;
 	}
 
-	private String[] arrQuocTich = {
-
-	"Brazil", "Brunei", "Canada", "Chile", "China", "Colombia", "Congo",
-			"Cuba", "France", "Germany", "Ghana", "Hong Kong", "Hungary",
-			"India", "Indonesia", "Iran", "Iraq", "Italy", "Japan", "Laos",
-			"Malaysia", "Mexico", "Nepal", "New Zealand", "Pakistan",
-			"Paraguay", "Peru", "Philippines", "Qatar", "Russia", "Singapore",
-			" Korea", "Taiwan", "Thailand", "Vietnam",
-
-	};
-	
-	
-	
 	public String getMaTrinhDo() {
 		return maTrinhDo;
 	}
@@ -133,28 +112,12 @@ public class ThanhVienForm extends ActionForm {
 		this.tenTrinhDo = tenTrinhDo;
 	}
 
-	public String isChucVu() {
+	public String getChucVu() {
 		return chucVu;
 	}
 
 	public void setChucVu(String chucVu) {
 		this.chucVu = chucVu;
-	}
-
-	public int getSoBaiDaDich() {
-		return soBaiDaDich;
-	}
-
-	public void setSoBaiDaDich(int soBaiDaDich) {
-		this.soBaiDaDich = soBaiDaDich;
-	}
-	
-	public int getSoBinhLuan() {
-		return soBinhLuan;
-	}
-
-	public void setSoBinhLuan(int soBinhLuan) {
-		this.soBinhLuan = soBinhLuan;
 	}
 
 	public String getSubmit() {
@@ -172,31 +135,6 @@ public class ThanhVienForm extends ActionForm {
 	public void setSoNgayKhoa(String soNgayKhoa) {
 		this.soNgayKhoa = soNgayKhoa;
 	}
-
-	public String[] getArrQuocTich() {
-		return arrQuocTich;
-	}
-
-	public void setArrQuocTich(String[] arrQuocTich) {
-		this.arrQuocTich = arrQuocTich;
-	}
-
-	public String[] getArrNgonNgu() {
-		return arrNgonNgu;
-	}
-
-	public void setArrNgonNgu(String[] arrNgonNgu) {
-		this.arrNgonNgu = arrNgonNgu;
-	}
-
-	public int getSoBaiDongGop() {
-		return soBaiDongGop;
-	}
-
-	public void setSoBaiDongGop(int soBaiDongGop) {
-		this.soBaiDongGop = soBaiDongGop;
-	}
-
 	public String getMaThanhVien() {
 		return maThanhVien;
 	}
@@ -253,22 +191,6 @@ public class ThanhVienForm extends ActionForm {
 		this.email = email;
 	}
 
-	public String getQuocTich() {
-		return quocTich;
-	}
-
-	public void setQuocTich(String quocTich) {
-		this.quocTich = quocTich;
-	}
-
-	public String getNgonNgu() {
-		return ngonNgu;
-	}
-
-	public void setNgonNgu(String ngonNgu) {
-		this.ngonNgu = ngonNgu;
-	}
-
 	public String getMaCapDo() {
 		return maCapDo;
 	}
@@ -283,14 +205,6 @@ public class ThanhVienForm extends ActionForm {
 
 	public void setTenCapDo(String tenCapDo) {
 		this.tenCapDo = tenCapDo;
-	}
-
-	public int getSoSao() {
-		return soSao;
-	}
-
-	public void setSoSao(int soSao) {
-		this.soSao = soSao;
 	}
 
 	public String getTenTaiKhoan() {
@@ -319,17 +233,11 @@ public class ThanhVienForm extends ActionForm {
 		diaChi = thanhVien.getDiaChi();
 		soDienThoai = thanhVien.getSoDienThoai();
 		email = thanhVien.getEmail();
-		quocTich = thanhVien.getQuocTich();
-		ngonNgu = thanhVien.getNgonNgu();
 		maCapDo = thanhVien.getMaCapDo();
 		tenCapDo = thanhVien.getTenCapDo();
 		maTrinhDo = thanhVien.getMaTrinhDo();
 		tenTrinhDo = thanhVien.getTenTrinhDo();
 		chucVu = thanhVien.getChucVu();
-		soSao = thanhVien.getSoSao();
-		soBaiDongGop = thanhVien.getSoBaiDongGop();
-		soBaiDaDich = thanhVien.getSoBaiDaDich();
-		soBinhLuan = thanhVien.getSoBinhLuan();
 		tenTaiKhoan = thanhVien.getTenTaiKhoan();
 	}
 

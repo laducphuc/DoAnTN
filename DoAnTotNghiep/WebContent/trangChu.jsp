@@ -32,35 +32,6 @@
 	<div class="include" data-include="header"></div>
 	<jsp:include page="dangNhapForm.jsp"></jsp:include>
 	<!-- menu -->
-
-	<!-- form translate -->
-	<div class="col-lg-3" id="form-tratu">
-		<div class="col-lg-12" style="text-align: center">
-			<label>Tra từ nhanh</label>
-		</div>
-		<div class="col-lg-12">
-			<select id="source">
-				<option value="jpn">Japanese</option>
-				<option value="vie">Vietnamese</option>
-			</select>
-		</div>
-		<div class="col-lg-12">
-			<textarea id="mytext" rows="4" cols="35"></textarea>
-		</div>
-		<div class="col-lg-12">
-			<select id="dest">
-				<option value="vie">Vietnamese</option>
-				<option value="jpn">Japanese</option>
-			</select>
-		</div>
-		<div class="col-lg-12">
-			<textarea id="result" rows="4" cols="35" disabled="disabled"></textarea>
-		</div>
-		<div class="col-lg-12" style="text-align: center; margin-top: 10px;">
-			<input type="button" class="btn btn-default" value="Dịch"
-				id="translate">
-		</div>
-	</div>
 	<!-- body -->
 	<div class="col-lg-12">
 		<div class="col-lg-12" style="margin-top: 20px; padding: 0px;">
@@ -72,18 +43,30 @@
 							<!-- Indicators -->
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
-								<logic:iterate id="baiViet" name="trangChuForm"
-									property="danhSachBaiVietHienThi">
-									 <bean:define id="anh1" property="anh" name="baiViet"></bean:define> 
-									<bean:define id="ma" property="maBaiViet" name="baiViet"></bean:define>
-									<div class="item">
-										 <html:link action="xem-bai-viet.do?maBaiViet=${ma }">
-											<html:img src="pictures/${anh1 }" /> 
-										</html:link> 
-										<div class="carousel-caption"></div>
-									</div>
-								</logic:iterate>
-
+								<div class="item">
+									<html:img src="pictures/hinh2.jpg" />
+									<div class="carousel-caption"></div>
+								</div>
+								<div class="item">
+									<html:img src="pictures/hinh3.jpg" />
+									<div class="carousel-caption"></div>
+								</div>
+								<div class="item">
+									<html:img src="pictures/hinh4.jpg" />
+									<div class="carousel-caption"></div>
+								</div>
+								<div class="item">
+									<html:img src="pictures/hinh5.jpg" />
+									<div class="carousel-caption"></div>
+								</div>
+								<div class="item">
+									<html:img src="pictures/inh6.jpg" />
+									<div class="carousel-caption"></div>
+								</div>
+								<div class="item">
+									<html:img src="pictures/hinh7.jpg" />
+									<div class="carousel-caption"></div>
+								</div>
 							</div>
 
 							<!-- Controls -->
@@ -96,137 +79,87 @@
 							</a>
 						</div>
 					</div>
-
 					<div class="col-lg-12 divMain"
 						style="background: white; height: auto;">
-						<logic:iterate id="danhSachCon" name="trangChuForm"
-							property="danhSachBaiVietMoiNhat">
-							<div class="col-lg-12">
-								<logic:iterate id="baiViet" name="danhSachCon">
-									<bean:define id="anh" property="anh" name="baiViet"></bean:define> 
-									<bean:define id="maBaiViet" property="maBaiViet" name="baiViet"></bean:define>
-									<div class="noidung col-lg-4 divMain">
-										<div class="noidunghienthi col-lg-12" style="height: 220px;">
-											<html:link action="xem-bai-viet.do?maBaiViet=${maBaiViet }"
-												style="color: #1E90FF; font-size: 1.3em">
-												<bean:write name="baiViet" property="tieuDeViet" />
-											</html:link>
-										 <img alt="Noi Dung" src="pictures/${anh }" width="100"
-												height="57"><br>
-
-											<p>
-												<em><bean:write name="baiViet" property="ngayVietBai" />
-												</em>
-											</p>
-
-											<p style="padding: 5px; color: black;">
-												<bean:write name="baiViet" property="moTaNhat" />
-											</p>
-										</div>
-										<p style="padding-left: 10px; padding-top: 10px;">
-
-											<span class="hinhdoctiep"> <a
-												href="xem-bai-viet?maBaiViet=${maBaiViet }"></a>
-											</span>
-										</p>
-										<p class="binhchonoo" style="margin: 0px; float: left;">
-											Danh Mục:
-											<bean:write name="baiViet" property="tenDanhMucViet" />
-										</p>
-
-									</div>
-								</logic:iterate>
-							</div>
-						</logic:iterate>
-						<div class="col-lg-1"></div>
+						<!-- nội dung trang chủ -->
 						<div class="col-lg-12">
-							<div class="col-lg-3"></div>
-							<bean:define id="trangCuoi" property="trangCuoi"
-								name="trangChuForm"></bean:define>
-							<div class="container col-lg-8">
-								<div class="row">
-									<ul class="pagination paper">
-										<li><a href="trang-chu.do?soTrang=1">Trang đầu</a></li>
-										<li><a href="#">&laquo;</a></li>
-										<logic:iterate id="soTrang" property="tongSoTrang"
-											name="trangChuForm">
-											<li><a href="trang-chu.do?soTrang=${soTrang }"><bean:write
-														name="soTrang" /> </a></li>
-										</logic:iterate>
-										<li><a href="#">&raquo;</a></li>
-										<li><a href="trang-chu.do?soTrang=${trangCuoi }">Trang
-												cuối</a></li>
-									</ul>
+							<div class="col-lg-12">
+								<br>
+							</div>
+							<div class="col-lg-3">
+								<html:image src="image/Source/Capture.PNG">
+								</html:image>
+							</div>
+							<div class="col-lg-8">
+								<p style="padding: 5px; color: black;">
+								<h4>Tiếng Nhật có 3 loại chữ viết: Hiragana, Katakana, và
+									Kanji. Hiragana và Katakana là loại chữ biểu âm, mỗi chữ biểu
+									thị một âm tiết. Hãy học các chữ cái tiếng Nhật! Đây là bước
+									đầu tiên để đọc và viết tiếng Nhật.</h4>
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<br>
+						</div>
+						<div class="col-lg-12">
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#home">Hiragana</a></li>
+								<li><a data-toggle="tab" href="#menu1">Katakana</a></li>
+							</ul>
+
+							<div class="tab-content">
+								<div id="home" class="tab-pane fade in active">
+									<h3>Hiragana</h3>
+									<html:image src="image/Source/hira1.PNG"></html:image>
+									<html:image src="image/Source/hira2.PNG"></html:image>
+									<html:image src="image/Source/hira3.PNG"></html:image>
+								</div>
+								<div id="menu1" class="tab-pane fade">
+									<h3>Katakana</h3>
+									<html:image src="image/Source/kata1.PNG"></html:image>
+									<html:image src="image/Source/kata2.PNG"></html:image>
+									<html:image src="image/Source/kata3.PNG"></html:image>
 								</div>
 							</div>
 						</div>
+						<div class="col-lg-1"></div>
+
 					</div>
 				</div>
 				<!-- Kết thúc thể hiển thị nội dung chương trình -->
 				<!-- body right -->
-			<%-- 	<div class="col-lg-3">
-					<div class="col-lg-12 thanhVienNoiBat">
-						<div class="col-lg-12">
-							<label><span class="glyphicon glyphicon-user"></span>
-								Cộng Tác Viên Nổi Bật</label>
-						</div>
-						<div class="col-lg-12">
-							<hr style="border: 1px solid #ddd; margin: 2px 0px;">
-						</div>
-						<logic:iterate id="thanhVien" name="trangChuForm"
-							property="bXHCongTacVien">
-							<div class="col-lg-12">
-
-								<h6>
-									<span class="glyphicon glyphicon-minus"></span>
-									<bean:write name="thanhVien" property="tenThanhVien" />
-								</h6>
-							</div>
-						</logic:iterate>
-
-						<div class="col-lg-12" style="margin-top: 20px;">
-							<label><span class="glyphicon glyphicon-user"></span>
-								Thành Viên Nổi Bật</label>
-						</div>
-						<div class="col-lg-12">
-							<hr style="border: 1px solid #ddd; margin: 2px 0px;">
-						</div>
-						<logic:iterate id="thanhVien" name="trangChuForm"
-							property="bXHThanhVien">
-							<div class="col-lg-12">
-
-								<h6>
-									<span class="glyphicon glyphicon-minus"></span>
-									<bean:write name="thanhVien" property="tenThanhVien" />
-								</h6>
-							</div>
-						</logic:iterate>
+				<div class="col-lg-3">
+					<div >
+						<iframe width="298" height="240"
+							src="https://www.youtube.com/embed/nU1aGSdZmA4"> </iframe>
 					</div>
-					<bean:define id="avatar" property="avatar" name="trangChuForm"></bean:define>
+
 					<div class="col-lg-12"
-						style="background:url('gif/${avatar }.gif') no-repeat;height: 300px; margin-top:20px; ">
+						style="background: url('gif/1.gif') no-repeat; height: 300px; margin-top: 20px;">
 					</div>
 					<div class="col-lg-12 thanhVienNoiBat" style="margin-top: 20px;">
 						<div class="col-lg-12">
-							<label><span class="glyphicon glyphicon-book"></span> Bài
-								Viết Được Yêu Thích</label>
-						</div>
-						<div class="col-lg-12">
-							<hr style="border: 1px solid #ddd; margin: 2px 0px;">
+							<label><span class="glyphicon glyphicon-user"></span>
+								Thống kê thành viên</label>
 						</div>
 
-						<ul>
-							<logic:iterate id="baiVietHot" name="trangChuForm"
-								property="bXHBaiViet">
-								<bean:define id="mabv" property="maBaiViet" name="baiVietHot"></bean:define>
-								<li><html:link action="/xem-bai-viet.do?maBaiViet=${mabv }">
-										<span class="glyphicon glyphicon-minus"></span>
-										<bean:write name="baiVietHot" property="tieuDeViet" />
-									</html:link></li>
-							</logic:iterate>
-						</ul>
+						<table class="table table-striped">
+							<tr>
+								<td><h5>Tổng số thành viên</h5> </td>
+								<td><span class="badge"><bean:write name="trangChuForm" property="soThanhVien" /></span></td>
+							</tr>
+							<tr>
+								<td><h5>Thành viên mới nhất</h5></td>
+								<td><span class="badge">
+								<logic:notEmpty name="trangChuForm" property="thanhVienMoi">
+								<bean:write name="trangChuForm" property="thanhVienMoi" />
+								</logic:notEmpty>
+								</span></td>
+							</tr>
+						</table>
 					</div>
-				</div> --%>
+				</div>
 			</div>
 		</div>
 	</div>

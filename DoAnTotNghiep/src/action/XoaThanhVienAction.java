@@ -22,7 +22,7 @@ public class XoaThanhVienAction extends Action{
 		ThanhVienForm thanhVienForm = (ThanhVienForm) form;
 
 		String maThanhVien = thanhVienForm.getMaThanhVien();
-		String chucVu = thanhVienForm.isChucVu();
+		String chucVu = thanhVienForm.getChucVu();
 		
 		ThanhVienBO thanhVienBO = new ThanhVienBO();
 		if (thanhVienBO.xoaThanhVien(maThanhVien)){

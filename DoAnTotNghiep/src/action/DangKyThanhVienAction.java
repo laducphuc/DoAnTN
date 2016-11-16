@@ -1,15 +1,8 @@
 package action;
 
-import java.io.File;
-import java.io.FileOutputStream;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.ThanhVien;
-import model.bo.ThanhVienBO;
-
-import org.apache.commons.io.FileUtils;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -23,22 +16,25 @@ import common.StringProcess;
 import common.Validations;
 import form.DangKyThanhVienForm;
 import form.DangNhapForm;
+import model.bean.ThanhVien;
+import model.bo.ThanhVienBO;
 
 public class DangKyThanhVienAction extends Action {
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		DangKyThanhVienForm dangKyForm = (DangKyThanhVienForm) form;
 
 		try {
 			DangNhapForm dangNhapForm = (DangNhapForm) request.getSession()
 					.getAttribute("dangNhapForm");
 			if (dangKyForm.getSubmit() != null) {
-				String dangKy = StringProcess.toUTF8(dangKyForm.getSubmit());
-				String tenThanhVien = StringProcess.toUTF8(dangKyForm
-						.getTenThanhVien());
+				String dangKy = dangKyForm.getSubmit();
+				String tenThanhVien = dangKyForm.getTenThanhVien();
 				String gioiTinh = null;
 				if (dangKyForm.getGioiTinh() == 1) {
 					gioiTinh = "Nam";
@@ -46,9 +42,7 @@ public class DangKyThanhVienAction extends Action {
 					gioiTinh = "Nữ";
 				}
 				String ngaySinh = dangKyForm.getNgaySinh();
-				String diaChi = StringProcess.toUTF8(dangKyForm.getDiaChi());
-				String quocTich = dangKyForm.getQuocTich();
-				String ngonNgu = StringProcess.toUTF8(dangKyForm.getNgonNgu());
+				String diaChi = dangKyForm.getDiaChi();
 				String soDienThoai = dangKyForm.getSoDienThoai();
 				String email = dangKyForm.getEmail();
 				String tenTaiKhoan = dangKyForm.getTenTaiKhoan();
@@ -58,8 +52,6 @@ public class DangKyThanhVienAction extends Action {
 				ThanhVienBO thanhVienBO = new ThanhVienBO();
 				// Nhấp vào button Đăng ký
 				if ("Đăng ký".equals(dangKy)) {
-
-					String anhDaiDien = ManageImage.luuAnhDaiDien(file, request,getServlet());
 					ActionErrors actionErrors = new ActionErrors();
 					if (Validations.validateNull(tenThanhVien)) {
 						actionErrors.add("tenThanhVienError",
@@ -71,10 +63,6 @@ public class DangKyThanhVienAction extends Action {
 					} else if (Validations.validateSpace(tenThanhVien)) {
 						actionErrors.add("tenThanhVienError",
 								new ActionMessage("error.toanSpace"));
-					}
-					if (Validations.isAvataEmpty(anhDaiDien)) {
-						actionErrors.add("anhDaiDienError", new ActionMessage(
-								"error.anhDaiDien.Trong"));
 					}
 					if (Validations.validateNull(ngaySinh)) {
 						actionErrors.add("ngaySinhError", new ActionMessage(
@@ -155,24 +143,26 @@ public class DangKyThanhVienAction extends Action {
 					}
 
 					// Tạo đối tượng để lưu vào CSDL
+					
 					ThanhVien thanhVien = new ThanhVien();
+					if(file!=null){
+						String anhDaiDien = ManageImage.luuAnhDaiDien(file, request,getServlet());
+						thanhVien.setAnh(anhDaiDien);
+					}
 					thanhVien.setTenThanhVien(tenThanhVien);
 					thanhVien.setGioiTinh(gioiTinh);
 					thanhVien.setNgaySinh(ngaySinh);
 					thanhVien.setDiaChi(diaChi);
-					thanhVien.setQuocTich(quocTich);
-					thanhVien.setNgonNgu(ngonNgu);
 					thanhVien.setSoDienThoai(soDienThoai);
 					thanhVien.setEmail(email);
 					thanhVien.setTenTaiKhoan(tenTaiKhoan);
 					thanhVien.setMaKhau(matKhau);
-					thanhVien.setAnh(anhDaiDien);
 					if (thanhVienBO.chenThanhVien(thanhVien)) {
 						if (dangNhapForm == null) {
 							return mapping
 									.findForward("dangKyThanhVienThanhCong");
 						}
-						if ("3".equals(dangNhapForm.getChucVu())) {
+						if ("1".equals(dangNhapForm.getChucVu())) {
 							return mapping
 									.findForward("dangKyThanhVienThanhCongAdmin");
 						} else {

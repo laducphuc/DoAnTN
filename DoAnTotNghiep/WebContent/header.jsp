@@ -26,19 +26,6 @@
 				<h3 class="col-lg-offset-2"
 					style="font-family: Playfair Display; color: #8B4513; font-size: 12;">Hỗ trợ học và luyện thi tiếng Nhật trực tuyến</h3>
 			</div>
-			<div class="row">
-				<html:form action="/trang-chu">
-					<div class="col-lg-offset-8 col-lg-3" style="padding-left: 45px;">
-						<html:text property="noiDungTimKiem" styleClass="form-control"
-							style="box-shadow: 2px 2px 5px #888888"></html:text>
-					</div>
-					<div class="col-lg-1" style="height: 34px; padding: 0px;">
-						<button type="submit" style="background-color: transparent;border: none;">
-							<span id="my-search" class="glyphicon glyphicon-search"></span>
-						</button>
-					</div>
-				</html:form>
-			</div>
 		</div>
 	</div>
 

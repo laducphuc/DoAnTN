@@ -13,6 +13,24 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<style type="text/css">
+#form-tratu {
+   height: 185px;
+   background-color:none;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   position: fixed;
+   border: 0px solid #ddd;
+   opacity: 0.9;
+   top: 15%;
+   right:4%;
+   z-index:5;
+   transition : right 0.75s;
+   -moz-transition : right 0.75s;
+   -webkit-transition : right 0.75s;
+   box-shadow: 0px 0px 0px #888888;
+}
+</style>
 </head>
 <body>
 
@@ -30,9 +48,7 @@
 
 	</div>
 	</nav>
-	
 	<div class="container">
-
 		<div class="col-sm-12">
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -42,8 +58,8 @@
 					<html:form action="/ketquathi">
 
 						<logic:iterate id="cauhoi" name="thiForm" property="listCauHoi">
-						<bean:define id="soTTCH" name="cauhoi" property="soThuTu"></bean:define>
-						
+							<bean:define id="soTTCH" name="cauhoi" property="soThuTu"></bean:define>
+
 							<label class="control-label col-sm-12"><font color="blue"><u>Câu
 										số <bean:write name="cauhoi" property="soThuTu" /> :
 								</u></font><br></br> </label>
@@ -62,36 +78,40 @@
 							</logic:notEmpty>
 							<!-- lay danh sach phuong an -->
 							<logic:iterate id="pa" name="cauhoi" property="listPhuongAn">
-							<bean:define id="soTTPA" name="pa" property="soThuTuPA"></bean:define>
-							
+								<bean:define id="soTTPA" name="pa" property="soThuTuPA"></bean:define>
+
 								<!-- kiem tra co phai nhieu phuong an dung k -->
 								<logic:equal name="cauhoi" property="laCheckBox" value="true">
 									<logic:notEmpty name="pa" property="noiDungPA">
 										<div class="col-sm-12">
 											<bean:define id="phuongAn" name="pa" property="noiDungPA"></bean:define>
 											<div class="checkbox">
-											
-												
-											
-												<label class="col-sm-10">
-													<input type="checkbox" value="${soTTCH}-${soTTPA}"													
+
+
+
+												<label class="col-sm-10"> <input type="checkbox"
+													value="${soTTCH}-${soTTPA}"
 													<logic:equal name="pa" property="coChon" value="1">
 													 checked="checked" 
-													 		</logic:equal>											 
-													 disabled="disabled" >${phuongAn }</input>
-													</label>
-											
-											
+													 		</logic:equal>
+													disabled="disabled">${phuongAn }</input>
+												</label>
 
-											
+
+
+
 												<logic:equal name="pa" property="trangThai" value="1">
-														<label class="col-sm-2"> <font color="green" size="3" ><span class="glyphicon glyphicon-ok"></span></font> </label>													
-													</logic:equal>
-													
-													<logic:equal name="pa" property="trangThai" value="0">
-														<label class="col-sm-2"> <font color="red" size="3" ><span class="glyphicon glyphicon-remove"></span></font> </label>													
-													</logic:equal>
-												
+													<label class="col-sm-2"> <font color="green"
+														size="3"><span class="glyphicon glyphicon-ok"></span></font>
+													</label>
+												</logic:equal>
+
+												<logic:equal name="pa" property="trangThai" value="0">
+													<label class="col-sm-2"> <font color="red" size="3"><span
+															class="glyphicon glyphicon-remove"></span></font>
+													</label>
+												</logic:equal>
+
 											</div>
 											<logic:notEmpty name="pa" property="hinhAnh">
 												<bean:define id="imagePA" name="pa" property="hinhAnh"></bean:define>
@@ -110,19 +130,24 @@
 											<bean:define id="imagePA" name="pa" property="hinhAnh"></bean:define>
 											<div class="col-sm-12">
 												<div class="checkbox">
-													<label class="col-sm-10">
-														<input type="checkbox" value="${soTTCH}-${soTTPA}" 
+													<label class="col-sm-10"> <input type="checkbox"
+														value="${soTTCH}-${soTTPA}"
 														<logic:equal name="pa" property="coChon" value="1">
 														checked="checked"
 														</logic:equal>
-														 disabled="disabled" ><html:img src="${imagePA}" /></input>
-														</label>
+														disabled="disabled">
+													<html:img src="${imagePA}" /></input>
+													</label>
 													<logic:equal name="pa" property="trangThai" value="1">
-														<label class="col-sm-2"> <font color="green" size="3" ><span class="glyphicon glyphicon-ok"></span></font> </label>													
+														<label class="col-sm-2"> <font color="green"
+															size="3"><span class="glyphicon glyphicon-ok"></span></font>
+														</label>
 													</logic:equal>
-													
+
 													<logic:equal name="pa" property="trangThai" value="0">
-														<label class="col-sm-2"> <font color="red" size="3" ><span class="glyphicon glyphicon-remove"></span></font> </label>													
+														<label class="col-sm-2"> <font color="red"
+															size="3"><span class="glyphicon glyphicon-remove"></span></font>
+														</label>
 													</logic:equal>
 												</div>
 											</div>
@@ -133,25 +158,30 @@
 
 
 								<!-- kiem tra co phai 1 phuong an dung k -->
-								
+
 								<logic:equal name="cauhoi" property="laCheckBox" value="false">
 									<logic:notEmpty name="pa" property="noiDungPA">
 										<div class="col-sm-12">
 											<bean:define id="phuongAn" name="pa" property="noiDungPA"></bean:define>
 											<div class="radio">
-												<label class="col-sm-10"><html:radio disabled="true" property="chonPhuongAn${soTTCH}"
+												<label class="col-sm-10"><html:radio disabled="true"
+														property="chonPhuongAn${soTTCH}"
 														value="${soTTCH}-${soTTPA}">
 														${phuongAn }
 													</html:radio></label>
 												<logic:equal name="pa" property="trangThai" value="1">
-														<label class="col-sm-2"> <font color="green" size="3" ><span class="glyphicon glyphicon-ok"></span></font> </label>													
-													</logic:equal>
-													
-													<logic:equal name="pa" property="trangThai" value="0">
-														<label class="col-sm-2"> <font color="red" size="3" ><span class="glyphicon glyphicon-remove"></span></font> </label>													
-													</logic:equal>
+													<label class="col-sm-2"> <font color="green"
+														size="3"><span class="glyphicon glyphicon-ok"></span></font>
+													</label>
+												</logic:equal>
+
+												<logic:equal name="pa" property="trangThai" value="0">
+													<label class="col-sm-2"> <font color="red" size="3"><span
+															class="glyphicon glyphicon-remove"></span></font>
+													</label>
+												</logic:equal>
 											</div>
-											
+
 											<logic:notEmpty name="pa" property="hinhAnh">
 												<bean:define id="imagePA" name="pa" property="hinhAnh"></bean:define>
 												<div class="col-sm-12">
@@ -166,57 +196,66 @@
 											<bean:define id="imagePA" name="pa" property="hinhAnh"></bean:define>
 											<div class="col-sm-12">
 												<div class="radio">
-													<label class="col-sm-10"><html:radio disabled="true" property="chonPhuongAn${soTTCH}"
+													<label class="col-sm-10"><html:radio
+															disabled="true" property="chonPhuongAn${soTTCH}"
 															value="${soTTCH}-${soTTPA}">
 															<html:img src="${imagePA}" />
 														</html:radio></label>
 													<logic:equal name="pa" property="trangThai" value="1">
-														<label class="col-sm-2"> <font color="green" size="3" ><span class="glyphicon glyphicon-ok"></span></font> </label>													
+														<label class="col-sm-2"> <font color="green"
+															size="3"><span class="glyphicon glyphicon-ok"></span></font>
+														</label>
 													</logic:equal>
-													
+
 													<logic:equal name="pa" property="trangThai" value="0">
-														<label class="col-sm-2"> <font color="red" size="3" ><span class="glyphicon glyphicon-remove"></span></font> </label>													
+														<label class="col-sm-2"> <font color="red"
+															size="3"><span class="glyphicon glyphicon-remove"></span></font>
+														</label>
 													</logic:equal>
 												</div>
-												
+
 											</div>
 										</logic:notEmpty>
 									</logic:empty>
 								</logic:equal>
-								
+
 							</logic:iterate>
 							<div class="col-sm-12">
 								<hr></hr>
 							</div>
 
 						</logic:iterate>
-						
-						
-						
+
+
+
 					</html:form>
 
 
 				</div>
 
 			</div>
-			<div class="col-sm-5">
-			<div class="panel panel-primary">
+			<div class="col-sm-3" id="form-tratu">
+				<div class="panel panel-primary">
 
-				<div class="panel-heading">
-					Kết quả thi
+					<div class="panel-heading" >Kết quả thi</div>
+					<div class="panel-body">
+						<html:form action="/ketquathi">
+							<label class="col-sm-12"> <font color="green" size="3">Kết
+									quả bài thi trắc nghiệm</font>
+							</label>
+							<label class="col-sm-12">Tên đề thi: <bean:write
+									name="thiForm" property="tenDe" /></label>
+							<label class="col-sm-12">Số điểm: <bean:write
+									name="thiForm" property="diemThi" />
+							</label>
+
+							<div class="col-sm-offset-4 col-sm-4">
+								<html:submit styleClass="btn btn-default" value="Về trang chủ"
+									property="btnSubmit"></html:submit>
+							</div>
+						</html:form>
+					</div>
 				</div>
-				<div class="panel-body">
-				<html:form action="/ketquathi">
-				<label class="col-sm-12"> <font color="green" size="3">Kết quả bài thi trắc nghiệm</font> </label>
-				<label class="col-sm-12">Tên đề thi: <bean:write name="thiForm" property="tenDe" /></label>
-				<label class="col-sm-12">Số điểm: <bean:write name="thiForm" property="diemThi"/> </label>
-				
-				<div class="col-sm-offset-4 col-sm-4">
-					<html:submit styleClass="btn btn-default" value="Về trang chủ" property="btnSubmit"></html:submit>
-				</div>
-				</html:form>
-				</div>
-			</div>
 			</div>
 		</div>
 

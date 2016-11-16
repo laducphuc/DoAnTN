@@ -154,25 +154,6 @@
 								</div>
 								<div class="row form-group">
 									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-globe"></i>
-										Quốc tịch:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="quocTich"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-language"></i>
-										Ngôn ngữ:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="ngonNgu"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
 										style="text-align: left;"><i class="fa fa-phone"></i>
 										Số điện thoại:</label>
 									<div class="col-sm-12">
@@ -196,42 +177,6 @@
 										Tên đăng nhập:</label>
 									<div class="col-sm-12">
 										<html:text name="thanhVienForm" property="tenTaiKhoan"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i
-										class="fa fa-balance-scale"></i> Trình độ:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="tenTrinhDo"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-star-o"></i>
-										Số sao:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="soSao"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-file-text-o"></i>
-										Số bài đóng góp:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="soBaiDongGop"
-											styleClass="form-control" disabled="true"></html:text>
-									</div>
-								</div>
-								<div class="row form-group">
-									<label class="control-label col-sm-12"
-										style="text-align: left;"><i class="fa fa-file-text-o"></i>
-										Số bài đã dịch:</label>
-									<div class="col-sm-12">
-										<html:text name="thanhVienForm" property="soBaiDaDich"
 											styleClass="form-control" disabled="true"></html:text>
 									</div>
 								</div>

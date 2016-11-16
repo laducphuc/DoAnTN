@@ -52,13 +52,6 @@
 				<li style="width: 180px;"><html:link
 						action="/danh-sach-cong-tac-vien.do">Quản lý cộng tác viên</html:link>
 				</li>
-
-				</li>
-				<li style="width: 180px;"><html:link
-						action="/quan-ly-phan-cong-dich-bai.do?trangThai=Tatca">Phân công dịch bài</html:link></li>
-				<li style="width: 180px;"><html:link
-						action="/quan-ly-bai-viet.do?trangThai=Tatca">Quản lý bài viết</html:link></li>
-
 				<logic:notEmpty name="dangNhapForm" property="taiKhoan"
 					scope="session">
 					<bean:define id="taikhoan" name="dangNhapForm" property="taiKhoan"
@@ -171,6 +164,9 @@
 												<html:link
 													action="/thong-tin-thanh-vien?maThanhVien=${maThanhVien}&chucVu=${chucVu}">
 													<span class="glyphicon glyphicon-edit"></span>
+												</html:link> <html:link action="/xoa-thanh-vien?maThanhVien=${maThanhVien}&chucVu=${chucVu}"
+													onclick="return confirm('Bạn muốn xóa thành viên này?');">
+													<span class="glyphicon glyphicon-trash"></span>
 												</html:link></td>
 										</tr>
 									</logic:iterate>
@@ -189,30 +185,7 @@
 					</div>
 				</div>
 				<!-- body right -->
-				<div class="col-lg-3" style="height: auto; padding-right: 0px;">
-
-					<div class="col-lg-12 thanhVienNoiBat">
-						<div class="col-lg-12" style="text-align: center;">
-							<label> Thống Kê</label>
-						</div>
-						<div class="col-lg-12">
-							<hr style="border: 1px solid #ddd; margin: 2px 0px;">
-						</div>
-
-						<ul>
-							<li><html:link action="/thong-ke.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng thành viên</html:link>
-							</li>
-							<li><html:link action="/bang-xep-hang-cong-tac-vien.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng cộng tác viên</html:link>
-							</li>
-							<li><html:link action="/bang-xep-hang-bai-viet.do">
-									<span class="glyphicon glyphicon-minus"></span>  Bảng xếp hạng bài viết</html:link>
-							</li>
-						</ul>
-					</div>
-
-				</div>
+				<jsp:include page="thongke.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class="col-lg-1"></div>

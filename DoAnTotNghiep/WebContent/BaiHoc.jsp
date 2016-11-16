@@ -101,12 +101,6 @@
 									class="btn-default" onclick="nghe();"></button>
 								<h4>Nghe</h4>
 							</div>
-							<!-- <div class="col-sm-3">
-								<button type="button"
-									style="width: 128px; height: 100px; background-image: url('image/Source/luyentap.png');"
-									class="btn-default" onclick="ly();"></button>
-								<h4>Luyện tập</h4>
-							</div> -->
 						</div>
 						<div id="tuVung">
 							<div class="col-lg-12" style="border-bottom: 1px solid blue;">
